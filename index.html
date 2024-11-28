@@ -5,10 +5,54 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <link href="/src/css/style.css" rel="stylesheet" />
+    <link href="./src/css/output.css" rel="stylesheet">
+    <script type="module" src="./src/js/app.js" defer></script>
   </head>
   <body>
-    <h1>hello</h1>
-    <script type="module" src="./main.js"></script>
+    <header class="bg-gray-800 text-white p-4 flex items-center justify-between">
+      <div class="logo">
+        <a href="index.html" class="text-xl font-bold"><img src=""></a>
+      </div>
+      <button
+        id="burger-button"
+        class="block lg:hidden text-white focus:outline-none"
+        aria-label="Toggle Navigation">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <div
+        id="mobile-menu"
+        class="hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-95 z-50 flex flex-col items-center justify-center">
+        <button
+          id="close-menu"
+          class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+          aria-label="Close Navigation">
+          &times;
+        </button>
+        <nav class="space-y-6 text-lg text-white">
+          <a href="index.html" class="hover:text-gray-300">Home</a>
+          <a href="pages/profile.html" class="hover:text-gray-300">Profile</a>
+          <a href="pages/create-listing.html" class="hover:text-gray-300">Create Listing</a>
+          <a href="pages/login-register.html" class="hover:text-gray-300">Login/Register</a>
+        </nav>
+      </div>
+      <nav
+        id="nav-links"
+        class="hidden lg:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-300">Home</a>
+        <a href="pages/profile.html" class="hover:text-gray-300">Profile</a>
+        <a href="pages/create-listing.html" class="hover:text-gray-300">Create Listing</a>
+        <a href="pages/login-register.html" class="hover:text-gray-300">Login/Register</a>
+      </nav>
+    </header>
+    
+    
   </body>
 </html>
