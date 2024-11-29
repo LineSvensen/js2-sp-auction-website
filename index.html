@@ -49,7 +49,7 @@
           <a href="pages/login-register.html" class="hover:text-gray-300">Login/Register</a>
         </nav>
       </div>
-      <nav id="nav-links" class="hidden lg:flex items-center space-x-4 bg-white text-Black p-4">
+      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
         <a href="pages/create-listing.html" class="hover:text-CTABlue text-sm font-medium transition duration-300">
           Create Listing
         </a>
@@ -67,8 +67,39 @@
         </a>
       </nav>
     </header>
+    <div class="bg-gray-100 py-4 px-4">
+      <form
+        class="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full max-w-2xl mx-auto"
+        action="/search"
+        method="GET">
+        <input
+          type="text"
+          placeholder="Search listings..."
+          class="py-2 px-3 text-sm focus:outline-none flex-grow"
+          name="q"/>
+        <button
+          type="submit"
+          class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 transition duration-300 text-sm font-medium">
+          Search
+        </button>
+      </form>
+    </div>
+    <section id="hero-banner" class="relative bg-black bg-opacity-50 h-96 text-white">
+      <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+        <source src="assets/images/BID.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+    <div class="flex flex-row justify-between relative h-full p-4">
+      <h2 class="text-xl lg:text-2xl font-bold mb-4">
+        Explore listings
+      </h2>
+    </div>
     
     
+    
+    
+
 
 
     
