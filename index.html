@@ -1,21 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="assets/images/bblogo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bidbuddy | Home</title>
     <link href="./src/css/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3df22e74ab.js" crossorigin="anonymous"></script>
     <script type="module" src="./src/js/app.js" defer></script>
   </head>
-  <body>
-    <header class="bg-gray-800 text-white p-4 flex items-center justify-between">
-      <div class="logo">
-        <a href="index.html" class="text-xl font-bold"><img src=""></a>
+  <body class="font-poppins">
+    <header class="bg-white text-Black p-4 flex items-center justify-between">
+      <div class="logo flex items-center">
+        <a href="index.html">
+          <img src="assets/images/bidbuddyicon.png" style="width: 120px; height: auto;" alt="Logo">
+        </a>
       </div>
       <button
         id="burger-button"
-        class="block lg:hidden text-white focus:outline-none"
+        class="block lg:hidden text-Black focus:outline-none"
         aria-label="Toggle Navigation">
         <svg
           class="w-6 h-6"
@@ -29,29 +35,42 @@
       </button>
       <div
         id="mobile-menu"
-        class="hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-95 z-50 flex flex-col items-center justify-center">
+        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center">
         <button
           id="close-menu"
           class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
           aria-label="Close Navigation">
           &times;
         </button>
-        <nav class="space-y-6 text-lg text-white">
+        <nav class="flex flex-col text-center space-y-6 text-base text-white">
           <a href="index.html" class="hover:text-gray-300">Home</a>
           <a href="pages/profile.html" class="hover:text-gray-300">Profile</a>
           <a href="pages/create-listing.html" class="hover:text-gray-300">Create Listing</a>
           <a href="pages/login-register.html" class="hover:text-gray-300">Login/Register</a>
         </nav>
       </div>
-      <nav
-        id="nav-links"
-        class="hidden lg:flex space-x-6">
-        <a href="index.html" class="hover:text-gray-300">Home</a>
-        <a href="pages/profile.html" class="hover:text-gray-300">Profile</a>
-        <a href="pages/create-listing.html" class="hover:text-gray-300">Create Listing</a>
-        <a href="pages/login-register.html" class="hover:text-gray-300">Login/Register</a>
+      <nav id="nav-links" class="hidden lg:flex items-center space-x-4 bg-white text-Black p-4">
+        <a href="pages/create-listing.html" class="hover:text-CTABlue text-sm font-medium transition duration-300">
+          Create Listing
+        </a>
+        <a href="pages/login-register.html">
+          <button
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm">
+            Login/Register
+          </button>
+        </a>
+        <a href="pages/profile.html" class="hover:text-CTABlue transition duration-300">
+          <i class="fa-regular fa-user text-lg"></i>
+        </a>
+        <a href="index.html" class="hover:text-CTABlue transition duration-300">
+          <i class="fa-solid fa-house text-lg"></i>
+        </a>
       </nav>
     </header>
+    
+    
+
+
     
     
   </body>
