@@ -90,19 +90,44 @@
         Your browser does not support the video tag.
       </video>
     </section>
-    <div class="flex flex-row justify-between relative h-full p-4">
-      <h2 class="text-xl lg:text-2xl font-bold mb-4">
+    
+    <div class="flex flex-row text-center relative h-full p-4">
+      <h2 class="text-xl lg:text-2xl font-bold">
         Explore listings
       </h2>
     </div>
     
     
+        <!-- Listings Section -->
+    <section id="listings-section" class="bg-gray-50 py-8">
+      <div class="container mx-auto px-4">
+        
+
+        <!-- Listings Container -->
+        <div id="listings-container" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Example of a single listing card -->
+          <div class="border p-4 rounded shadow-lg flex flex-col justify-between">
+            <img src="https://via.placeholder.com/300" alt="Sample Listing" class="w-full h-48 object-cover rounded mb-4">
+            <h3 class="text-lg font-bold">Sample Listing</h3>
+            <p class="text-sm mb-2">Number of Bids: <span class="font-semibold">10</span></p>
+            <p class="text-sm mb-2">Highest Bid: <span class="font-semibold">200 Credits</span></p>
+            <p class="text-sm mb-4">Ends: <span class="font-semibold">2024-12-01</span></p>
+            <a href="pages/listing-details.html" class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-medium py-2 px-4 rounded-lg shadow-md transition duration-300">
+              View More
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     
     
 
 
 
-    
+    <footer class="bg-gray-100">
+      <p class="p-4 text-sm">Copyright 2025</p>
+    </footer>
     
   </body>
 </html>
