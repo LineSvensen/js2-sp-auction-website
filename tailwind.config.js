@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './pages/**/*.html', './src/**/*.{js,ts,jsx,tsx,html}'],
+  content: [
+    './index.html',
+    './pages/**/*.html',
+    './src/**/*.{js,ts,jsx,tsx,html}',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -47,7 +51,7 @@ module.exports = {
           hover: '#f04d5a',
         },
       },
-    },    
+    },
   },
   plugins: [],
 };

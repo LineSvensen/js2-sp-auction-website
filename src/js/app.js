@@ -11,9 +11,16 @@
 // // Import components
 // import avatar from './components/avatar.js';
 // import bid from './components/bid.js';
+
 import { initBurgerMenu } from './components/burger-menu.js';
 initBurgerMenu();
-// Initialize the burger menu
+
+import { initializeLoginForm } from './components/login.js';
+document.addEventListener('DOMContentLoaded', () => {
+  initializeLoginForm(); // Initialize the login form logic
+});
+
+import './components/register.js';
 
 
 // import credits from './components/credits.js';

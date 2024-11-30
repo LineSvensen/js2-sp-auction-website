@@ -4,8 +4,8 @@
  * @throws {Error} Throws an error if access token is not found.
  */
 export function authGuard() {
-    if (!localStorage.accessToken) {
-      alert("You must be logged in to view this page");
-      window.location.href = "./pages/login-register.html";
-    }
+  if (!localStorage.accessToken) {
+    alert('You must be logged in to view this page');
+    window.location.href = './pages/login-register.html';
   }
+}

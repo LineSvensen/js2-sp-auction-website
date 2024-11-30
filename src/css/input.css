@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-      @apply font-poppins;
-    }
+  body {
+    @apply font-poppins;
   }
-  
+}
+
+button {
+  background-color: transparent;
+}

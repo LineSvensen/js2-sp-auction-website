@@ -1,65 +1,94 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="assets/images/bblogo.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/bblogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bidbuddy | Home</title>
-    <link href="./src/css/output.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/3df22e74ab.js" crossorigin="anonymous"></script>
+    <link href="./src/css/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3df22e74ab.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="./src/js/app.js" defer></script>
   </head>
   <body class="font-poppins">
     <header class="bg-white text-Black p-4 flex items-center justify-between">
       <div class="logo flex items-center">
         <a href="index.html">
-          <img src="assets/images/bidbuddyicon.png" style="width: 120px; height: auto;" alt="Logo">
+          <img
+            src="assets/images/bidbuddyicon.png"
+            style="width: 120px; height: auto"
+            alt="Logo"
+          />
         </a>
       </div>
       <button
         id="burger-button"
         class="block lg:hidden text-Black focus:outline-none"
-        aria-label="Toggle Navigation">
+        aria-label="Toggle Navigation"
+      >
         <svg
           class="w-6 h-6"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
         </svg>
       </button>
       <div
         id="mobile-menu"
-        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center">
+        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
+      >
         <button
           id="close-menu"
           class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
-          aria-label="Close Navigation">
+          aria-label="Close Navigation"
+        >
           &times;
         </button>
         <nav class="flex flex-col text-center space-y-6 text-base text-white">
           <a href="index.html" class="hover:text-gray-300">Home</a>
           <a href="pages/profile.html" class="hover:text-gray-300">Profile</a>
-          <a href="pages/create-listing.html" class="hover:text-gray-300">Create Listing</a>
-          <a href="pages/login-register.html" class="hover:text-gray-300">Login/Register</a>
+          <a href="pages/create-listing.html" class="hover:text-gray-300"
+            >Create Listing</a
+          >
+          <a href="pages/login-register.html" class="hover:text-gray-300"
+            >Login/Register</a
+          >
         </nav>
       </div>
       <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
-        <a href="pages/create-listing.html" class="hover:text-CTABlue text-sm font-medium transition duration-300">
+        <a
+          href="pages/create-listing.html"
+          class="hover:text-CTABlue text-sm font-medium transition duration-300"
+        >
           Create Listing
         </a>
         <a href="pages/login-register.html">
           <button
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm">
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm"
+          >
             Login/Register
           </button>
         </a>
-        <a href="pages/profile.html" class="hover:text-CTABlue transition duration-300">
+        <a
+          href="pages/profile.html"
+          class="hover:text-CTABlue transition duration-300"
+        >
           <i class="fa-regular fa-user text-lg"></i>
         </a>
         <a href="index.html" class="hover:text-CTABlue transition duration-300">
@@ -71,63 +100,75 @@
       <form
         class="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full max-w-2xl mx-auto"
         action="/search"
-        method="GET">
+        method="GET"
+      >
         <input
           type="text"
           placeholder="Search listings..."
           class="py-2 px-3 text-sm focus:outline-none flex-grow"
-          name="q"/>
+          name="q"
+        />
         <button
           type="submit"
-          class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 transition duration-300 text-sm font-medium">
+          class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 transition duration-300 text-sm font-medium"
+        >
           Search
         </button>
       </form>
     </div>
-    <section id="hero-banner" class="relative bg-black bg-opacity-50 h-96 text-white">
-      <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+    <section
+      id="hero-banner"
+      class="relative bg-black bg-opacity-50 h-96 text-white"
+    >
+      <video
+        autoplay
+        muted
+        loop
+        class="absolute inset-0 w-full h-full object-cover"
+      >
         <source src="assets/images/BID.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </section>
-    
     <div class="flex flex-row text-center relative h-full p-4">
-      <h2 class="text-xl lg:text-2xl font-bold">
-        Explore listings
-      </h2>
+      <h2 class="text-xl lg:text-2xl font-bold">Explore listings</h2>
     </div>
-    
-    
-        <!-- Listings Section -->
     <section id="listings-section" class="bg-gray-50 py-8">
       <div class="container mx-auto px-4">
-        
-
-        <!-- Listings Container -->
-        <div id="listings-container" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Example of a single listing card -->
-          <div class="border p-4 rounded shadow-lg flex flex-col justify-between">
-            <img src="https://via.placeholder.com/300" alt="Sample Listing" class="w-full h-48 object-cover rounded mb-4">
+        <div
+          id="listings-container"
+          class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <div
+            class="border p-4 rounded shadow-lg flex flex-col justify-between"
+          >
+            <img
+              src="https://via.placeholder.com/300"
+              alt="Sample Listing"
+              class="w-full h-48 object-cover rounded mb-4"
+            />
             <h3 class="text-lg font-bold">Sample Listing</h3>
-            <p class="text-sm mb-2">Number of Bids: <span class="font-semibold">10</span></p>
-            <p class="text-sm mb-2">Highest Bid: <span class="font-semibold">200 Credits</span></p>
-            <p class="text-sm mb-4">Ends: <span class="font-semibold">2024-12-01</span></p>
-            <a href="pages/listing-details.html" class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-medium py-2 px-4 rounded-lg shadow-md transition duration-300">
+            <p class="text-sm mb-2">
+              Number of Bids: <span class="font-semibold">10</span>
+            </p>
+            <p class="text-sm mb-2">
+              Highest Bid: <span class="font-semibold">200 Credits</span>
+            </p>
+            <p class="text-sm mb-4">
+              Ends: <span class="font-semibold">2024-12-01</span>
+            </p>
+            <a
+              href="pages/listing-details.html"
+              class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-medium py-2 px-4 rounded-lg shadow-md transition duration-300"
+            >
               View More
             </a>
           </div>
         </div>
       </div>
     </section>
-
-    
-    
-
-
-
     <footer class="bg-gray-100">
       <p class="p-4 text-sm">Copyright 2025</p>
     </footer>
-    
   </body>
 </html>

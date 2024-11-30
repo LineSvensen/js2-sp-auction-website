@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/bblogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bidbuddy | Login or Register</title>
+    <link href="../src/css/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3df22e74ab.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="../src/js/app.js" defer></script>
+  </head>
+  <body class="font-poppins bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-white text-Black p-4 flex items-center justify-between">
+      <div class="logo flex items-center">
+        <a href="index.html">
+          <img
+            src="../assets/images/bidbuddyicon.png"
+            style="width: 120px; height: auto"
+            alt="Logo"
+          />
+        </a>
+      </div>
+      <button
+        id="burger-button"
+        class="block lg:hidden text-Black focus:outline-none"
+        aria-label="Toggle Navigation"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
+      <div
+        id="mobile-menu"
+        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
+      >
+        <button
+          id="close-menu"
+          class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+          aria-label="Close Navigation"
+        >
+          &times;
+        </button>
+        <nav class="flex flex-col text-center space-y-6 text-base text-white">
+          <a href="index.html" class="hover:text-gray-300">Home</a>
+          <a href="pages/profile.html" class="hover:text-gray-300">Profile</a>
+          <a href="pages/create-listing.html" class="hover:text-gray-300"
+            >Create Listing</a
+          >
+          <a href="pages/login-register.html" class="hover:text-gray-300"
+            >Login/Register</a
+          >
+        </nav>
+      </div>
+      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
+        <a
+          href="pages/create-listing.html"
+          class="hover:text-CTABlue text-sm font-medium transition duration-300"
+        >
+          Create Listing
+        </a>
+        <a href="pages/login-register.html">
+          <button
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm"
+          >
+            Login/Register
+          </button>
+        </a>
+        <a
+          href="pages/profile.html"
+          class="hover:text-CTABlue transition duration-300"
+        >
+          <i class="fa-regular fa-user text-lg"></i>
+        </a>
+        <a href="index.html" class="hover:text-CTABlue transition duration-300">
+          <i class="fa-solid fa-house text-lg"></i>
+        </a>
+      </nav>
+    </header>
+
+    <main
+      class="flex-grow flex flex-col items-center justify-center p-6 bg-white"
+    >
+      <div class="w-360 bg-white p-6 space-y-6">
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+          <form id="login-form" class="space-y-6">
+            <div>
+              <label for="login-email" class="block text-sm font-medium"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTABlue focus:border-CTABlue"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div>
+              <label for="login-password" class="block text-sm font-medium"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTABlue focus:border-CTABlue"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-CTABlue text-white py-2 rounded-lg shadow-md hover:bg-CTABlue-hover transition duration-300"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+        <hr class="border-gray-300" />
+        <h3 class="text-xl text-center">OR</h2>
+        <hr class="border-gray-300" />
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
+          <form id="register-form" class="space-y-6">
+            <div>
+              <label for="register-username" class="block text-sm font-medium"
+                >Username</label
+              >
+              <input
+                type="text"
+                id="register-username"
+                name="username"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                placeholder="Choose a username"
+                required
+              />
+            </div>
+            <div>
+              <label for="register-email" class="block text-sm font-medium"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="register-email"
+                name="email"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div>
+              <label for="register-password" class="block text-sm font-medium"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="register-password"
+                name="password"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                placeholder="Create a password"
+                required
+              />
+            </div>
+            <div>
+              <label for="register-avatar" class="block text-sm font-medium"
+                >Avatar URL (Optional)</label
+              >
+              <input
+                type="url"
+                id="register-avatar"
+                name="avatar"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                placeholder="https://example.com/image.jpg"
+              />
+              <p class="text-sm text-gray-500 mt-1">
+                Provide a valid URL for your avatar image.
+              </p>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-CTAGreen text-white py-2 rounded-lg shadow-md hover:bg-CTAGreen-hover transition duration-300"
+            >
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-gray-100">
+      <p class="p-4 text-sm text-center">Copyright 2025 Bidbuddy</p>
+    </footer>
+  </body>
+</html>
