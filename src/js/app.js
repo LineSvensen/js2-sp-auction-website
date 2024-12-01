@@ -13,15 +13,24 @@
 // import bid from './components/bid.js';
 
 import { initBurgerMenu } from './components/burger-menu.js';
-initBurgerMenu();
-
 import { initializeLoginForm } from './components/login.js';
+import './components/register.js';
+import { renderListings } from './components/listing-card.js'; // Import the renderListings function
+
+
 document.addEventListener('DOMContentLoaded', () => {
-  initializeLoginForm(); // Initialize the login form logic
+  // Initialize the burger menu
+  initBurgerMenu();
+
+  // Initialize the login form logic (only if the login form exists)
+  initializeLoginForm();
+
+  renderListings();
+
 });
 
-import './components/register.js';
-
+// import { renderListings } from '/src/js/components/listing-card.js';
+// renderListings();
 
 // import credits from './components/credits.js';
 // import listingCard from './components/listing-card.js';

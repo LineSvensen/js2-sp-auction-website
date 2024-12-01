@@ -1,18 +1,19 @@
 export function initBurgerMenu() {
-  const burgerButton = document.getElementById('burger-button'); // Hamburger button
-  const mobileMenu = document.getElementById('mobile-menu'); // The mobile menu container
-  const closeMenu = document.getElementById('close-menu'); // The close button (X)
+  const burgerButton = document.getElementById('burger-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeMenu = document.getElementById('close-menu');
 
   if (burgerButton && mobileMenu && closeMenu) {
-    // Open menu when hamburger button is clicked
+    console.log('Burger menu initialized'); // Add this
     burgerButton.addEventListener('click', () => {
-      mobileMenu.classList.remove('hidden'); // Show menu
-      mobileMenu.classList.add('flex'); // Use flex for centering
+      console.log('Burger button clicked'); // Add this
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
     });
 
-    // Close menu when "X" button is clicked
     closeMenu.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden'); // Hide menu
+      console.log('Close button clicked'); // Add this
+      mobileMenu.classList.add('hidden');
       mobileMenu.classList.remove('flex');
     });
   } else {
