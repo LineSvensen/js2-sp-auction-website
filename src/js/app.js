@@ -12,11 +12,57 @@
 // import avatar from './components/avatar.js';
 // import bid from './components/bid.js';
 
+
+
+
+
+
+
+
+
+// import { initBurgerMenu } from './components/burger-menu.js';
+// import { initializeLoginForm } from './components/login.js';
+// import './components/register.js';
+// import { renderListings } from './components/listing-card.js'; // Import the renderListings function
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   // Initialize the burger menu
+//   initBurgerMenu();
+
+//   // Initialize the login form logic (only if the login form exists)
+//   initializeLoginForm();
+
+//   renderListings();
+
+// });
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   // Initialize the burger menu for all pages
+//   initBurgerMenu();
+
+//   // Determine the page using the URL
+//   const currentPage = window.location.pathname;
+
+//   if (currentPage.includes('index.html')) {
+//     renderListings();
+//   }
+
+//   if (currentPage.includes('listing-details.html')) {
+//     import('./views/listing-details.js');
+  
+//   }
+
+// });
+
+
 import { initBurgerMenu } from './components/burger-menu.js';
 import { initializeLoginForm } from './components/login.js';
 import './components/register.js';
 import { renderListings } from './components/listing-card.js'; // Import the renderListings function
-
+import { setupSearch } from './components/search.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize the burger menu
@@ -25,9 +71,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize the login form logic (only if the login form exists)
   initializeLoginForm();
 
+  // Render listings on the homepage
   renderListings();
 
+
+  setupSearch();
+
 });
+
+
+
+
+
+
 
 // import { renderListings } from '/src/js/components/listing-card.js';
 // renderListings();
