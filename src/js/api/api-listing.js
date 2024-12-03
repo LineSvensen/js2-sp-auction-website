@@ -1,34 +1,4 @@
-// export async function fetchListings() {
-//   console.log('fetching listings....');
-//     try {
-//       const response = await fetch("https://v2.api.noroff.dev/auction/listings");
-//       if (!response.ok) {
-//         throw new Error(`HTTP Error: ${response.status}`);
-//       }
-//       const data = await response.json();
-//       console.log('Fetched Data:', data);
-//       return data; // Returns the parsed JSON
-//     } catch (error) {
-//       console.error("Error fetching listings:", error.message);
-//       throw error; // Re-throw the error for external handling
-//     }
-//   }
 
-//   export async function fetchListingById(id) {
-//     console.log(`Fetching listing with ID: ${id}`);
-//     try {
-//       const response = await fetch(`https://v2.api.noroff.dev/auction/listings/${id}?_bids=true`);
-//       if (!response.ok) {
-//         throw new Error(`HTTP Error: ${response.status}`);
-//       }
-//       const data = await response.json();
-//       console.log('Fetched Listing Data:', data);
-//       return data;
-//     } catch (error) {
-//       console.error('Error fetching listing by ID:', error.message);
-//       throw error;
-//     }
-//   }
 
 import { getAccessToken } from './get-token.js';
 import { API_KEY } from './the-key.js';
