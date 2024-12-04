@@ -12,3 +12,9 @@ button {
   background-color: transparent;
 }
 
+.small-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}

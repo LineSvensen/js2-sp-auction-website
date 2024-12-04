@@ -19,11 +19,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const defaultAvatar =
       'https://dummyimage.com/100x100/cccccc/ffffff&text=No+Avatar';
     const profileData = await fetchProfile(name);
+    const credits = profileData.data.credits || 0;
 
     profileContainer.innerHTML = `
       <div class="border p-4 rounded shadow-lg">
         <h1 class="text-2xl font-bold">Welcome, ${name}!</h1>
-        <img id="profile-avatar" class="w-4 h-4 object-cover rounded-full" src="${profileData.data.avatar.url || ''}" alt="${profileData.data.avatar.alt || 'no image'}">
+        <img id="profile-avatar" class="small-avatar" src="${profileData.data.avatar.url || ''}" alt="${profileData.data.avatar.alt || 'no image'}">
         <form id="update-avatar-form">
           <input 
             type="url" 
@@ -38,6 +39,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             Update Avatar
           </button>
         </form>
+        <p>Username: ${name}</p>
+        <p>Your total credits: ${credits}</p>
       </div>
     `;
 
