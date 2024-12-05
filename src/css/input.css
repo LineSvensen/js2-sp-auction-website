@@ -13,8 +13,22 @@ button {
 }
 
 .small-avatar {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+.bidders-list .bidder-info {
+  display: flex;
+  align-items: center;
+}
+
+.bidders-small-avatar {
   width: 48px !important;
   height: 48px !important;
-  border-radius: 50%;
-  object-fit: cover;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  margin-right: 16px !important;
 }
+

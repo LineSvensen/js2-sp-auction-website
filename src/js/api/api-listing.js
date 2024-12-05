@@ -1,5 +1,3 @@
-
-
 import { getAccessToken } from './get-token.js';
 import { API_KEY } from './the-key.js';
 
@@ -109,38 +107,3 @@ export async function fetchListingsBySearch(query) {
     throw error;
   }
 }
-
-
-
-
-// export async function placeBid(listingId, amount) {
-//   const accessToken = getAccessToken(); // Retrieve the token
-//   if (!accessToken) {
-//     throw new Error('Access token is missing. Ensure the user is logged in.');
-//   }
-
-//   try {
-//     const response = await fetch(`https://v2.api.noroff.dev/auction/listings/${listingId}/bids`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${accessToken}`,
-//         'X-Noroff-API-Key': 'API_KEY'
-//       },
-//       body: JSON.stringify({ amount }) // Send the bid amount
-//     });
-
-//     if (!response.ok) {
-//       const errorDetails = await response.json();
-//       console.error('Bid Error Details:', errorDetails);
-//       throw new Error(`HTTP Error: ${response.status} - ${errorDetails.message}`);
-//     }
-
-//     const data = await response.json();
-//     console.log('Bid placed successfully:', data);
-//     return data;
-//   } catch (error) {
-//     console.error('Error placing bid:', error.message);
-//     throw error;
-//   }
-// }
