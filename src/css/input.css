@@ -33,10 +33,6 @@ button {
 }
 
 @layer components {
-  .active {
-    @apply text-blue-500 border-blue-500 !important;
-  }
-
   .tab-panel {
     @apply mt-6 !important;
   }
@@ -44,4 +40,91 @@ button {
 
 .my-class {
   @apply hidden;
+}
+
+.tab,
+.sub-tab {
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333333;
+}
+
+.tab:hover,
+.tab.active,
+.sub-tab:hover,
+.sub-tab.active {
+  text-decoration: none;
+  color: #333333;
+}
+
+.tab.active::after,
+.sub-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #333333;
+}
+
+/* Card Width */
+#p-card-w {
+  max-width: 300px;
+}
+
+/* Tabs Centering */
+.tabs-container {
+  width: 100%;
+}
+
+.tabs {
+  justify-content: center;
+}
+
+.sub-tabs {
+  justify-content: center;
+  display: flex;
+}
+
+/* Profile container width restriction */
+#profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cards Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Responsive by default */
+  gap: 1.5rem; /* Space between items */
+}
+
+/* For specific containers with fixed rows */
+#active-bids-content,
+#won-bids-content,
+#lost-bids-content {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(100%, 1fr)
+  ); /* Stacks items by default on smaller screens */
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  #active-bids-content,
+  #won-bids-content,
+  #lost-bids-content {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 3 cards per row for medium screens and larger */
+  }
 }

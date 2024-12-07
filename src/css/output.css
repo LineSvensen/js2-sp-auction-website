@@ -616,13 +616,6 @@ body {
   }
 }
 
-.active {
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity, 1)) !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(59 130 246 / var(--tw-text-opacity, 1)) !important;
-}
-
 .tab-panel {
   margin-top: 1.5rem !important;
 }
@@ -675,6 +668,10 @@ body {
   z-index: 50;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -686,6 +683,10 @@ body {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .ml-2 {
@@ -700,8 +701,20 @@ body {
   margin-top: 0.25rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .block {
@@ -756,6 +769,10 @@ body {
   max-width: 42rem;
 }
 
+.max-w-6xl {
+  max-width: 72rem;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -788,10 +805,28 @@ body {
   gap: 1.5rem;
 }
 
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
@@ -849,6 +884,11 @@ body {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
@@ -857,6 +897,11 @@ body {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+
+.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity, 1));
 }
 
 .bg-white {
@@ -875,6 +920,10 @@ body {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .p-4 {
@@ -918,6 +967,14 @@ body {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
 }
 
 .text-center {
@@ -973,6 +1030,11 @@ body {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
 .text-red-500 {
@@ -1048,6 +1110,102 @@ button {
   display: none;
 }
 
+.tab,
+.sub-tab {
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333333;
+}
+
+.tab:hover,
+.tab.active,
+.sub-tab:hover,
+.sub-tab.active {
+  text-decoration: none;
+  color: #333333;
+}
+
+.tab.active::after,
+.sub-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #333333;
+}
+
+/* Card Width */
+
+#p-card-w {
+  max-width: 300px;
+}
+
+/* Tabs Centering */
+
+.tabs-container {
+  width: 100%;
+}
+
+.tabs {
+  justify-content: center;
+}
+
+.sub-tabs {
+  justify-content: center;
+  display: flex;
+}
+
+/* Profile container width restriction */
+
+#profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cards Grid Layout */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+  /* Responsive by default */
+  gap: 1.5rem;
+  /* Space between items */
+}
+
+/* For specific containers with fixed rows */
+
+#active-bids-content,
+#won-bids-content,
+#lost-bids-content {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(100%, 1fr)
+  );
+  /* Stacks items by default on smaller screens */
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  #active-bids-content,
+  #won-bids-content,
+  #lost-bids-content {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    );
+    /* 3 cards per row for medium screens and larger */
+  }
+}
+
 .last\:border-b-0:last-child {
   border-bottom-width: 0px;
 }
@@ -1106,6 +1264,12 @@ button {
 @media (min-width: 640px) {
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

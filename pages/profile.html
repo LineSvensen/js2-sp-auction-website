@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../src/css/output.css" />
     <script type="module" src="../src/js/views/profile.js" defer></script>
     <script type="module" src="../src/js/components/tabs.js" defer></script>
-    <!-- <script type="module" src="../src/js/views/listing-details.js" defer></script> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
       rel="stylesheet"
@@ -35,11 +34,9 @@
           />
         </a>
       </div>
-
       <button
         id="burger-button"
         class="block lg:hidden text-Black focus:outline-none"
-        aria-label="Toggle Navigation"
       >
         <svg
           class="w-6 h-6"
@@ -64,7 +61,6 @@
         <button
           id="close-menu"
           class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
-          aria-label="Close Navigation"
         >
           &times;
         </button>
@@ -84,7 +80,7 @@
       <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
         <a
           href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-sm font-medium transition duration-300"
+          class="hover:text-CTABlue text-sm font-medium"
         >
           Create Listing
         </a>
@@ -95,79 +91,108 @@
             Login/Register
           </button>
         </a>
-        <a
-          href="/pages/profile.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
+        <a href="/pages/profile.html" class="hover:text-CTABlue">
           <i class="fa-regular fa-user text-lg"></i>
         </a>
-        <a
-          href="/index.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
+        <a href="/index.html" class="hover:text-CTABlue">
           <i class="fa-solid fa-house text-lg"></i>
         </a>
       </nav>
     </header>
 
-    <main class="container mx-auto max-w-2xl">
-      <section id="profile-container">
+    <main class="container mx-auto px-4 max-w-6xl">
+      <!-- Profile Container -->
+      <section
+        id="profile-container"
+        class="max-w-2xl mx-auto bg-white shadow-md p-6 rounded-lg"
+      >
         <p>Loading profile...</p>
       </section>
-    </main>
 
-    <div class="tabs-container">
-      <!-- Main Tabs -->
-      <div class="tabs flex border-b border-gray-300">
-        <button class="tab active px-4 py-2" data-tab="created-listings">
-          My Created Listings
-        </button>
-        <button class="tab px-4 py-2" data-tab="placed-bids">
-          My Placed Bids
-        </button>
-      </div>
-
-      <!-- Tab Panels -->
-      <div id="created-listings" class="tab-panel">
-        <h2>My Created Listings</h2>
-        <div class="sub-tabs">
+      <!-- Create Listing Button -->
+      <div class="flex justify-center mt-6">
+        <a href="create-listing.html">
           <button
-            class="sub-tab active px-3 py-2"
-            data-sub-tab="active-created"
+            class="bg-CTAGreen rounded text-white font-semibold px-4 py-2 hover:bg-CTAGreen-hover flex items-center"
+            id="create-btn"
           >
-            Active Listings
+            <i class="fa-solid fa-plus pr-4 text-lg"></i>Create Listing
           </button>
-          <button class="sub-tab px-3 py-2" data-sub-tab="ended-created">
-            Ended Listings
-          </button>
-        </div>
-        <div id="active-created-content" class="content"></div>
-        <div id="ended-created-content" class="content"></div>
+        </a>
       </div>
 
-      <div id="placed-bids" class="tab-panel hidden">
-        <h2>My Placed Bids</h2>
-        <div class="sub-tabs">
-          <button class="sub-tab active px-3 py-2" data-sub-tab="active-bids">
-            Active Bids
+      <!-- Tabs Section -->
+      <div class="tabs-container flex flex-col items-center mt-8">
+        <!-- Main Tabs -->
+        <div class="tabs flex border-b border-gray-300 justify-center">
+          <button
+            class="tab active px-4 py-2 text-Black font-bold"
+            data-tab="created-listings"
+          >
+            <i class="fa-solid fa-caret-down pr-2"></i> My Created Listings
           </button>
-          <button class="sub-tab px-3 py-2" data-sub-tab="won-bids">
-            Won Listings
-          </button>
-          <button class="sub-tab px-3 py-2" data-sub-tab="lost-bids">
-            Lost Listings
+          <button
+            class="tab px-4 py-2 text-Black font-bold"
+            data-tab="placed-bids"
+          >
+            <i class="fa-solid fa-caret-down pr-2"></i>My Placed Bids
           </button>
         </div>
-        <div id="active-bids-content" class="content"></div>
-        <div id="won-bids-content" class="content"></div>
-        <div id="lost-bids-content" class="content"></div>
+
+        <!-- Created Listings Panel -->
+        <div id="created-listings" class="tab-panel">
+          <div class="sub-tabs flex justify-center">
+            <button
+              class="sub-tab active px-3 py-2 mb-4"
+              data-sub-tab="active-created"
+            >
+              Active Listings
+            </button>
+            <button class="sub-tab px-3 py-2 mb-4" data-sub-tab="ended-created">
+              Ended Listings
+            </button>
+          </div>
+          <div
+            id="active-created-content"
+            class="grid gap-6 grid-cols-1 md:grid-cols-3 justify-center"
+          ></div>
+          <div
+            id="ended-created-content"
+            class="grid gap-6 grid-cols-1 md:grid-cols-3 justify-center"
+          ></div>
+        </div>
+
+        <!-- Placed Bids Panel -->
+        <div id="placed-bids" class="tab-panel hidden">
+          <div class="sub-tabs flex justify-center">
+            <button
+              class="sub-tab active px-3 py-2 mb-4"
+              data-sub-tab="active-bids"
+            >
+              Active Bids
+            </button>
+            <button class="sub-tab px-3 py-2 mb-4" data-sub-tab="won-bids">
+              Won Listings
+            </button>
+            <button class="sub-tab px-3 py-2 mb-4" data-sub-tab="lost-bids">
+              Lost Listings
+            </button>
+          </div>
+          <div
+            id="active-bids-content"
+            class="grid gap-6 grid-cols-1 md:grid-cols-3 justify-center"
+          ></div>
+          <div
+            id="won-bids-content"
+            class="grid gap-6 grid-cols-1 md:grid-cols-3 justify-center"
+          ></div>
+          <div
+            id="lost-bids-content"
+            class="grid gap-6 grid-cols-1 md:grid-cols-3 justify-center"
+          ></div>
+        </div>
       </div>
-    </div>
-    <div id="pagination-controls">
-      <button id="prev-page" disabled>Previous</button>
-      <span id="current-page">Page 1</span>
-      <button id="next-page">Next</button>
-    </div>
+    </main>
 
     <footer class="bg-gray-100">
       <p class="p-4 text-sm">Copyright 2025</p>

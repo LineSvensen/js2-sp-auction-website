@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/bblogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a listing</title>
+    <script type="module" src="../src/js/app.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="../src/css/output.css" />
+    <!-- <script type="module" src="../src/js/views/listing-details.js" defer></script> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3df22e74ab.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="font-poppins bg-white min-h-screen flex flex-col">
+    <header class="bg-white text-Black p-4 flex items-center justify-between">
+      <div class="logo flex items-center">
+        <a href="/index.html">
+          <img
+            src="/assets/images/bidbuddyicon.png"
+            style="width: 120px; height: auto"
+            alt="Logo"
+          />
+        </a>
+      </div>
+
+      <button
+        id="burger-button"
+        class="block lg:hidden text-Black focus:outline-none"
+        aria-label="Toggle Navigation"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
+      >
+        <button
+          id="close-menu"
+          class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+          aria-label="Close Navigation"
+        >
+          &times;
+        </button>
+
+        <nav class="flex flex-col text-center space-y-6 text-base text-white">
+          <a href="/index.html" class="hover:text-gray-300">Home</a>
+          <a href="/pages/profile.html" class="hover:text-gray-300">Profile</a>
+          <a href="/pages/create-listing.html" class="hover:text-gray-300"
+            >Create Listing</a
+          >
+          <a href="/pages/login-register.html" class="hover:text-gray-300"
+            >Login/Register</a
+          >
+        </nav>
+      </div>
+
+      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
+        <a
+          href="/pages/create-listing.html"
+          class="hover:text-CTABlue text-sm font-medium transition duration-300"
+        >
+          Create Listing
+        </a>
+        <a href="/pages/login-register.html">
+          <button
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm"
+          >
+            Login/Register
+          </button>
+        </a>
+        <a
+          href="/pages/profile.html"
+          class="hover:text-CTABlue transition duration-300"
+        >
+          <i class="fa-regular fa-user text-lg"></i>
+        </a>
+        <a
+          href="/index.html"
+          class="hover:text-CTABlue transition duration-300"
+        >
+          <i class="fa-solid fa-house text-lg"></i>
+        </a>
+      </nav>
+    </header>
+
+    <div class="container mx-auto p-6">
+      <h1 class="text-2xl font-bold mb-4">Create New Listing</h1>
+      <form id="create-listing-form" class="space-y-4">
+        <!-- Title -->
+        <div>
+          <label for="title" class="block text-sm font-medium text-gray-700"
+            >Title *</label
+          >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            required
+            class="block w-full border border-gray-300 rounded p-2"
+          />
+        </div>
+
+        <!-- Description -->
+        <div>
+          <label
+            for="description"
+            class="block text-sm font-medium text-gray-700"
+            >Description</label
+          >
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            class="block w-full border border-gray-300 rounded p-2"
+          ></textarea>
+        </div>
+
+        <!-- Tags -->
+        <div>
+          <label for="tags" class="block text-sm font-medium text-gray-700"
+            >Tags (comma-separated)</label
+          >
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            class="block w-full border border-gray-300 rounded p-2"
+          />
+        </div>
+
+        <!-- Media -->
+        <div>
+          <label for="media" class="block text-sm font-medium text-gray-700"
+            >Media URLs</label
+          >
+          <div id="media-container" class="space-y-2">
+            <div class="flex space-x-2">
+              <input
+                type="url"
+                placeholder="Image URL"
+                class="block w-full border border-gray-300 rounded p-2"
+              />
+              <input
+                type="text"
+                placeholder="Alt Text"
+                class="block w-full border border-gray-300 rounded p-2"
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            id="add-media"
+            class="mt-2 bg-green-500 text-white px-3 py-2 rounded"
+          >
+            Add Another Media
+          </button>
+        </div>
+
+        <!-- End Date -->
+        <div>
+          <label for="endsAt" class="block text-sm font-medium text-gray-700"
+            >End Date *</label
+          >
+          <input
+            type="datetime-local"
+            id="endsAt"
+            name="endsAt"
+            required
+            class="block w-full border border-gray-300 rounded p-2"
+          />
+        </div>
+
+        <!-- Submit -->
+        <div>
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Create Listing
+          </button>
+        </div>
+      </form>
+      <p id="message" class="mt-4 text-sm text-red-500 hidden"></p>
+    </div>
+
+    <footer class="bg-gray-100">
+      <p class="p-4 text-sm">Copyright 2025</p>
+    </footer>
+  </body>
+</html>
