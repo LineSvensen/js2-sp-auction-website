@@ -25,7 +25,6 @@ export async function fetchListings() {
   }
 }
 
-
 export async function fetchListingById(id) {
   console.log(`Fetching listing with ID: ${id}`);
   try {
@@ -43,7 +42,6 @@ export async function fetchListingById(id) {
     throw error;
   }
 }
-
 
 export async function fetchActiveAndClosedListings() {
   console.log('Fetching all listings (active and ended)...');
@@ -87,7 +85,6 @@ export async function searchListings(query) {
   }
 }
 
-
 export async function fetchListingsBySearch(query) {
   console.log(`Searching listings with query: ${query}`);
   try {
@@ -106,4 +103,36 @@ export async function fetchListingsBySearch(query) {
     console.error('Error searching listings:', error.message);
     throw error;
   }
+}
+
+export async function fetchActiveCreatedListings() {
+  const name = localStorage.getItem('name');
+  const response = await fetch(
+    `https://v2.api.noroff.dev/auction/profiles/${name}/listings?_active=true`
+  );
+  if (!response.ok) throw new Error('Failed to fetch active created listings');
+  return response.json();
+}
+
+/**
+ * Fetch ended (inactive) created listings for the logged-in user.
+ * @returns {Promise<Object[]>} List of ended created listings.
+ */
+export async function fetchEndedCreatedListings() {
+  const name = localStorage.getItem('name');
+  if (!name) {
+    throw new Error('User is not logged in.');
+  }
+
+  const response = await fetch(
+    `https://v2.api.noroff.dev/auction/profiles/${name}/listings?_active=false`
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch ended created listings.');
+  }
+
+  const data = await response.json();
+  console.log('Fetched Ended Created Listings:', data);
+  return data; // Return the fetched listings
 }

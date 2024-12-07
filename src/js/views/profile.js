@@ -1,6 +1,7 @@
 import { fetchAvatar, updateAvatar, updateBio } from '../components/avatar.js';
 import { fetchProfile } from '../api/api-profile.js';
 
+
 document.addEventListener('DOMContentLoaded', async () => {
   const profileContainer = document.getElementById('profile-container');
   const name = localStorage.getItem('name');
@@ -71,13 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p><b>Username:</b> ${name}</p>
         <p><b>Your total credits:</b> ${credits}</p>
         <p><b>Your wins:</b> ${wins}</p>
-        <p><b>Your created listings:</b> ${listings}</p>
-        <div class="py-8">
-            <a href="/my-placed-bids.html" class="hover:text-CTABlue text-Black text-sm">My placed bids</a>
-        </div>
-        <div class="py-8">
-            <a href="/my-placed-bids.html" class="hover:text-CTABlue text-Black text-sm">My placed bids</a>
-        </div>    
+        <p><b>Your created listings:</b> ${listings}</p>  
       </div>
     `;
 

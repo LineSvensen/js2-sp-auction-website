@@ -32,3 +32,16 @@ button {
   margin-right: 16px !important;
 }
 
+@layer components {
+  .active {
+    @apply text-blue-500 border-blue-500 !important;
+  }
+
+  .tab-panel {
+    @apply mt-6 !important;
+  }
+}
+
+.my-class {
+  @apply hidden;
+}
