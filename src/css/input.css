@@ -12,3 +12,36 @@ button {
   background-color: transparent;
 }
 
+.small-avatar {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+.bidders-list .bidder-info {
+  display: flex;
+  align-items: center;
+}
+
+.bidders-small-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  margin-right: 16px !important;
+}
+
+@layer components {
+  .active {
+    @apply text-blue-500 border-blue-500 !important;
+  }
+
+  .tab-panel {
+    @apply mt-6 !important;
+  }
+}
+
+.my-class {
+  @apply hidden;
+}

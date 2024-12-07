@@ -4,11 +4,11 @@ const registerForm = document.getElementById('register-form');
 if (registerForm) {
   registerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const username = document.getElementById('register-username').value;
+    const name = document.getElementById('register-username').value;
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
     const avatar = document.getElementById('register-avatar').value || null;
-    const userData = { name: username, email, password, avatar: avatar ? { url: avatar } : undefined };
+    const userData = { name: name, email, password, avatar: avatar ? { url: avatar } : undefined };
     try {
       const result = await registerUser(userData);
       alert(`Welcome ${result.data.name}! Registration successful.`);

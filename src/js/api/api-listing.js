@@ -1,35 +1,3 @@
-// export async function fetchListings() {
-//   console.log('fetching listings....');
-//     try {
-//       const response = await fetch("https://v2.api.noroff.dev/auction/listings");
-//       if (!response.ok) {
-//         throw new Error(`HTTP Error: ${response.status}`);
-//       }
-//       const data = await response.json();
-//       console.log('Fetched Data:', data);
-//       return data; // Returns the parsed JSON
-//     } catch (error) {
-//       console.error("Error fetching listings:", error.message);
-//       throw error; // Re-throw the error for external handling
-//     }
-//   }
-
-//   export async function fetchListingById(id) {
-//     console.log(`Fetching listing with ID: ${id}`);
-//     try {
-//       const response = await fetch(`https://v2.api.noroff.dev/auction/listings/${id}?_bids=true`);
-//       if (!response.ok) {
-//         throw new Error(`HTTP Error: ${response.status}`);
-//       }
-//       const data = await response.json();
-//       console.log('Fetched Listing Data:', data);
-//       return data;
-//     } catch (error) {
-//       console.error('Error fetching listing by ID:', error.message);
-//       throw error;
-//     }
-//   }
-
 import { getAccessToken } from './get-token.js';
 import { API_KEY } from './the-key.js';
 
@@ -57,7 +25,6 @@ export async function fetchListings() {
   }
 }
 
-
 export async function fetchListingById(id) {
   console.log(`Fetching listing with ID: ${id}`);
   try {
@@ -75,7 +42,6 @@ export async function fetchListingById(id) {
     throw error;
   }
 }
-
 
 export async function fetchActiveAndClosedListings() {
   console.log('Fetching all listings (active and ended)...');
@@ -119,7 +85,6 @@ export async function searchListings(query) {
   }
 }
 
-
 export async function fetchListingsBySearch(query) {
   console.log(`Searching listings with query: ${query}`);
   try {
@@ -140,37 +105,34 @@ export async function fetchListingsBySearch(query) {
   }
 }
 
+export async function fetchActiveCreatedListings() {
+  const name = localStorage.getItem('name');
+  const response = await fetch(
+    `https://v2.api.noroff.dev/auction/profiles/${name}/listings?_active=true`
+  );
+  if (!response.ok) throw new Error('Failed to fetch active created listings');
+  return response.json();
+}
 
+/**
+ * Fetch ended (inactive) created listings for the logged-in user.
+ * @returns {Promise<Object[]>} List of ended created listings.
+ */
+export async function fetchEndedCreatedListings() {
+  const name = localStorage.getItem('name');
+  if (!name) {
+    throw new Error('User is not logged in.');
+  }
 
+  const response = await fetch(
+    `https://v2.api.noroff.dev/auction/profiles/${name}/listings?_active=false`
+  );
 
-// export async function placeBid(listingId, amount) {
-//   const accessToken = getAccessToken(); // Retrieve the token
-//   if (!accessToken) {
-//     throw new Error('Access token is missing. Ensure the user is logged in.');
-//   }
+  if (!response.ok) {
+    throw new Error('Failed to fetch ended created listings.');
+  }
 
-//   try {
-//     const response = await fetch(`https://v2.api.noroff.dev/auction/listings/${listingId}/bids`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${accessToken}`,
-//         'X-Noroff-API-Key': 'API_KEY'
-//       },
-//       body: JSON.stringify({ amount }) // Send the bid amount
-//     });
-
-//     if (!response.ok) {
-//       const errorDetails = await response.json();
-//       console.error('Bid Error Details:', errorDetails);
-//       throw new Error(`HTTP Error: ${response.status} - ${errorDetails.message}`);
-//     }
-
-//     const data = await response.json();
-//     console.log('Bid placed successfully:', data);
-//     return data;
-//   } catch (error) {
-//     console.error('Error placing bid:', error.message);
-//     throw error;
-//   }
-// }
+  const data = await response.json();
+  console.log('Fetched Ended Created Listings:', data);
+  return data; // Return the fetched listings
+}

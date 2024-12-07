@@ -22,7 +22,7 @@ export async function loginUser(email, password) {
     }
     const data = await response.json();
     localStorage.setItem('accessToken', data.data.accessToken);
-    localStorage.setItem('username', data.data.name);
+    localStorage.setItem('name', data.data.name);
     return data.data;
   } catch (error) {
     console.error('Login error:', error.message);
