@@ -1,7 +1,8 @@
 import { setupMediaInput, collectFormData } from '../components/create-form.js';
 import { createListing } from '../api/api-create.js';
+import { authGuard } from '../utilities/authGuard.js';
 
-const accessToken = localStorage.getItem('accessToken');
+authGuard();
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('create-listing-form');

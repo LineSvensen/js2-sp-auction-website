@@ -12,19 +12,10 @@
 // import avatar from './components/avatar.js';
 // import bid from './components/bid.js';
 
-
-
-
-
-
-
-
-
 // import { initBurgerMenu } from './components/burger-menu.js';
 // import { initializeLoginForm } from './components/login.js';
 // import './components/register.js';
 // import { renderListings } from './components/listing-card.js'; // Import the renderListings function
-
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   // Initialize the burger menu
@@ -36,8 +27,6 @@
 //   renderListings();
 
 // });
-
-
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   // Initialize the burger menu for all pages
@@ -52,7 +41,7 @@
 
 //   if (currentPage.includes('listing-details.html')) {
 //     import('./views/listing-details.js');
-  
+
 //   }
 
 // });
@@ -63,8 +52,11 @@ import { initializeLoginForm } from './components/login.js';
 import './components/register.js';
 import { renderListings } from './components/listing-card.js'; // Import the renderListings function
 import { setupSearch } from './components/search.js';
+import { logoutUser } from './components/logout.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
   // Initialize the burger menu
   initBurgerMenu();
 
@@ -74,16 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render listings on the homepage
   renderListings();
 
-
   setupSearch();
 
+  logoutUser();
 });
-
-
-
-
-
-
 
 // import { renderListings } from '/src/js/components/listing-card.js';
 // renderListings();

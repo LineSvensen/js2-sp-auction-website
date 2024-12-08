@@ -18,18 +18,25 @@ export function setupBidForm(listingId, highestBid) {
     event.preventDefault();
     const bidAmount = parseInt(document.getElementById('bid-amount').value, 10);
 
+    if (isNaN(bidAmount)) {
+      alert('Please enter a valid bid amount.');
+      return;
+    }
+
     if (bidAmount <= highestBid) {
       alert('Your bid must be higher than the current highest bid.');
       return;
     }
 
     try {
-      await placeBid(listingId, bidAmount);
-      alert('Bid placed successfully!');
-      window.location.reload(); // Reload the page to reflect the new bid
+      const result = await placeBid(listingId, bidAmount);
+      if (result) {
+        alert('Bid placed successfully!');
+        window.location.reload(); // Reload the page to reflect the new bid
+      }
     } catch (error) {
-      console.error('Error placing bid:', error);
-      alert('Failed to place bid. Please try again.');
+      console.error('Error placing bid:', error.message);
+      alert(error.message || 'Failed to place bid. Please try again.');
     }
   });
 }
@@ -53,22 +60,25 @@ export function calculateHighestBid(bids = []) {
  */
 export function renderBiddersList(bidders, container) {
   // Sort bidders by newest first
-  const sortedBidders = bidders.sort((a, b) => new Date(b.created) - new Date(a.created));
+  const sortedBidders = bidders.sort(
+    (a, b) => new Date(b.created) - new Date(a.created)
+  );
 
   const biddersList = document.createElement('div');
   biddersList.className = 'bidders-list mt-4';
 
   if (sortedBidders.length === 0) {
-    biddersList.innerHTML = '<p class="text-gray-500">No bids placed yet.</p>';
+    biddersList.innerHTML =
+      '<p class="text-gray-500">Currently no bids placed. Be the first!</p>';
   } else {
     biddersList.innerHTML = `
-        <h2 class="text-lg font-bold mb-2 py-4">Bids leaderboard</h2>
+        <h2 class="text-lg font-bold mb-2 py-4">Bids leaderboard 🔥</h2>
         <ul class="border p-4 rounded">
           ${sortedBidders
             .map(
               (bid) => `
             <li class="flex items-center justify-between py-2 border-b last:border-b-0">
-              ${getAvatarHTML(bid.bidder)} <!-- Reused from avatar.js -->
+              ${getAvatarHTML(bid.bidder)}
               <span class="font-semibold">${bid.amount} Credits</span>
             </li>`
             )
@@ -77,8 +87,12 @@ export function renderBiddersList(bidders, container) {
       `;
   }
 
+  // Apply blur only to the <ul> element if user is not logged in
   if (!localStorage.getItem('accessToken')) {
-    biddersList.style.filter = 'blur(4px)';
+    const ulElement = biddersList.querySelector('ul');
+    if (ulElement) {
+      ulElement.style.filter = 'blur(4px)';
+    }
     const loginMessage = document.createElement('p');
     loginMessage.className = 'text-center text-red-500';
     loginMessage.textContent = 'Log in to view details of bids.';

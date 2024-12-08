@@ -43,13 +43,8 @@ export async function placeBid(id, amount) {
   const accessToken = getAccessToken();
   if (!accessToken) {
     console.error('Access token is missing. Ensure the user is logged in.');
-    alert('You must be logged in to place a bid.');
-    return;
+    throw new Error('You must be logged in to place a bid.');
   }
-
-  console.log('Access Token:', accessToken);
-  console.log('Listing ID:', id);
-  console.log('Payload being sent:', { amount });
 
   try {
     // Fetch the user's profile to check their credit balance
@@ -58,10 +53,9 @@ export async function placeBid(id, amount) {
 
     // Check if the user has enough credits
     if (userCredits < amount) {
-      alert(
+      throw new Error(
         `You do not have enough credits. Your current credit amount is: ${userCredits}`
       );
-      return;
     }
 
     // Proceed with placing the bid if the user has enough credits
@@ -74,16 +68,15 @@ export async function placeBid(id, amount) {
           Authorization: `Bearer ${accessToken}`,
           'X-Noroff-API-Key': API_KEY,
         },
-        body: JSON.stringify({ amount }), // Ensure amount is correctly formatted
+        body: JSON.stringify({ amount }),
       }
     );
 
-    // Log the response to diagnose the issue
     if (!response.ok) {
       const errorDetails = await response.json();
       console.error('Bid Error Details:', errorDetails);
       throw new Error(
-        `HTTP Error: ${response.status} - ${errorDetails.message || 'Unknown error'}`
+        `Failed to place bid: ${errorDetails.message || 'Unknown error'}`
       );
     }
 

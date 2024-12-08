@@ -1,19 +1,15 @@
 import { fetchAvatar, updateAvatar, updateBio } from '../components/avatar.js';
 import { fetchProfile } from '../api/api-profile.js';
+import { authGuard } from '../utilities/authGuard.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const profileContainer = document.getElementById('profile-container');
-  const name = localStorage.getItem('name');
 
-  if (!name) {
-    alert('You must be logged in to access your profile.');
-    window.location.href = '/pages/login-register.html';
-    return;
-  }
+  authGuard();
 
   try {
     profileContainer.innerHTML = `<p>Loading profile...</p>`;
-
+    const name = localStorage.getItem('name');
     // Fetch and display avatar and profile
     const profileData = await fetchProfile(name);
     const avatarUrl =
