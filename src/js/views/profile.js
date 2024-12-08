@@ -1,7 +1,6 @@
 import { fetchAvatar, updateAvatar, updateBio } from '../components/avatar.js';
 import { fetchProfile } from '../api/api-profile.js';
 
-
 document.addEventListener('DOMContentLoaded', async () => {
   const profileContainer = document.getElementById('profile-container');
   const name = localStorage.getItem('name');
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Build the profile UI
     profileContainer.innerHTML = `
-      <div class="border p-4 rounded shadow-lg">
+      <div class="p-4">
         <h1 id="profile-welcome" class="text-2xl font-bold py-4">Welcome, ${name}!</h1>
         <div class="flex flex-row">
           <img id="profile-avatar" title="Avatar" class="small-avatar" src="${avatarUrl}" alt="Avatar">

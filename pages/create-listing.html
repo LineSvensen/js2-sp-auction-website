@@ -4,22 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="../assets/images/bblogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create a listing</title>
+    <title>Create a Listing</title>
     <script type="module" src="../src/js/app.js" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <link rel="stylesheet" href="../src/css/output.css" />
-    <!-- <script type="module" src="../src/js/views/listing-details.js" defer></script> -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
     <script
-      src="https://kit.fontawesome.com/3df22e74ab.js"
-      crossorigin="anonymous"
+      type="module"
+      src="../src/js/views/create-listing.js"
+      defer
     ></script>
   </head>
   <body class="font-poppins bg-white min-h-screen flex flex-col">
@@ -33,11 +24,9 @@
           />
         </a>
       </div>
-
       <button
         id="burger-button"
         class="block lg:hidden text-Black focus:outline-none"
-        aria-label="Toggle Navigation"
       >
         <svg
           class="w-6 h-6"
@@ -62,7 +51,6 @@
         <button
           id="close-menu"
           class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
-          aria-label="Close Navigation"
         >
           &times;
         </button>
@@ -82,7 +70,7 @@
       <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
         <a
           href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-sm font-medium transition duration-300"
+          class="hover:text-CTABlue text-sm font-medium"
         >
           Create Listing
         </a>
@@ -93,16 +81,10 @@
             Login/Register
           </button>
         </a>
-        <a
-          href="/pages/profile.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
+        <a href="/pages/profile.html" class="hover:text-CTABlue">
           <i class="fa-regular fa-user text-lg"></i>
         </a>
-        <a
-          href="/index.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
+        <a href="/index.html" class="hover:text-CTABlue">
           <i class="fa-solid fa-house text-lg"></i>
         </a>
       </nav>
@@ -155,8 +137,8 @@
 
         <!-- Media -->
         <div>
-          <label for="media" class="block text-sm font-medium text-gray-700"
-            >Media URLs</label
+          <label class="block text-sm font-medium text-gray-700"
+            >Media URLs and Alt Text</label
           >
           <div id="media-container" class="space-y-2">
             <div class="flex space-x-2">
