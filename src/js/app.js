@@ -53,9 +53,11 @@ import './components/register.js';
 import { renderListings } from './components/listing-card.js'; // Import the renderListings function
 import { setupSearch } from './components/search.js';
 import { logoutUser } from './components/logout.js';
+import { validateAndCleanLocalStorage } from './utilities/cleanLocalStorage.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  validateAndCleanLocalStorage(); 
 
   // Initialize the burger menu
   initBurgerMenu();

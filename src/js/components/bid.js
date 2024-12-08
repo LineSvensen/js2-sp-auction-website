@@ -1,6 +1,7 @@
 import { placeBid } from '../api/api-bid.js';
 import { getAvatarHTML } from './avatar.js';
 
+
 /**
  * Handles the bid submission form.
  * @param {string} listingId - The ID of the listing to place a bid on.

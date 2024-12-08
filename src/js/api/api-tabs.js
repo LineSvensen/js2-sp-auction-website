@@ -1,25 +1,12 @@
 import { API_KEY } from './the-key.js';
+import { getAccessToken } from '../api/get-token.js';
+import { getHeaders } from './headers.js';
 
 const API_BASE_URL = 'https://v2.api.noroff.dev/auction';
 
-// Helper to get access token
-function getAccessToken() {
-  return localStorage.getItem('accessToken');
-}
+getAccessToken();
 
-// Helper for headers
-function getHeaders() {
-  const accessToken = getAccessToken();
-  if (!accessToken)
-    throw new Error(
-      'User is not authenticated. No token found in localStorage.'
-    );
-  return {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${accessToken}`,
-    'X-Noroff-API-Key': API_KEY, // Ensure API_KEY is defined
-  };
-}
+getHeaders();
 
 export async function fetchActiveCreatedListings() {
   const name = localStorage.getItem('name');
