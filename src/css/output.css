@@ -717,6 +717,10 @@ body {
   margin-top: 2rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .block {
   display: block;
 }
@@ -1233,6 +1237,11 @@ button {
 .hover\:text-CTABlue:hover {
   --tw-text-opacity: 1;
   color: rgb(31 136 254 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-CTABlue-hover:hover {
+  --tw-text-opacity: 1;
+  color: rgb(79 163 255 / var(--tw-text-opacity, 1));
 }
 
 .hover\:text-gray-300:hover {
