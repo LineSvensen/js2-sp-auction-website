@@ -6,7 +6,7 @@ export function setupMediaInput(mediaContainer, addMediaButton) {
     mediaGroup.innerHTML = `
           <input type="url" placeholder="Image URL" class="block w-full border border-gray-300 rounded p-2" />
           <input type="text" placeholder="Alt Text" class="block w-full border border-gray-300 rounded p-2" />
-          <button type="button" class="remove-media bg-red-500 text-white px-3 py-2 rounded">Remove</button>
+          <button type="button" class="remove-media bg-CTARed hover:bg-CTARed-hover text-white px-3 py-2 rounded">X</button>
         `;
 
     mediaContainer.appendChild(mediaGroup);

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Build the profile UI
     profileContainer.innerHTML = `
-      <div class="p-4">
+      <div class="p-4 flex flex-col items-center">
         <h1 id="profile-welcome" class="text-2xl font-bold py-4">Welcome, ${name}!</h1>
         <div class="flex flex-row">
           <img id="profile-avatar" title="Avatar" class="small-avatar" src="${avatarUrl}" alt="Avatar">
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           </button>
         </form>
         <div class="flex flex-direction: row;">
-            <p id="profile-bio" class="py-4 text-xl"><b>Bio:</b> ${bio}</p>
+            <p id="profile-bio" class="py-4 text-lg text-center"><b>Bio:</b> ${bio}</p>
             <button type="button" title="Edit bio" id="show-update-bio-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded shadow-md rounded-full">
                 <i class="fa-solid fa-pen-to-square"></i>
             </button>

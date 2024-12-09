@@ -22,7 +22,8 @@ export async function renderListings(listings = null) {
 
     // Check if listings array is empty
     if (!listings.length) {
-      listingsContainer.innerHTML = '<p class="text-center text-gray-500">No results found.</p>';
+      listingsContainer.innerHTML =
+        '<p class="text-center text-gray-500">No results found.</p>';
       return;
     }
 
@@ -31,7 +32,7 @@ export async function renderListings(listings = null) {
       const highestBid = calculateHighestBid(listing.bids);
 
       const listingCard = `
-        <div class="border p-4 rounded shadow-lg flex flex-col justify-between">
+        <div class="border p-4 rounded shadow-lg flex flex-col">
           <img
             src="${listing.media && listing.media[0] ? listing.media[0].url : 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
             alt="${listing.title}"

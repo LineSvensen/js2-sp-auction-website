@@ -12,6 +12,10 @@
       src="../src/js/views/create-listing.js"
       defer
     ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/3df22e74ab.js"
       crossorigin="anonymous"
@@ -74,13 +78,13 @@
       <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
         <a
           href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-sm font-medium"
+          class="hover:text-CTABlue text-base font-medium"
         >
           Create Listing
         </a>
         <a href="/pages/login-register.html">
           <button
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm"
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-base"
           >
             Login/Register
           </button>
@@ -94,7 +98,7 @@
       </nav>
     </header>
 
-    <div class="container mx-auto p-6">
+    <div class="container mx-auto p-6 max-w-2xl">
       <h1 class="text-2xl font-bold mb-4">Create New Listing</h1>
       <form id="create-listing-form" class="space-y-4">
         <!-- Title -->
@@ -161,9 +165,9 @@
           <button
             type="button"
             id="add-media"
-            class="mt-2 bg-green-500 text-white px-3 py-2 rounded"
+            class="mt-2 bg-CTAGreen hover:bg-CTAGreen-hover text-white px-3 py-2 rounded-lg"
           >
-            Add Another Media
+            <i class="fa-solid fa-plus pr-2"></i>Image
           </button>
         </div>
 
@@ -185,7 +189,7 @@
         <div>
           <button
             type="submit"
-            class="bg-blue-500 text-white px-4 py-2 rounded"
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 rounded"
           >
             Create Listing
           </button>

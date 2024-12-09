@@ -22,6 +22,7 @@ module.exports = {
       colors: {
         Black: '#333333',
         White: '#FFFFFF',
+        bgGrey: '#F9FAFB',
         Red: {
           DEFAULT: '#ff2600',
           hover: '#ff5733',

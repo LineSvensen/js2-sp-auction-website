@@ -128,3 +128,46 @@ button {
     ); /* 3 cards per row for medium screens and larger */
   }
 }
+
+.heading-main {
+  font-size: 32px; /* Matches text-4xl */
+  font-weight: 700; /* Matches font-bold */
+  text-align: left;
+  color: #333333; /* Matches text-gray-800 */
+  margin-top: 0;
+  margin-bottom: 8px; /* Adds spacing below */
+  letter-spacing: 1px;
+}
+
+.heading-h2 {
+  font-size: 24px; /* Matches text-2xl */
+  font-weight: normal; /* Matches font-semibold */
+  text-align: left;
+  color: #333333; /* Matches text-gray-600 */
+  margin-left: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.heading-h3 {
+  font-size: 20px; /* Matches text-2xl */
+  font-weight: normal; /* Matches font-semibold */
+  text-align: left;
+  color: #333333; /* Matches text-gray-600 */
+  margin-top: 4px;
+  margin-bottom: 0; /* Matches spacing between sections */
+  text-decoration: underline;
+  text-decoration-color: #333333;
+  text-underline-offset: 4px; /* Adds spacing between the text and underline */
+}
+
+.container-headings-homepage {
+  max-width: 1200px; /* Matches card container width */
+  margin: 0 auto; /* Centers the container */
+  padding: 0 16px; /* Adds spacing on small screens */
+}
+
+.bg-bgGrey {
+  background-color: #f9fafb; /* Matches card background */
+  padding: 16px 0; /* Matches card spacing */
+}
