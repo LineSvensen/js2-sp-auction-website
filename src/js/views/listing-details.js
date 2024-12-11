@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             <img 
               src="${image.url}" 
               alt="${image.alt || 'Listing Image'}" 
-              class="w-full h-150 object-cover rounded"
+              class="w-full"
+              style="aspect-ratio: 1 / 1;"
               onerror="this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'"
             />
           </div>
@@ -54,18 +55,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="border p-4 rounded shadow-lg">
           <div class="swiper mySwiper mb-4">
             <div class="swiper-wrapper">
-              ${images || '<div class="swiper-slide"><img src="https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added" class="w-full h-48 object-cover rounded" /></div>'}
+              ${images || '<div class="swiper-slide"><img src="https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added" class="w-full object-cover rounded" style="aspect-ratio: 1 / 1;" /></div>'}
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
           </div>
-  
-          <h1 class="text-2xl font-bold">${listing.title || 'Untitled Listing'}</h1>
-          <p class="mb-4">${listing.description || 'No description available.'}</p>
-          <p class="mb-2">Number of Bids: <span class="font-semibold">${listing._count?.bids || 0}</span></p>
-          <p class="mb-2">Highest Bid: <span class="font-semibold">${highestBid}</span></p>
-          <p class="mb-4">Ends: <span class="font-semibold">${endsAt ? endsAt.toLocaleDateString() : 'No end date'}</span></p>
+          <div class="flex items-center mb-4">
+            <img
+                src="${listing.seller?.avatar?.url || 'https://dummyimage.com/40x40/cccccc/ffffff&text=No+Avatar'}"
+                alt="${listing.seller?.name || 'Unknown Seller'}'s avatar"
+                class="w-10 h-10 rounded-full mr-3"
+            />
+            <p class="text-gray-700 font-medium">
+                Created by <span class="font-bold">${listing.seller?.name || 'Unknown Seller'}</span>
+            </p>
+          </div>
+          <h1 class="heading-h1-all-pages text-Black pb-2 truncate-title-cut">${listing.title || 'Untitled Listing'}</h1>
+          <p class="mb-4 text-base text-Black break-text">Description: <b>${listing.description || 'No description available.'}</b></p>
+          <p class="mb-2 text-Black text-base">Number of Bids: <span class="font-semibold">${listing._count?.bids || 0}</span></p>
+          <p class="mb-2 text-Black">Highest Bid: <span class="font-semibold">${highestBid}</span></p>
+          <p class="mb-4 text-Black">Ends: <span class="font-semibold">${endsAt ? endsAt.toLocaleDateString() : 'No end date'}</span></p>
           ${
             isClosed && winner
               ? `<p class="mb-4 text-green-500 font-bold">Winner: ${winner.bidder.name} 🏆🎉 with a bid of ${winner.amount} credits</p>`
@@ -73,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
           ${
             !isClosed
-              ? `<form id="place-bid-form" class="flex items-center">
+              ? `<form id="place-bid-form" class="items-center">
                   <input
                     type="number"
                     id="bid-amount"
@@ -83,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                   />
                   <button
                     type="submit"
-                    class="bg-CTAGreen text-white font-medium py-2 px-4 rounded shadow-md hover:bg-CTAGreen-hover transition duration-300"
+                    class="bg-CTAGreen text-white font-medium py-2 px-4 mt-2 rounded shadow-md hover:bg-CTAGreen-hover transition duration-300"
                   >
                     Place Bid
                   </button>

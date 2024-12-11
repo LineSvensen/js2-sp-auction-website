@@ -83,13 +83,13 @@
       <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
         <a
           href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-base font-medium"
+          class="hover:text-CTABlue text-sm font-medium-plus"
         >
           Create Listing
         </a>
         <a href="/pages/login-register.html">
           <button
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 text-base"
+            class="bg-CTABlue hover:bg-CTABlue-hover py-2 px-4 common-buttons-style"
           >
             Login/Register
           </button>
@@ -101,7 +101,7 @@
           <i class="fa-solid fa-house text-lg"></i>
         </a>
         <button
-          class="text-Black text-base hover:text-CTABlue-hover"
+          class="text-Black text-base hover:text-CTABlue-hover font-medium-plus"
           id="desktopLogoutButton"
         >
           Log Out <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
@@ -114,7 +114,7 @@
 
       <section
         id="profile-container"
-        class="max-w-2xl mx-auto bg-white shadow-md p-6 rounded-lg"
+        class="max-w-2xl mx-auto bg-white shadow-md p-1 rounded-lg"
       >
         <p>Loading profile...</p>
       </section>
@@ -123,7 +123,7 @@
       <div class="flex justify-center mt-6">
         <a href="create-listing.html">
           <button
-            class="bg-CTAGreen rounded-lg text-white font-semibold px-4 py-2 hover:bg-CTAGreen-hover flex items-center"
+            class="bg-CTAGreen common-buttons-style px-4 py-2 hover:bg-CTAGreen-hover flex items-center"
             id="create-btn"
           >
             <i class="fa-solid fa-plus pr-4 text-lg"></i>Create Listing
@@ -153,12 +153,15 @@
         <div id="created-listings" class="tab-panel">
           <div class="sub-tabs flex justify-center">
             <button
-              class="sub-tab active px-3 py-2 mb-4"
+              class="sub-tab active px-3 py-2 mb-4 border-b border-gray-300"
               data-sub-tab="active-created"
             >
               <i class="fa-solid fa-caret-down pr-2"></i>Active Listings
             </button>
-            <button class="sub-tab px-3 py-2 mb-4" data-sub-tab="ended-created">
+            <button
+              class="sub-tab px-3 py-2 mb-4 border-b border-gray-300"
+              data-sub-tab="ended-created"
+            >
               <i class="fa-solid fa-caret-down pr-2"></i>Ended Listings
             </button>
           </div>
@@ -176,15 +179,21 @@
         <div id="placed-bids" class="tab-panel hidden">
           <div class="sub-tabs flex justify-center">
             <button
-              class="sub-tab active px-3 py-2 mb-4"
+              class="sub-tab active px-3 py-2 mb-4 border-b border-gray-300"
               data-sub-tab="active-bids"
             >
               <i class="fa-solid fa-caret-down pr-2"></i>Active Bids
             </button>
-            <button class="sub-tab px-3 py-2 mb-4" data-sub-tab="won-bids">
+            <button
+              class="sub-tab px-3 py-2 mb-4 border-b border-gray-300"
+              data-sub-tab="won-bids"
+            >
               <i class="fa-solid fa-caret-down pr-2"></i>Won Listings
             </button>
-            <button class="sub-tab px-3 py-2 mb-4" data-sub-tab="lost-bids">
+            <button
+              class="sub-tab px-3 py-2 mb-4 border-b border-gray-300"
+              data-sub-tab="lost-bids"
+            >
               <i class="fa-solid fa-caret-down pr-2"></i>Lost Listings
             </button>
           </div>

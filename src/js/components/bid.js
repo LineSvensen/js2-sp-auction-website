@@ -73,14 +73,14 @@ export function renderBiddersList(bidders, container) {
       '<p class="text-gray-500">Currently no bids placed. Be the first!</p>';
   } else {
     biddersList.innerHTML = `
-        <h2 class="text-lg font-bold mb-2 py-4">Bids leaderboard 🔥</h2>
-        <ul class="border p-4 rounded">
+        <h2 class="text-lg font-bold mb-2 py-4 text-Black">Bids leaderboard 🔥</h2>
+        <ul class="border p-4 rounded text-Black">
           ${sortedBidders
             .map(
               (bid) => `
             <li class="flex items-center justify-between py-2 border-b last:border-b-0">
               ${getAvatarHTML(bid.bidder)}
-              <span class="font-semibold">${bid.amount} Credits</span>
+              <span class="font-semibold text-Black">${bid.amount} Credits</span>
             </li>`
             )
             .join('')}

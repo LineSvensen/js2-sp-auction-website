@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xs: ['14px'],
+        sm: ['16px'],
+        base: ['16px'],
+        lg: ['20px'],
+        xl: ['24px'],
+        '2xl': ['32'],
+      },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },

@@ -32,13 +32,13 @@ export async function renderListings(listings = null) {
       const highestBid = calculateHighestBid(listing.bids);
 
       const listingCard = `
-        <div class="border p-4 rounded shadow-lg flex flex-col">
+        <div class="border p-4 rounded shadow-lg flex flex-col text-Black">
           <img
             src="${listing.media && listing.media[0] ? listing.media[0].url : 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
             alt="${listing.title}"
             class="w-full h-48 object-cover rounded mb-4"
           />
-          <h3 class="text-lg font-bold">${listing.title}</h3>
+          <h3 class="heading-h3-cards pb-2 truncate-title-ellipsis">${listing.title}</h3>
           <p class="text-sm mb-2">
             Number of Bids: <span class="font-semibold">${listing._count?.bids || 0}</span>
           </p>
@@ -50,7 +50,7 @@ export async function renderListings(listings = null) {
           </p>
           <a
             href="/pages/listing-details.html?id=${listing.id}"
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-medium py-2 px-4 rounded-lg shadow-md transition duration-300"
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-lg font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
           >
             View Listing
           </a>

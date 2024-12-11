@@ -129,7 +129,7 @@ button {
   }
 }
 
-.heading-main {
+.heading-h1-homepage {
   font-size: 32px; /* Matches text-4xl */
   font-weight: 700; /* Matches font-bold */
   text-align: left;
@@ -139,26 +139,31 @@ button {
   letter-spacing: 1px;
 }
 
-.heading-h2 {
-  font-size: 24px; /* Matches text-2xl */
-  font-weight: normal; /* Matches font-semibold */
-  text-align: left;
-  color: #333333; /* Matches text-gray-600 */
-  margin-left: 32px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+.heading-h1-all-pages {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.heading-h3 {
-  font-size: 20px; /* Matches text-2xl */
+.heading-h2-all-pages {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.heading-h2-homepage {
+  font-size: 24px; /* Matches text-2xl */
   font-weight: normal; /* Matches font-semibold */
   text-align: left;
   color: #333333; /* Matches text-gray-600 */
   margin-top: 4px;
   margin-bottom: 0; /* Matches spacing between sections */
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-decoration-color: #333333;
   text-underline-offset: 4px; /* Adds spacing between the text and underline */
+}
+
+.heading-h3-cards {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .container-headings-homepage {
@@ -170,4 +175,53 @@ button {
 .bg-bgGrey {
   background-color: #f9fafb; /* Matches card background */
   padding: 16px 0; /* Matches card spacing */
+}
+
+.truncate-title-ellipsis {
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis at the end of the text */
+  max-width: 100%; /* Set the maximum width of the title */
+  display: block; /* Ensure it behaves as a block element */
+}
+
+.truncate-title-cut {
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide overflow text */
+  max-width: 100%; /* Set the maximum width of the title */
+  display: block; /* Ensure it behaves as a block element */
+}
+
+.truncate-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(1.2em * 3); /* Adjust based on line height */
+}
+
+.common-buttons-style {
+  color: white; /* text-white */
+  text-align: center; /* text-center */
+  font-size: 16px; /* font-sm */
+  font-weight: 600; /* font-semibold */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+  transition: all 0.3s ease-in-out; /* transition duration-300 */
+  letter-spacing: 0.5px;
+}
+
+.font-medium-plus {
+  font-weight: 500 !important;
+}
+
+i {
+  font-size: 16px;
+}
+
+.break-text {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
