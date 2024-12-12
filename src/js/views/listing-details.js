@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             <img 
               src="${image.url}" 
               alt="${image.alt || 'Listing Image'}" 
-              class="w-full"
-              style="aspect-ratio: 1 / 1;"
+              class="details-img-style"
+              style="aspect-ratio: 3 / 2;"
               onerror="this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'"
             />
           </div>
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="border p-4 rounded shadow-lg">
           <div class="swiper mySwiper mb-4">
             <div class="swiper-wrapper">
-              ${images || '<div class="swiper-slide"><img src="https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added" class="w-full object-cover rounded" style="aspect-ratio: 1 / 1;" /></div>'}
+              ${images || '<div class="swiper-slide"><img src="https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added" class="details-img-style" /></div>'}
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

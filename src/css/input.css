@@ -225,3 +225,10 @@ i {
   word-break: break-word;
   overflow-wrap: break-word;
 }
+
+.details-img-style {
+  width: 100%; /* Fill the container width */
+  aspect-ratio: 3 / 2; /* Enforce the 3:2 aspect ratio */
+  object-fit: cover; /* Crop the image to fit the aspect ratio */
+  border-radius: 8px; /* Optional: Add rounded corners */
+}
