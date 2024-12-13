@@ -233,3 +233,10 @@ i {
   object-fit: cover; /* Crop the image to fit the aspect ratio */
   border-radius: 8px; /* Optional: Add rounded corners */
 }
+
+.common-mobile-links {
+  font-size: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  transition: all 0.3s ease-in-out;
+}

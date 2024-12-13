@@ -1392,6 +1392,13 @@ i {
   /* Optional: Add rounded corners */
 }
 
+.common-mobile-links {
+  font-size: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
 .last\:border-b-0:last-child {
   border-bottom-width: 0px;
 }
@@ -1409,6 +1416,11 @@ i {
 .hover\:bg-CTARed-hover:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(240 77 90 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-CTABlue:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 136 254 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-CTABlue:hover {
