@@ -697,6 +697,10 @@ body {
   margin-right: 0.5rem;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -721,10 +725,6 @@ body {
   margin-top: auto;
 }
 
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
 .block {
   display: block;
 }
@@ -739,6 +739,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-48 {
@@ -761,12 +765,12 @@ body {
   height: 100%;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-6 {
@@ -775,10 +779,6 @@ body {
 
 .w-full {
   width: 100%;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .max-w-2xl {
@@ -1008,8 +1008,16 @@ body {
   padding-right: 1rem;
 }
 
+.pr-8 {
+  padding-right: 2rem;
+}
+
 .pt-1 {
   padding-top: 0.25rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-center {
@@ -1022,6 +1030,11 @@ body {
 
 .text-2xl {
   font-size: 32;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-base {
@@ -1144,7 +1157,7 @@ button {
 .tab,
 .sub-tab {
   position: relative;
-  padding: 10px 20px;
+  padding: 16px 20px;
   cursor: pointer;
   text-decoration: none;
   color: #333333;
@@ -1341,7 +1354,7 @@ button {
   /* text-center */
   font-size: 16px;
   /* font-sm */
-  font-weight: 600;
+  font-weight: 500;
   /* font-semibold */
   border-radius: 0.5rem;
   /* rounded-lg */
@@ -1350,6 +1363,7 @@ button {
   transition: all 0.3s ease-in-out;
   /* transition duration-300 */
   letter-spacing: 0.5px;
+  padding: 8px 16px;
 }
 
 .font-medium-plus {

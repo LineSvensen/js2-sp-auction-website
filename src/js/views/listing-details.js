@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                   />
                   <button
                     type="submit"
-                    class="bg-CTAGreen text-white font-medium py-2 px-4 mt-2 rounded shadow-md hover:bg-CTAGreen-hover transition duration-300"
+                    class="bg-CTAGreen common-buttons-style mt-2  hover:bg-CTAGreen-hover"
                   >
                     Place Bid
                   </button>

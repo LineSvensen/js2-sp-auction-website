@@ -45,7 +45,7 @@ button {
 .tab,
 .sub-tab {
   position: relative;
-  padding: 10px 20px;
+  padding: 16px 20px;
   cursor: pointer;
   text-decoration: none;
   color: #333333;
@@ -205,11 +205,12 @@ button {
   color: white; /* text-white */
   text-align: center; /* text-center */
   font-size: 16px; /* font-sm */
-  font-weight: 600; /* font-semibold */
+  font-weight: 500; /* font-semibold */
   border-radius: 0.5rem; /* rounded-lg */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
   transition: all 0.3s ease-in-out; /* transition duration-300 */
   letter-spacing: 0.5px;
+  padding: 8px 16px;
 }
 
 .font-medium-plus {
