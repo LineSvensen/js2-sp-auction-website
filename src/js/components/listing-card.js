@@ -32,25 +32,26 @@ export async function renderListings(listings = null) {
       const highestBid = calculateHighestBid(listing.bids);
 
       const listingCard = `
-        <div class="border p-4 rounded shadow-lg flex flex-col text-Black">
+        <div class="border p-4 rounded shadow-lg flex flex-col text-Black bg-white">
           <img
             src="${listing.media && listing.media[0] ? listing.media[0].url : 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
             alt="${listing.title}"
-            class="w-full h-48 object-cover rounded mb-4"
+            onerror="this.onerror=null; this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=Error+showing+image';"
+            class="w-full h-48 object-cover mb-4 rounded-md border-2 border-bgGrey"
           />
           <h3 class="heading-h3-cards pb-2 truncate-title-ellipsis">${listing.title}</h3>
           <p class="text-sm mb-2">
-            Number of Bids: <span class="font-semibold">${listing._count?.bids || 0}</span>
+            Number of Bids: <span class="font-bold">${listing._count?.bids || 0}</span>
           </p>
           <p class="text-sm mb-2">
-            Highest Bid: <span class="font-semibold">${highestBid} Credits</span>
+            Highest Bid: <span class="font-bold">${highestBid} Credits</span>
           </p>
           <p class="text-sm mb-4">
-            Ends: <span class="font-semibold">${new Date(listing.endsAt).toLocaleDateString()}</span>
+            Ends: <span class="font-bold">${new Date(listing.endsAt).toLocaleDateString()}</span>
           </p>
           <a
             href="/pages/listing-details.html?id=${listing.id}"
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-lg font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
+            class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center common-buttons-style"
           >
             View Listing
           </a>

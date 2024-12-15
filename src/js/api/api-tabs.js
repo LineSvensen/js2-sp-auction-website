@@ -1,6 +1,7 @@
-import { API_KEY } from './the-key.js';
-import { getAccessToken } from '../api/get-token.js';
-import { getHeaders } from './headers.js';
+import { API_KEY } from '../utilities/the-key.js';
+import { getAccessToken } from '../utilities/get-token.js';
+import { getHeaders } from '../utilities/headers.js';
+import { fetchListingById } from './api-listing.js';
 
 const API_BASE_URL = 'https://v2.api.noroff.dev/auction';
 
@@ -62,33 +63,52 @@ export async function fetchActiveBids() {
   const name = localStorage.getItem('name');
   if (!name) throw new Error('User name is missing.');
 
-  const url = `${API_BASE_URL}/profiles/${name}/bids?_listings=true`;
-  console.log(`Fetching Active Bids: ${url}`);
+  // Fetch all active listings (from the homepage API)
+  const activeListingsUrl = `${API_BASE_URL}/listings?_active=true&_bids=true`;
+  // Fetch your placed bids
+  const userBidsUrl = `${API_BASE_URL}/profiles/${name}/bids?_listings=true`;
 
-  const response = await fetch(url, { headers: getHeaders() });
-  if (!response.ok) throw new Error('Failed to fetch active bids.');
+  try {
+    const [activeListingsResponse, userBidsResponse] = await Promise.all([
+      fetch(activeListingsUrl, { headers: getHeaders() }),
+      fetch(userBidsUrl, { headers: getHeaders() }),
+    ]);
 
-  const data = await response.json();
-  console.log('Active Bids:', data);
+    if (!activeListingsResponse.ok || !userBidsResponse.ok) {
+      throw new Error('Failed to fetch active listings or your bids.');
+    }
 
-  // Filter for active listings (not ended yet)
-  return data.data
-    .map((bid) => bid.listing)
-    .filter((listing) => new Date(listing.endsAt) > new Date());
+    const activeListingsData = await activeListingsResponse.json();
+    const userBidsData = await userBidsResponse.json();
+
+    const activeListings = activeListingsData.data;
+    const userBidListings = userBidsData.data.map((bid) => bid.listing);
+
+    // Match user's bid listings with full active listing data
+    const mergedListings = activeListings.filter((listing) =>
+      userBidListings.some((userListing) => userListing.id === listing.id)
+    );
+
+    console.log('Active Bids with Full Listing Data:', mergedListings);
+    return mergedListings;
+  } catch (error) {
+    console.error('Error fetching active bids:', error.message);
+    throw error;
+  }
 }
 
 export async function fetchWonBids() {
   const name = localStorage.getItem('name');
   if (!name) throw new Error('User name is missing.');
 
-  const url = `${API_BASE_URL}/profiles/${name}/wins`;
-  console.log(`Fetching Won Bids: ${url}`);
+  const url = `${API_BASE_URL}/profiles/${name}/wins?_bids=true`;
+  console.log(`Fetching Won Listings: ${url}`);
 
   const response = await fetch(url, { headers: getHeaders() });
   if (!response.ok) throw new Error('Failed to fetch won listings.');
 
   const data = await response.json();
-  console.log('Won Bids:', data);
+  console.log('Fetched Won Listings:', data);
 
   // Only include listings that have ended
   return data.data.filter((listing) => new Date(listing.endsAt) <= new Date());
@@ -98,33 +118,17 @@ export async function fetchLostBids() {
   const name = localStorage.getItem('name');
   if (!name) throw new Error('User name is missing.');
 
-  const activeBids = await fetchActiveBids(); // Listings still in progress
-  const wonListings = await fetchWonBids(); // Listings the user has won
-
-  const activeIds = new Set(activeBids.map((listing) => listing.id));
-  const wonIds = new Set(wonListings.map((listing) => listing.id));
-
-  const url = `${API_BASE_URL}/profiles/${name}/bids?_listings=true`;
-  console.log(`Fetching All Bids from: ${url}`);
+  const url = `${API_BASE_URL}/profiles/${name}/bids?_listings=true&_bids=true`;
+  console.log(`Fetching Lost Bids: ${url}`);
 
   const response = await fetch(url, { headers: getHeaders() });
-  if (!response.ok)
-    throw new Error(`Failed to fetch bids. Status: ${response.status}`);
+  if (!response.ok) throw new Error('Failed to fetch lost bids.');
 
   const data = await response.json();
-  console.log('All Bids Data:', data);
+  console.log('Fetched Lost Bids:', data);
 
-  // Filter for lost bids
-  const lostListings = data.data
+  // Filter lost bids (listings that have ended but were not won)
+  return data.data
     .map((bid) => bid.listing)
-    .filter(
-      (listing) =>
-        listing &&
-        new Date(listing.endsAt) < new Date() && // Listing has ended
-        !wonIds.has(listing.id) && // Not won
-        !activeIds.has(listing.id) // Not active
-    );
-
-  console.log('Filtered Lost Listings:', lostListings);
-  return lostListings;
+    .filter((listing) => new Date(listing.endsAt) < new Date());
 }

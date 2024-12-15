@@ -1,93 +1,35 @@
-// // Import API files
-// import apiBid from './api/api-bid.js';
-// import apiCreate from './api/api-create.js';
-// import apiListing from './api/api-listing.js';
-// import apiLogin from './api/api-login.js';
-// import apiLogout from './api/api-logout.js';
-// import apiProfile from './api/api-profile.js';
-// import apiRegister from './api/api-register.js';
-// import getToken from './api/get-token.js';
-
-// // Import components
-// import avatar from './components/avatar.js';
-// import bid from './components/bid.js';
-
-// import { initBurgerMenu } from './components/burger-menu.js';
-// import { initializeLoginForm } from './components/login.js';
-// import './components/register.js';
-// import { renderListings } from './components/listing-card.js'; // Import the renderListings function
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   // Initialize the burger menu
-//   initBurgerMenu();
-
-//   // Initialize the login form logic (only if the login form exists)
-//   initializeLoginForm();
-
-//   renderListings();
-
-// });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   // Initialize the burger menu for all pages
-//   initBurgerMenu();
-
-//   // Determine the page using the URL
-//   const currentPage = window.location.pathname;
-
-//   if (currentPage.includes('index.html')) {
-//     renderListings();
-//   }
-
-//   if (currentPage.includes('listing-details.html')) {
-//     import('./views/listing-details.js');
-
-//   }
-
-// });
-
-
 import { initBurgerMenu } from './components/burger-menu.js';
-import { initializeLoginForm } from './components/login.js';
-import './components/register.js';
-import { renderListings } from './components/listing-card.js'; // Import the renderListings function
-import { setupSearch } from './components/search.js';
 import { logoutUser } from './components/logout.js';
+import {
+  initializeLoginForm,
+  initializeRegisterForm,
+} from './views/login-register.js';
+import { renderListings } from './components/listing-card.js';
+import { setupSearch } from './components/search.js';
 import { validateAndCleanLocalStorage } from './utilities/cleanLocalStorage.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const loader = document.getElementById('loader');
 
-  validateAndCleanLocalStorage(); 
+  try {
+    // Show the loader
+    loader.style.display = 'flex';
 
-  // Initialize the burger menu
-  initBurgerMenu();
+    // Initialize other components
+    validateAndCleanLocalStorage();
+    initBurgerMenu();
+    initializeLoginForm();
+    initializeRegisterForm(); // Explicitly initialize the register form logic
 
-  // Initialize the login form logic (only if the login form exists)
-  initializeLoginForm();
+    // Render listings (longest loading part)
+    await renderListings();
 
-  // Render listings on the homepage
-  renderListings();
-
-  setupSearch();
-
-  logoutUser();
+    setupSearch();
+    logoutUser();
+  } catch (error) {
+    console.error('Error during initialization:', error.message);
+  } finally {
+    // Hide the loader after everything is loaded
+    loader.style.display = 'none';
+  }
 });
-
-// import { renderListings } from '/src/js/components/listing-card.js';
-// renderListings();
-
-// import credits from './components/credits.js';
-// import listingCard from './components/listing-card.js';
-// import login from './components/login.js';
-// import logout from './components/logout.js';
-// import register from './components/register.js';
-// import search from './components/search.js';
-
-// // Import utilities
-// import authGuard from './utilities/authGuard.js';
-
-// // Import views
-// import createListing from './views/create-listing.js';
-// import listingDetails from './views/listing-details.js';
-// import loginRegister from './views/login-register.js';
-// import profile from './views/profile.js';

@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="assets/images/bblogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Welcome to BidBuddy! This is where online auction happens. Bid on your dream."
+    />
+    <meta name="author" content="Line Svensen" />
+    <meta
+      name="keywords"
+      content="bid, bidding, auction, sell, buy, vintage, used products, worn, value, collect"
+    />
+
     <title>Bidbuddy | Home</title>
     <link href="./src/css/output.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +37,7 @@
         <a href="/index.html">
           <img
             src="/assets/images/bidbuddyicon.png"
-            style="width: 120px; height: auto"
+            style="width: 154px; height: auto"
             alt="Logo"
           />
         </a>
@@ -149,7 +160,7 @@
         />
         <button
           type="submit"
-          class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 transition duration-300 text-sm font-medium"
+          class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 transition duration-300 text-sm font-bold tracking-wider"
           id="search-button"
         >
           Search
@@ -163,30 +174,54 @@
 
     <section
       id="hero-banner"
-      class="relative bg-black bg-opacity-50 h-96 text-white"
+      class="relative shadow-lg bg-bgGrey h-auto lg:h-96 text-center lg:text-left flex flex-col lg:flex-row items-center lg:justify-between py-8"
     >
-      <video
-        autoplay
-        muted
-        loop
-        class="absolute inset-0 w-full h-full object-cover"
+      <div
+        class="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 px-6 lg:px-16"
       >
-        <source src="/assets/images/BID.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </section>
+        <!-- Left Content: Text and Button -->
+        <div
+          class="flex flex-col items-center lg:items-start text-center lg:text-left"
+        >
+          <h1
+            class="text-2xl lg:text-3xl font-bold leading-tight mb-4 bg-gradient-to-r from-[#6E35CC] via-[#FF2600] to-[#FFA100] bg-clip-text text-transparent"
+          >
+            Bid on your dream today
+          </h1>
+          <h2 class="text-lg text-gray-700">
+            Discover a world full of hidden treasures. Join today and get
+            <b>1000 free credits</b> to use.
+          </h2>
+          <a href="/pages/login-register.html">
+            <button
+              class="bg-CTAGreen hover:bg-CTAGreen-hover py-2 px-6 mt-4 mb-4 lg:mt-6 common-buttons-style"
+            >
+              Sign up today
+            </button>
+          </a>
+        </div>
 
-    <section class="bg-bgGrey px-4">
-      <div class="container-headings-homepage mx-auto">
-        <h1 class="heading-h1-homepage" id="heading-h1-homepage">Welcome!</h1>
-        <h2 class="heading-h2-homepage" id="heading-h2-homepage">
-          All listings
-        </h2>
+        <!-- Right Content: Image with Cool Shape -->
+        <div
+          class="flex justify-center align-center items-center relative mb-4 lg:pt-4"
+        >
+          <!-- Cool Shaped Background -->
+          <div
+            class="w-80 lg:w-80 h-80 lg:h-80 flex justify-center rounded-full bg-gradient-to-r from-[#6E35CC] via-[#FF2600] to-[#FFA100] shadow-md absolute"
+          ></div>
+          <!-- Product Image -->
+          <img
+            src="assets/images/hero-img-products.png"
+            alt="Products"
+            class="w-72 lg:w-96 object-contain z-10 lg:pb-8"
+          />
+        </div>
       </div>
     </section>
 
-    <section id="listings-section" class="bg-gray-50 pt-1 pb-4">
-      <div class="container mx-auto px-4">
+    <section id="listings-section" class="bg-white pt-4 pb-8">
+      <div class="container mx-auto px-6 lg:px-16">
+        <h2 class="text-xl mb-6 mt-4">All listings</h2>
         <div
           id="listings-container"
           class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
@@ -199,5 +234,16 @@
     <footer class="bg-gray-100">
       <p class="p-4 text-sm">Copyright 2025</p>
     </footer>
+    <div
+      id="loader"
+      class="fixed inset-0 bg-white z-50 flex items-center justify-center"
+    >
+      <div class="loader-spinner">
+        <!-- Adjusted colors and animation -->
+        <div class="circle red"></div>
+        <div class="circle purple"></div>
+        <div class="circle orange"></div>
+      </div>
+    </div>
   </body>
 </html>

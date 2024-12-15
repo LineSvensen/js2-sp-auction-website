@@ -8,3 +8,6 @@ export function validateAndCleanLocalStorage() {
     localStorage.removeItem('name');
   }
 }
+
+
+

@@ -1,4 +1,4 @@
-import { API_KEY } from './the-key.js';
+import { API_KEY } from '../utilities/the-key.js';
 
 export async function createListing(requestBody, accessToken) {
   const response = await fetch('https://v2.api.noroff.dev/auction/listings', {
@@ -18,4 +18,3 @@ export async function createListing(requestBody, accessToken) {
 
   return response.json();
 }
-

@@ -6,18 +6,25 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,html}',
   ],
   theme: {
+    fontWeight: {
+      regular: '400', // Custom alias for normal
+      medium: '500',
+      bold: '600',
+      display: '500', // Custom font weight
+    },
+    fontSize: {
+      xs: ['14px'],
+      sm: ['16px'],
+      base: ['16px'],
+      lg: ['20px'],
+      xl: ['24px'],
+      '2xl': ['32px'],
+      '3xl': ['36px'],
+    },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
     extend: {
-      fontSize: {
-        xs: ['14px'],
-        sm: ['16px'],
-        base: ['16px'],
-        lg: ['20px'],
-        xl: ['24px'],
-        '2xl': ['32'],
-      },
-      fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
       animation: {
         'fade-in': 'fadeIn 1.5s ease-in-out',
       },
@@ -56,7 +63,7 @@ module.exports = {
           hover: '#4fa3ff',
         },
         CTARed: {
-          DEFAULT: '#d61f2c',
+          DEFAULT: '#FF2600',
           hover: '#f04d5a',
         },
       },

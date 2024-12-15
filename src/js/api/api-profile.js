@@ -1,5 +1,5 @@
-import { getAccessToken } from './get-token.js';
-import { API_KEY } from './the-key.js';
+import { getAccessToken } from '../utilities/get-token.js';
+import { API_KEY } from '../utilities/the-key.js';
 
 export async function fetchProfile(name) {
   const accessToken = getAccessToken();

@@ -71,11 +71,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 Created by <span class="font-bold">${listing.seller?.name || 'Unknown Seller'}</span>
             </p>
           </div>
-          <h1 class="heading-h1-all-pages text-Black pb-2 truncate-title-cut">${listing.title || 'Untitled Listing'}</h1>
-          <p class="mb-4 text-base text-Black break-text">Description: <b>${listing.description || 'No description available.'}</b></p>
-          <p class="mb-2 text-Black text-base">Number of Bids: <span class="font-semibold">${listing._count?.bids || 0}</span></p>
-          <p class="mb-2 text-Black">Highest Bid: <span class="font-semibold">${highestBid}</span></p>
-          <p class="mb-4 text-Black">Ends: <span class="font-semibold">${endsAt ? endsAt.toLocaleDateString() : 'No end date'}</span></p>
+          <p class="text-xs pt-2 pb-2 truncate">Created: ${new Date(listing.created).toLocaleDateString()}</p>
+          <h1 class="heading-h1-all-pages text-Black pb-2 truncate-title-cut">${listing.title || 'Untitled Listing'}</h1> 
+          <p class="mb-4 text-base text-Black break-text">Description: <span class="font-bold">${listing.description || 'No description available.'}</span></p>
+          <p class="mb-2 text-Black text-base">Number of Bids: <span class="font-bold">${listing._count?.bids || 0}</span></p>
+          <p class="mb-2 text-Black">Highest Bid: <span class="font-bold">${highestBid}</span></p>
+          <p class="mb-4 text-Black">Ends: <span class="font-bold">${endsAt ? endsAt.toLocaleDateString() : 'No end date'}</span></p>
           ${
             isClosed && winner
               ? `<p class="mb-4 text-green-500 font-bold">Winner: ${winner.bidder.name} 🏆🎉 with a bid of ${winner.amount} credits</p>`
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                   />
                   <button
                     type="submit"
-                    class="bg-CTAGreen common-buttons-style mt-2  hover:bg-CTAGreen-hover"
+                    class="bg-CTAGreen common-buttons-style mt-2 hover:bg-CTAGreen-hover"
                   >
                     Place Bid
                   </button>

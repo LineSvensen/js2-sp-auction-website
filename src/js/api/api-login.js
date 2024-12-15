@@ -1,4 +1,4 @@
-import { API_KEY } from "./the-key";
+import { API_KEY } from '../utilities/the-key';
 
 export async function loginUser(email, password) {
   const loginUrl = 'https://v2.api.noroff.dev/auth/login';

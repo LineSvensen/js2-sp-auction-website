@@ -1,5 +1,5 @@
-import { getAccessToken } from '../api/get-token.js';
-import { API_KEY } from '../api//the-key.js';
+import { getAccessToken } from '../utilities/get-token.js';
+import { API_KEY } from '../utilities/the-key.js';
 
 // Fetch the avatar
 export async function fetchAvatar(name) {

@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="../assets/images/bblogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Welcome to BidBuddy! Are you ready to sell? Lets create a listing!"
+    />
+    <meta name="author" content="Line Svensen" />
+    <meta
+      name="keywords"
+      content="bid, listing, create listing, bidding, auction, sell, buy, vintage, used products, worn, value, collect"
+    />
     <title>Create a Listing</title>
     <script type="module" src="../src/js/app.js" defer></script>
     <link rel="stylesheet" href="../src/css/output.css" />
@@ -21,13 +30,13 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="font-poppins bg-white min-h-screen flex flex-col">
+  <body class="font-poppins bg-bgGrey min-h-screen flex flex-col">
     <header class="bg-white text-Black p-4 flex items-center justify-between">
       <div class="logo flex items-center">
         <a href="/index.html">
           <img
             src="/assets/images/bidbuddyicon.png"
-            style="width: 120px; height: auto"
+            style="width: 154px; height: auto"
             alt="Logo"
           />
         </a>
@@ -120,7 +129,7 @@
       </nav>
     </header>
 
-    <div class="container mx-auto p-6 max-w-2xl">
+    <div class="container mx-auto p-6 max-w-2xl bg-bgGrey">
       <h1 class="heading-h1-all-pages mb-4">Create New Listing</h1>
       <form id="create-listing-form" class="space-y-4">
         <!-- Title -->
@@ -189,7 +198,7 @@
             id="add-media"
             class="mt-2 bg-CTAGreen hover:bg-CTAGreen-hover px-3 py-2 common-buttons-style"
           >
-            <i class="fa-solid fa-plus pr-2"></i>Image
+            <i class="fa-solid fa-plus pr-2"></i><i class="fa-solid fa-images"></i>
           </button>
         </div>
 
@@ -220,8 +229,19 @@
       <p id="message" class="mt-4 text-sm text-red-500 hidden"></p>
     </div>
 
-    <footer class="bg-gray-100">
+    <footer class="bg-gray-100 mt-auto w-full">
       <p class="p-4 text-sm">Copyright 2025</p>
     </footer>
+    <div
+      id="loader"
+      class="fixed inset-0 bg-white z-50 flex items-center justify-center"
+    >
+      <div class="loader-spinner">
+        <!-- Adjusted colors and animation -->
+        <div class="circle red"></div>
+        <div class="circle purple"></div>
+        <div class="circle orange"></div>
+      </div>
+    </div>
   </body>
 </html>

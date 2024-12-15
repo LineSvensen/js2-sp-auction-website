@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <h1 id="profile-welcome" class="heading-h1-all-pages pb-8">Welcome, ${name}!</h1>
         <div class="flex flex-row">
           <img id="profile-avatar" title="Avatar" class="small-avatar" src="${avatarUrl}" alt="Avatar">
-          <button type="button" title="Edit avatar" id="show-update-avatar-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded shadow-md rounded-full">
+          <button type="button" title="Edit avatar" id="show-update-avatar-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md ">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
         </div>
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         </form>
         <div class="flex flex-direction: row;">
             <p id="profile-bio" class="py-4 text-lg text-center">Bio: <b>${bio}</b></p>
-            <button type="button" title="Edit bio" id="show-update-bio-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded shadow-md rounded-full">
+            <button type="button" title="Edit bio" id="show-update-bio-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md">
                 <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </div>    

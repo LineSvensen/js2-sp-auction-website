@@ -1,5 +1,5 @@
-import { getAccessToken } from './get-token.js';
-import { API_KEY } from './the-key.js';
+import { getAccessToken } from '../utilities/get-token.js';
+import { API_KEY } from '../utilities/the-key.js';
 
 export async function fetchListings() {
   console.log('Fetching active listings sorted by newest...');
@@ -105,13 +105,42 @@ export async function fetchListingsBySearch(query) {
   }
 }
 
+
 export async function fetchActiveCreatedListings() {
-  const name = localStorage.getItem('name');
-  const response = await fetch(
-    `https://v2.api.noroff.dev/auction/profiles/${name}/listings?_active=true`
-  );
-  if (!response.ok) throw new Error('Failed to fetch active created listings');
-  return response.json();
+  const username = localStorage.getItem('name');
+  if (!username) {
+    throw new Error('Username not found. Please log in.');
+  }
+
+  const url = `https://v2.api.noroff.dev/auction/profiles/${username}/listings?_active=true&_bids=true`;
+  console.log('Fetching Active Created Listings from:', url);
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'X-Noroff-API-Key': API_KEY,
+      },
+    });
+
+    console.log('Response Status:', response.status);
+
+    if (!response.ok) {
+      const errorDetails = await response.text();
+      console.error('Server Response:', errorDetails);
+      throw new Error(`Failed to fetch listings. Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Fetched Listings:', data);
+
+    return data.data; // Return the listings array
+  } catch (error) {
+    console.error('Error fetching user listings:', error.message);
+    throw error;
+  }
 }
 
 /**

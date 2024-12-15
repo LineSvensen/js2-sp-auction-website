@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="../assets/images/bblogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to BidBuddy! Take a closer look at this amazing product. Remember to log in to bid.">
+    <meta name="author" content="Line Svensen">
+    <meta name="keywords" content="bid, bidding, auction, sell, buy, vintage, used products, worn, value, collect">
     <title>Listing Details</title>
     <script type="module" src="../src/js/app.js" defer></script>
     <link
@@ -32,7 +35,7 @@
         <a href="/index.html">
           <img
             src="/assets/images/bidbuddyicon.png"
-            style="width: 120px; height: auto"
+            style="width: 154px; height: auto"
             alt="Logo"
           />
         </a>
@@ -72,15 +75,28 @@
         </button>
 
         <nav class="flex flex-col text-center space-y-6 text-base text-white">
-          <a href="/index.html" class="hover:text-gray-300 common-mobile-links">Home</a>
-          <a href="/pages/profile.html" class="hover:text-gray-300 common-mobile-links">Profile</a>
-          <a href="/pages/create-listing.html" class="hover:text-gray-300 common-mobile-links"
+          <a href="/index.html" class="hover:text-gray-300 common-mobile-links"
+            >Home</a
+          >
+          <a
+            href="/pages/profile.html"
+            class="hover:text-gray-300 common-mobile-links"
+            >Profile</a
+          >
+          <a
+            href="/pages/create-listing.html"
+            class="hover:text-gray-300 common-mobile-links"
             >Create Listing</a
           >
-          <a href="/pages/login-register.html" class="hover:text-gray-300 common-mobile-links"
+          <a
+            href="/pages/login-register.html"
+            class="hover:text-gray-300 common-mobile-links"
             >Login/Register</a
           >
-          <button class="hover:text-gray-300 common-mobile-links" id="mobileLogoutButton">
+          <button
+            class="hover:text-gray-300 common-mobile-links"
+            id="mobileLogoutButton"
+          >
             Log Out <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
           </button>
         </nav>
@@ -129,5 +145,16 @@
     <footer class="bg-gray-100">
       <p class="p-4 text-sm">Copyright 2025</p>
     </footer>
+    <div
+      id="loader"
+      class="fixed inset-0 bg-white z-50 flex items-center justify-center"
+    >
+      <div class="loader-spinner">
+        <!-- Adjusted colors and animation -->
+        <div class="circle red"></div>
+        <div class="circle purple"></div>
+        <div class="circle orange"></div>
+      </div>
+    </div>
   </body>
 </html>
