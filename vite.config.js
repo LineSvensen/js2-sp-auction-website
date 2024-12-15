@@ -12,6 +12,7 @@ export default defineConfig({
         listingDetails: path.resolve(__dirname, 'pages/listing-details.html'),
         loginRegister: path.resolve(__dirname, 'pages/login-register.html'),
         profile: path.resolve(__dirname, 'pages/profile.html'),
+        editDelete: path.resolve(__dirname, 'pages/edit-delete.html'),
       },
     },
   },
