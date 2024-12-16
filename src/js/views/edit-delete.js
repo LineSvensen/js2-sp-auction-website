@@ -1,19 +1,22 @@
 import { getAccessToken } from '../utilities/get-token.js';
 import { getApiHeaders } from '../utilities/headers.js';
 import { fetchActiveCreatedListings } from '../api/api-listing.js';
-import { calculateHighestBid } from '../components/bid.js'; // Import the function
+import { calculateHighestBid } from '../components/bid.js';
 
-// Constants
 const API_BASE_URL = 'https://v2.api.noroff.dev/auction';
 
-// Utility: Get Access Token
 getAccessToken();
 
 getApiHeaders();
 
 fetchActiveCreatedListings();
 
-// Delete Listing
+/**
+ * Deletes a listing by its ID.
+ * @param {string} listingId - The ID of the listing to be deleted.
+ * @throws Will throw an error if the delete operation fails.
+ */
+
 async function deleteListing(listingId) {
   const url = `${API_BASE_URL}/listings/${listingId}`;
   const response = await fetch(url, {
@@ -28,7 +31,13 @@ async function deleteListing(listingId) {
   alert('Listing deleted successfully.');
 }
 
-// Update Listing
+/**
+ * Updates a listing by its ID with new data.
+ * @param {string} listingId - The ID of the listing to be updated.
+ * @param {Object} updatedData - The updated listing data.
+ * @throws Will throw an error if the update operation fails.
+ */
+
 async function updateListing(listingId, updatedData) {
   const url = `${API_BASE_URL}/listings/${listingId}`;
   const response = await fetch(url, {
@@ -44,7 +53,11 @@ async function updateListing(listingId, updatedData) {
   alert('Listing updated successfully.');
 }
 
-// Render Listings on Page
+/**
+ * Renders the user's listings in the given container.
+ * @param {Array} listings - An array of listing objects.
+ */
+
 function editDeletePageListings(listings = null) {
   const container = document.getElementById('user-listings-container');
   container.innerHTML = '';
@@ -92,7 +105,11 @@ function editDeletePageListings(listings = null) {
   setupEditAndDeleteButtons(listings);
 }
 
-// Setup Edit and Delete Buttons
+/**
+ * Sets up the event listeners for edit and delete buttons in the listings.
+ * @param {Array} listings - An array of listing objects.
+ */
+
 function setupEditAndDeleteButtons(listings) {
   const editButtons = document.querySelectorAll('.edit-button');
   const deleteButtons = document.querySelectorAll('.delete-button');
@@ -113,24 +130,26 @@ function setupEditAndDeleteButtons(listings) {
           await deleteListing(listingId);
           loadUserListings();
         } catch (error) {
-          console.error('Error deleting listing:', error.message);
+          alert("Ops. Could not delete listing. Try again later.")
         }
       }
     });
   });
 }
 
-// Open Edit Modal
+/**
+ * Opens the modal for editing a listing and populates it with listing data.
+ * @param {Object} listing - The listing object to be edited.
+ */
+
 function openEditModal(listing) {
   const modal = document.getElementById('edit-modal');
 
-  // Set Title and Description
   document.getElementById('edit-title').value = listing.title;
   document.getElementById('edit-description').value = listing.description;
 
-  // Dynamically render Media Inputs
   const mediaContainer = document.getElementById('edit-media-container');
-  mediaContainer.innerHTML = ''; // Clear previous media inputs
+  mediaContainer.innerHTML = '';
 
   if (listing.media && listing.media.length > 0) {
     listing.media.forEach((mediaItem, index) => {
@@ -143,7 +162,6 @@ function openEditModal(listing) {
         `;
       mediaContainer.appendChild(mediaGroup);
 
-      // Remove Media Input
       mediaGroup
         .querySelector('.remove-media')
         .addEventListener('click', () => {
@@ -152,7 +170,6 @@ function openEditModal(listing) {
     });
   }
 
-  // Add "Add More Media" button functionality
   const addMediaButton = document.getElementById('add-more-media');
   addMediaButton.onclick = () => {
     const mediaGroup = document.createElement('div');
@@ -164,16 +181,13 @@ function openEditModal(listing) {
       `;
     mediaContainer.appendChild(mediaGroup);
 
-    // Remove Media Input
     mediaGroup.querySelector('.remove-media').addEventListener('click', () => {
       mediaGroup.remove();
     });
   };
 
-  // Open Modal
   modal.classList.remove('hidden');
 
-  // Handle form submission
   const editForm = document.getElementById('edit-listing-form');
   editForm.onsubmit = async (event) => {
     event.preventDefault();
@@ -194,12 +208,15 @@ function openEditModal(listing) {
       modal.classList.add('hidden');
       loadUserListings();
     } catch (error) {
-      console.error('Error updating listing:', error.message);
+      alert("Ops! Could not update listing. Try again later.")
     }
   };
 }
 
-// Close Modal
+/**
+ * Sets up the close button for the edit modal.
+ */
+
 function setupCloseModalButton() {
   const closeModalButton = document.getElementById('close-modal');
   closeModalButton.addEventListener('click', () => {
@@ -208,19 +225,21 @@ function setupCloseModalButton() {
   });
 }
 
-// Load User Listings
+/**
+ * Loads the user's active listings and renders them on the page.
+ */
+
 async function loadUserListings() {
   try {
     const listings = await fetchActiveCreatedListings();
     editDeletePageListings(listings);
   } catch (error) {
-    console.error('Error fetching user listings:', error.message);
+    alert("There was an error with showing your listings. Please try again later.")
     const container = document.getElementById('user-listings-container');
     container.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
   }
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
   setupCloseModalButton();
   loadUserListings();

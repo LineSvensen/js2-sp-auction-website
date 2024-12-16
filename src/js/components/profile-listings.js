@@ -1,19 +1,15 @@
 import { calculateHighestBid } from './bid.js';
-import {
-  fetchActiveCreatedListings,
-  fetchEndedCreatedListings,
-  fetchActiveBids,
-  fetchWonBids,
-  fetchLostBids,
-} from '../api/api-tabs.js';
+
+/**
+ * Renders a list of profile listings into the specified container.
+ *
+ * @param {Array} listings - An array of listing objects to be rendered.
+ * @param {HTMLElement} container - The container element where the listings will be rendered.
+ */
 
 export function renderProfileListings(listings, container) {
-  if (!container) {
-    console.error('Container not found for rendering listings.');
-    return;
-  }
 
-  container.innerHTML = ''; // Clear container
+  container.innerHTML = '';
 
   if (!Array.isArray(listings) || listings.length === 0) {
     container.innerHTML =
@@ -22,7 +18,7 @@ export function renderProfileListings(listings, container) {
   }
 
   listings.forEach((listing) => {
-    if (!listing) return; // Skip invalid listings
+    if (!listing) return;
 
     const highestBid = calculateHighestBid(listing.bids || []);
 

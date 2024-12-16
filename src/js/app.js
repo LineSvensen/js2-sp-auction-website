@@ -8,28 +8,73 @@ import { renderListings } from './components/listing-card.js';
 import { setupSearch } from './components/search.js';
 import { validateAndCleanLocalStorage } from './utilities/cleanLocalStorage.js';
 
+/**
+ * Event listener for DOMContentLoaded.
+ * Initializes the application and handles the loaders visibility.
+ */
+
 document.addEventListener('DOMContentLoaded', async () => {
+  /**
+   * Loader element for displaying loading animation.
+   * @type { HTMLElement }
+   */
   const loader = document.getElementById('loader');
 
   try {
-    // Show the loader
     loader.style.display = 'flex';
 
-    // Initialize other components
-    validateAndCleanLocalStorage();
-    initBurgerMenu();
-    initializeLoginForm();
-    initializeRegisterForm(); // Explicitly initialize the register form logic
+    /**
+     * Validates and cleans the local storage.
+     * @function validateAndCleanLocalStorage
+     */
 
-    // Render listings (longest loading part)
+    validateAndCleanLocalStorage();
+
+    /**
+     * Initializes the burger menu
+     * @function initBurgerMenu
+     */
+    initBurgerMenu();
+
+    /**
+     * initializes the login form.
+     * @function initializeLoginForm
+     */
+    initializeLoginForm();
+
+    /**
+     * initializes the register form.
+     * @function initializeRegisterForm
+     */
+    initializeRegisterForm();
+
+    /**
+     * Renders the listings on the page.
+     * @async
+     * @function renderListings
+     */
     await renderListings();
 
+    /**
+     * sets up the search functionality.
+     * @function setupSearch
+     */
     setupSearch();
+
+    /**
+     * logs out the user and clears relevant data.
+     * @function logoutUser
+     */
     logoutUser();
   } catch (error) {
-    console.error('Error during initialization:', error.message);
+    /**
+     * logs error if any durin initialization 
+     * @param {Error} error - the error object
+     */
   } finally {
-    // Hide the loader after everything is loaded
+    /**
+     * hides loader when initialization is complete
+     */
     loader.style.display = 'none';
   }
 });

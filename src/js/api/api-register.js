@@ -1,3 +1,13 @@
+/**
+ * Registers a new user.
+ * @param {Object} userData - The user data to register with.
+ * @param {string} userData.name - The name of the user.
+ * @param {string} userData.email - The email address of the user.
+ * @param {string} userData.password - The password for the account.
+ * @returns {Promise<Object>} The response data from the registration process.
+ * @throws {Error} If the registration fails, an error with the message is thrown.
+ */
+
 export async function registerUser(userData) {
   const API_URL = 'https://v2.api.noroff.dev/auth/register';
   try {
@@ -18,17 +28,15 @@ export async function registerUser(userData) {
 
     const data = await response.json();
 
-    // Store the access token and name properly
     if (data.data.accessToken && data.data.name) {
-      localStorage.setItem('accessToken', data.data.accessToken); // Correct key
+      localStorage.setItem('accessToken', data.data.accessToken);
       localStorage.setItem('name', data.data.name);
     } else {
-      console.error('Missing accessToken or name in response:', data.data);
+      alert("Ops! Something went wrong. Try again later.")
     }
 
     return data;
   } catch (error) {
-    console.error('Error during registration:', error.message);
     throw error;
   }
 }

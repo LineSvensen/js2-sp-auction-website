@@ -10,29 +10,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const addMediaButton = document.getElementById('add-media');
   const message = document.getElementById('message');
 
-  // Setup dynamic media input logic
+  /**
+   * Sets up the media input functionality by adding event listeners for adding and removing media fields.
+   * @param {HTMLElement} mediaContainer - The container element where media fields are added.
+   * @param {HTMLElement} addMediaButton - The button to add more media fields.
+   */
+
   setupMediaInput(mediaContainer, addMediaButton);
 
-  // Handle form submission
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    /**
+     * Collects form data, including media inputs.
+     * @param {HTMLElement} mediaContainer - The container element where media inputs are stored.
+     * @returns {Object} The request body containing form data.
+     */
 
     const requestBody = collectFormData(mediaContainer);
 
     try {
+      /**
+       * Sends the listing data to the server for creation.
+       * @param {Object} requestBody - The data object for the new listing.
+       * @param {string} accessToken - The access token for authentication.
+       * @returns {Object} The created listing data returned from the server.
+       */
       const data = await createListing(requestBody, accessToken);
       message.textContent = 'Listing created successfully!';
       message.classList.remove('hidden', 'text-red-500');
       message.classList.add('text-green-500');
-      console.log('Created Listing:', data);
 
-      // Optionally clear the form after submission
       form.reset();
-      mediaContainer.innerHTML = ''; // Remove existing media inputs
+      mediaContainer.innerHTML = '';
       alert('Listing created successfully!');
-      window.location.href = '/pages/profile.html'; // Redirect to profile page
+      window.location.href = '/pages/profile.html';
     } catch (error) {
-      console.error(error);
       message.textContent = error.message;
       message.classList.remove('hidden', 'text-green-500');
       message.classList.add('text-red-500');

@@ -1,4 +1,4 @@
-import { fetchAvatar, updateAvatar, updateBio } from '../components/avatar.js';
+import { updateAvatar, updateBio } from '../components/avatar.js';
 import { fetchProfile } from '../api/api-profile.js';
 import { authGuard } from '../utilities/authGuard.js';
 
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     profileContainer.innerHTML = `<p>Loading profile...</p>`;
     const name = localStorage.getItem('name');
-    // Fetch and display avatar and profile
     const profileData = await fetchProfile(name);
     const avatarUrl =
       profileData.data.avatar?.url ||
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const wins = profileData.data._count?.wins || 0;
     const listings = profileData.data._count?.listings || 0;
 
-    // Build the profile UI
     profileContainer.innerHTML = `
       <div class="p-4 flex flex-col items-start">
         <h1 id="profile-welcome" class="heading-h1-all-pages pb-8">Welcome, ${name}!</h1>
@@ -71,10 +69,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       </div>
     `;
 
-    // Avatar Update Form Logic
     const showUpdateAvatarFormButton = document.getElementById(
       'show-update-avatar-form'
     );
+    /**
+     * Event listener for updating the avatar.
+     * @param {Event} event - The event object from the form submission.
+     */
     const updateAvatarForm = document.getElementById('update-avatar-form');
 
     showUpdateAvatarFormButton.addEventListener('click', () => {
@@ -99,12 +100,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('profile-avatar').src = newAvatarUrl;
         updateAvatarForm.style.display = 'none';
       } catch (error) {
-        console.error('Error updating avatar:', error.message);
         alert('Failed to update avatar. Please try again.');
       }
     });
 
-    // Bio Update Form Logic
     const showUpdateBioFormButton = document.getElementById(
       'show-update-bio-form'
     );
@@ -115,7 +114,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       updateBioForm.style.display =
         updateBioForm.style.display === 'none' ? 'block' : 'none';
     });
-
+    /**
+     * Event listener for updating the bio.
+     * @param {Event} event - The event object from the form submission.
+     */
     updateBioForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const newBioText = document.getElementById('new-bio-text').value.trim();
@@ -128,15 +130,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       try {
         await updateBio(name, newBioText);
         alert('Bio updated successfully!');
-        profileBio.textContent = newBioText; // Update the bio text
-        updateBioForm.style.display = 'none'; // Hide the form
+        profileBio.textContent = newBioText;
+        updateBioForm.style.display = 'none';
       } catch (error) {
-        console.error('Error updating bio:', error.message);
         alert('Failed to update bio. Please try again.');
       }
     });
   } catch (error) {
-    console.error('Error loading profile:', error.message);
+    alert("Ops. Something went wrong loading the profile. Try again later.")
     profileContainer.innerHTML = `<p class="text-red-500">Error loading profile: ${error.message}</p>`;
   }
 });

@@ -1,8 +1,13 @@
 import { getAccessToken } from '../utilities/get-token.js';
 import { API_KEY } from '../utilities/the-key.js';
 
+/**
+ * Fetch all active listings with bids.
+ * @returns {Promise<Object>} Fetched and sorted active listings.
+ * @throws {Error} If the request fails.
+ */
+
 export async function fetchListings() {
-  console.log('Fetching active listings sorted by newest...');
   try {
     const response = await fetch(
       'https://v2.api.noroff.dev/auction/listings?_bids=true&_active=true'
@@ -12,21 +17,24 @@ export async function fetchListings() {
     }
     const data = await response.json();
 
-    // Sort listings by creation date in descending order (newest first)
     const sortedListings = data.data.sort(
       (a, b) => new Date(b.created) - new Date(a.created)
     );
 
-    console.log('Fetched and Sorted Active Listings:', sortedListings);
-    return { ...data, data: sortedListings }; // Return the sorted listings
+    return { ...data, data: sortedListings };
   } catch (error) {
-    console.error('Error fetching listings:', error.message);
     throw error;
   }
 }
 
+/**
+ * Fetch a single listing by its ID.
+ * @param {string} id - The ID of the listing to fetch.
+ * @returns {Promise<Object>} The fetched listing data.
+ * @throws {Error} If the request fails.
+ */
+
 export async function fetchListingById(id) {
-  console.log(`Fetching listing with ID: ${id}`);
   try {
     const response = await fetch(
       `https://v2.api.noroff.dev/auction/listings/${id}?_bids=true&_seller=true`
@@ -35,16 +43,19 @@ export async function fetchListingById(id) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
     const data = await response.json();
-    console.log('Fetched Listing Data:', data);
     return data;
   } catch (error) {
-    console.error('Error fetching listing by ID:', error.message);
     throw error;
   }
 }
 
+/**
+ * Fetch all listings, both active and ended, with bids.
+ * @returns {Promise<Object>} Fetched and sorted listings.
+ * @throws {Error} If the request fails.
+ */
+
 export async function fetchActiveAndClosedListings() {
-  console.log('Fetching all listings (active and ended)...');
   try {
     const response = await fetch(
       'https://v2.api.noroff.dev/auction/listings?_bids=true'
@@ -54,21 +65,24 @@ export async function fetchActiveAndClosedListings() {
     }
     const data = await response.json();
 
-    // Sort listings by creation date in descending order (newest first)
     const sortedListings = data.data.sort(
       (a, b) => new Date(b.created) - new Date(a.created)
     );
 
-    console.log('Fetched and Sorted All Listings:', sortedListings);
-    return { ...data, data: sortedListings }; // Return the sorted listings
+    return { ...data, data: sortedListings };
   } catch (error) {
-    console.error('Error fetching all listings:', error.message);
     throw error;
   }
 }
 
+/**
+ * Search for listings using a query string.
+ * @param {string} query - The search query.
+ * @returns {Promise<Object>} The search results.
+ * @throws {Error} If the request fails.
+ */
+
 export async function searchListings(query) {
-  console.log(`Searching listings with query: "${query}"`);
   try {
     const response = await fetch(
       `https://v2.api.noroff.dev/auction/listings/search?q=${encodeURIComponent(query)}`
@@ -77,16 +91,20 @@ export async function searchListings(query) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
     const data = await response.json();
-    console.log('Search Results:', data);
     return data;
   } catch (error) {
-    console.error('Error searching listings:', error.message);
     throw error;
   }
 }
 
+/**
+ * Fetch active listings by search query.
+ * @param {string} query - The search query.
+ * @returns {Promise<Object>} The search results for active listings.
+ * @throws {Error} If the request fails.
+ */
+
 export async function fetchListingsBySearch(query) {
-  console.log(`Searching listings with query: ${query}`);
   try {
     const response = await fetch(
       `https://v2.api.noroff.dev/auction/listings/search?q=${encodeURIComponent(query)}&_bids=true&_active=true`
@@ -97,14 +115,17 @@ export async function fetchListingsBySearch(query) {
     }
 
     const data = await response.json();
-    console.log('Search Results:', data);
-    return data; // Return the fetched search results
+    return data;
   } catch (error) {
-    console.error('Error searching listings:', error.message);
     throw error;
   }
 }
 
+/**
+ * Fetch active listings created by the logged-in user.
+ * @returns {Promise<Object[]>} List of active listings.
+ * @throws {Error} If the request fails.
+ */
 
 export async function fetchActiveCreatedListings() {
   const username = localStorage.getItem('name');
@@ -113,7 +134,6 @@ export async function fetchActiveCreatedListings() {
   }
 
   const url = `https://v2.api.noroff.dev/auction/profiles/${username}/listings?_active=true&_bids=true`;
-  console.log('Fetching Active Created Listings from:', url);
 
   try {
     const response = await fetch(url, {
@@ -125,20 +145,15 @@ export async function fetchActiveCreatedListings() {
       },
     });
 
-    console.log('Response Status:', response.status);
-
     if (!response.ok) {
       const errorDetails = await response.text();
-      console.error('Server Response:', errorDetails);
       throw new Error(`Failed to fetch listings. Status: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log('Fetched Listings:', data);
 
-    return data.data; // Return the listings array
+    return data.data;
   } catch (error) {
-    console.error('Error fetching user listings:', error.message);
     throw error;
   }
 }
@@ -146,7 +161,9 @@ export async function fetchActiveCreatedListings() {
 /**
  * Fetch ended (inactive) created listings for the logged-in user.
  * @returns {Promise<Object[]>} List of ended created listings.
+ * @throws {Error} If the request fails.
  */
+
 export async function fetchEndedCreatedListings() {
   const name = localStorage.getItem('name');
   if (!name) {
@@ -162,6 +179,5 @@ export async function fetchEndedCreatedListings() {
   }
 
   const data = await response.json();
-  console.log('Fetched Ended Created Listings:', data);
-  return data; // Return the fetched listings
+  return data;
 }

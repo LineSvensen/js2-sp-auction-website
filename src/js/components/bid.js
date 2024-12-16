@@ -1,19 +1,14 @@
 import { placeBid } from '../api/api-bid.js';
 import { getAvatarHTML } from './avatar.js';
 
-
 /**
  * Handles the bid submission form.
  * @param {string} listingId - The ID of the listing to place a bid on.
  * @param {number} highestBid - The current highest bid for the listing.
  */
+
 export function setupBidForm(listingId, highestBid) {
   const bidForm = document.getElementById('place-bid-form');
-
-  if (!bidForm) {
-    console.error('Bid form not found!');
-    return;
-  }
 
   bidForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -33,10 +28,9 @@ export function setupBidForm(listingId, highestBid) {
       const result = await placeBid(listingId, bidAmount);
       if (result) {
         alert('Bid placed successfully!');
-        window.location.reload(); // Reload the page to reflect the new bid
+        window.location.reload();
       }
     } catch (error) {
-      console.error('Error placing bid:', error.message);
       alert(error.message || 'Failed to place bid. Please try again.');
     }
   });
@@ -44,23 +38,26 @@ export function setupBidForm(listingId, highestBid) {
 
 /**
  * Calculate the highest bid from the list of bids.
- * @param {Array} bids - List of bids.
- * @returns {number} The highest bid amount.
+ * @param {Array<Object>} bids - Array of bid objects, each containing a bid amount.
+ * @param {number} bids[].amount - The amount of a bid.
+ * @returns {number} The highest bid amount, or 0 if no bids exist.
  */
+
 export function calculateHighestBid(bids = []) {
   if (!bids || bids.length === 0) {
-    return 0; // Default to 0 if no bids
+    return 0;
   }
   return Math.max(...bids.map((bid) => bid.amount));
 }
 
 /**
  * Render the bidders list for a listing.
- * @param {Array} bidders - List of bidders.
+ * @param {Array<Object>} bidders - List of bidder objects.
+ * @param {Object} bidders[].bidder - The bidder's information including avatar and name.
+ * @param {number} bidders[].amount - The amount of the bid.
  * @param {HTMLElement} container - The container where the list will be rendered.
  */
 export function renderBiddersList(bidders, container) {
-  // Sort bidders by newest first
   const sortedBidders = bidders.sort(
     (a, b) => new Date(b.created) - new Date(a.created)
   );
@@ -88,7 +85,6 @@ export function renderBiddersList(bidders, container) {
       `;
   }
 
-  // Apply blur only to the <ul> element if user is not logged in
   if (!localStorage.getItem('accessToken')) {
     const ulElement = biddersList.querySelector('ul');
     if (ulElement) {

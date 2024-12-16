@@ -1,26 +1,26 @@
 import { fetchListings } from '../api/api-listing.js';
-import { calculateHighestBid } from './bid.js'; // Import the function
+import { calculateHighestBid } from './bid.js';
+
+/**
+ * Renders listings into the provided container.
+ * If no listings are provided, it fetches the listings dynamically.
+ *
+ * @param {Array|null} listings - Optional. An array of listing objects to render. If null, listings are fetched dynamically.
+ */
 
 export async function renderListings(listings = null) {
   const listingsContainer = document.getElementById('listings-container');
   if (!listingsContainer) return;
 
-  console.log('Starting to render listings...');
-
   try {
-    // Fetch listings if none are provided
-    if (!listings) {
-      const response = await fetchListings(); // Fetch all listings
-      console.log('Fetched Listings:', response);
 
-      // Access the correct data array
-      listings = response.data || []; // Ensure you access the array within the API response
-      console.log('Extracted Listings Array:', listings);
+    if (!listings) {
+      const response = await fetchListings();
+      listings = response.data || [];
     }
 
-    listingsContainer.innerHTML = ''; // Clear loading text
+    listingsContainer.innerHTML = '';
 
-    // Check if listings array is empty
     if (!listings.length) {
       listingsContainer.innerHTML =
         '<p class="text-center text-gray-500">No results found.</p>';
@@ -28,7 +28,7 @@ export async function renderListings(listings = null) {
     }
 
     listings.forEach((listing) => {
-      // Calculate the highest bid if bids exist
+
       const highestBid = calculateHighestBid(listing.bids);
 
       const listingCard = `
@@ -60,9 +60,8 @@ export async function renderListings(listings = null) {
       listingsContainer.innerHTML += listingCard;
     });
   } catch (error) {
-    console.error('Error rendering listings:', error.message);
     listingsContainer.innerHTML = `<p class="text-center text-red-500">Error loading listings: ${error.message}</p>`;
   }
 }
 
-renderListings(); // Initial render with all listings
+renderListings();

@@ -13,51 +13,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const subTabs = document.querySelectorAll('.sub-tab');
   const containers = {};
 
-  console.log('Tabs and Sub-tabs Initialized.');
-
   let activeMainTab = null;
   let activeSubTab = null;
 
-  // Function to load tab content dynamically
+  /**
+   * Loads content for a specific sub-tab.
+   *
+   * @param {HTMLElement} subTab - The sub-tab element being clicked.
+   */
+
   const loadTabContent = async (subTab) => {
     const contentId = subTab.dataset.subTab;
 
-    if (!contentId) {
-      console.error('Invalid sub-tab: Missing data-sub-tab attribute.');
-      return;
-    }
-
-    if (activeSubTab === subTab) {
-      console.log(`Sub-Tab ${contentId} is already active.`);
-      return; // Prevent redundant loading
-    }
-
-    // Reset active sub-tab and content
     if (activeSubTab) {
       const prevContentId = activeSubTab.dataset.subTab;
       const prevContainer = containers[prevContentId];
       if (prevContainer) {
-        prevContainer.innerHTML = ''; // Clear previous container
+        prevContainer.innerHTML = '';
       }
     }
 
-    activeSubTab = subTab; // Update active sub-tab
+    activeSubTab = subTab;
     subTabs.forEach((st) => st.classList.remove('active'));
     subTab.classList.add('active');
 
     const container =
       containers[contentId] || document.getElementById(`${contentId}-content`);
-    containers[contentId] = container; // Cache container for future use
-
-    if (!container) {
-      console.error(`Container not found for sub-tab: ${contentId}`);
-      return;
-    }
+    containers[contentId] = container;
 
     container.innerHTML = '<p>Loading...</p>';
 
     try {
-      console.log(`Loading data for sub-tab: ${contentId}`);
       let data;
 
       switch (contentId) {
@@ -80,28 +66,22 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(`Unknown contentId: ${contentId}`);
       }
 
-      console.log(`Data Fetched for ${contentId}:`, data);
-
       if (!Array.isArray(data) || data.length === 0) {
         container.innerHTML = `<p class="text-center text-gray-500 mb-8 mt-4">No results found :-/</p>`;
       } else {
         renderProfileListings(data, container);
       }
     } catch (error) {
-      console.error(`Error loading content for ${contentId}:`, error);
       container.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
     }
   };
-
-  // Main Tab Switching
+  /**
+   * Adds event listeners to main tab elements.
+   *
+   * @param {NodeListOf<HTMLElement>} tabs - The main tab elements to set up event listeners for.
+   */
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      console.log(`Main Tab Clicked: ${tab.dataset.tab}`);
-
-      if (activeMainTab === tab) {
-        console.log(`Main Tab ${tab.dataset.tab} is already active.`);
-        return;
-      }
 
       tabs.forEach((t) => t.classList.remove('active'));
       document
@@ -111,18 +91,18 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.classList.add('active');
       document.getElementById(tab.dataset.tab).classList.remove('hidden');
 
-      activeMainTab = tab; // Update active main tab
-      activeSubTab = null; // Reset active sub-tab
+      activeMainTab = tab;
+      activeSubTab = null;
     });
   });
-
-  // Sub-Tab Switching
+  /**
+   * Adds event listeners to sub-tab elements.
+   *
+   * @param {NodeListOf<HTMLElement>} subTabs - The sub-tab elements to set up event listeners for.
+   */
   subTabs.forEach((subTab) => {
     subTab.addEventListener('click', () => {
-      console.log(`Sub-Tab Clicked: ${subTab.dataset.subTab}`);
       loadTabContent(subTab);
     });
   });
-
-  console.log('Tabs and Sub-tabs Event Listeners Set.');
 });

@@ -5,12 +5,8 @@
  */
 export function authGuard() {
   const name = localStorage.getItem('name');
-  console.log('Checking for access token...');
   if (!name) {
-    console.log('name not found. Redirecting...');
     alert('You must be logged in to view this page.');
     window.location.replace('/pages/login-register.html');
-  } else {
-    console.log('Access token found. User is logged in.');
   }
-}
+};

@@ -1,5 +1,13 @@
 import { API_KEY } from '../utilities/the-key.js';
 
+/**
+ * Create a new listing.
+ * @param {Object} requestBody - The data for the new listing.
+ * @param {string} accessToken - The access token for authorization.
+ * @returns {Promise<Object>} The created listing data.
+ * @throws {Error} If the request fails.
+ */
+
 export async function createListing(requestBody, accessToken) {
   const response = await fetch('https://v2.api.noroff.dev/auction/listings', {
     method: 'POST',

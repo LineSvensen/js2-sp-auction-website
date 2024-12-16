@@ -1,5 +1,12 @@
+/**
+ * Sets up the media input section in the form.
+ * Adds functionality to dynamically add and remove media input fields.
+ *
+ * @param {HTMLElement} mediaContainer - The container where media input fields are appended.
+ * @param {HTMLElement} addMediaButton - The button that triggers adding new media input fields.
+ */
+
 export function setupMediaInput(mediaContainer, addMediaButton) {
-  // Add Media Input
   addMediaButton.addEventListener('click', () => {
     const mediaGroup = document.createElement('div');
     mediaGroup.classList.add('flex', 'space-x-2', 'mt-2');
@@ -11,12 +18,18 @@ export function setupMediaInput(mediaContainer, addMediaButton) {
 
     mediaContainer.appendChild(mediaGroup);
 
-    // Remove Media Input
     mediaGroup.querySelector('.remove-media').addEventListener('click', () => {
       mediaGroup.remove();
     });
   });
 }
+
+/**
+ * Collects form data from the inputs and formats it into an object.
+ *
+ * @param {HTMLElement} mediaContainer - The container holding all media input fields.
+ * @returns {Object} - The collected form data including title, description, tags, media, and endsAt.
+ */
 
 export function collectFormData(mediaContainer) {
   const title = document.getElementById('title').value.trim();

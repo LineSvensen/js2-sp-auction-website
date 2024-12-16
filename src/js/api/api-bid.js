@@ -27,7 +27,6 @@ async function fetchUserProfile() {
 
     return response.json();
   } catch (error) {
-    console.error('Error fetching user profile:', error.message);
     throw error;
   }
 }
@@ -42,23 +41,19 @@ async function fetchUserProfile() {
 export async function placeBid(id, amount) {
   const accessToken = getAccessToken();
   if (!accessToken) {
-    console.error('Access token is missing. Ensure the user is logged in.');
     throw new Error('You must be logged in to place a bid.');
   }
 
   try {
-    // Fetch the user's profile to check their credit balance
     const userProfile = await fetchUserProfile();
     const userCredits = userProfile.data.credits;
 
-    // Check if the user has enough credits
     if (userCredits < amount) {
       throw new Error(
         `You do not have enough credits. Your current credit amount is: ${userCredits}`
       );
     }
 
-    // Proceed with placing the bid if the user has enough credits
     const response = await fetch(
       `https://v2.api.noroff.dev/auction/listings/${id}/bids`,
       {
@@ -74,17 +69,14 @@ export async function placeBid(id, amount) {
 
     if (!response.ok) {
       const errorDetails = await response.json();
-      console.error('Bid Error Details:', errorDetails);
       throw new Error(
         `Failed to place bid: ${errorDetails.message || 'Unknown error'}`
       );
     }
 
     const data = await response.json();
-    console.log('Bid placed successfully:', data);
     return data;
   } catch (error) {
-    console.error('Error placing bid:', error.message);
     throw error;
   }
 }

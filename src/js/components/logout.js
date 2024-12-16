@@ -1,27 +1,26 @@
-export function logoutUser() {
-  console.log('Initializing logout functionality...');
+/**
+ * Initializes the logout functionality for both desktop and mobile buttons.
+ * Adds click event listeners to trigger user logout.
+ *
+ * @param {HTMLElement} [desktopLogoutButton] - The logout button element for desktop view. Optional if not present in the DOM.
+ * @param {HTMLElement} [mobileLogoutButton] - The logout button element for mobile view. Optional if not present in the DOM.
+ */
 
-  // Select both logout buttons
+export function logoutUser() {
+
   const desktopLogoutButton = document.getElementById('desktopLogoutButton');
   const mobileLogoutButton = document.getElementById('mobileLogoutButton');
 
-  // Helper function to handle logout
   const handleLogout = () => {
-    console.log('Logout button clicked.');
 
     const accessToken = localStorage.getItem('accessToken');
     const name = localStorage.getItem('name');
 
-    console.log('Access Token:', accessToken);
-    console.log('Name:', name);
-
     if (!accessToken || !name) {
-      console.warn('No user is logged in.');
       alert('No user is logged in.');
       return;
     }
 
-    // Remove user data
     localStorage.removeItem('accessToken');
     localStorage.removeItem('name');
 
@@ -29,18 +28,11 @@ export function logoutUser() {
     window.location.href = '/index.html';
   };
 
-  // Attach event listeners to both buttons
   if (desktopLogoutButton) {
-    console.log('Desktop logout button found. Adding event listener.');
     desktopLogoutButton.addEventListener('click', handleLogout);
-  } else {
-    console.warn('Desktop logout button not found.');
-  }
+  };
 
   if (mobileLogoutButton) {
-    console.log('Mobile logout button found. Adding event listener.');
     mobileLogoutButton.addEventListener('click', handleLogout);
-  } else {
-    console.warn('Mobile logout button not found.');
-  }
+  };
 }

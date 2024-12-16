@@ -30,7 +30,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="font-poppins bg-bgGrey min-h-screen flex flex-col">
+  <body class="font-poppins bg-white min-h-screen flex flex-col">
     <header class="bg-white text-Black p-4 flex items-center justify-between">
       <div class="logo flex items-center">
         <a href="/index.html">
@@ -129,10 +129,9 @@
       </nav>
     </header>
 
-    <div class="container mx-auto p-6 max-w-2xl bg-bgGrey">
+    <div class="container mx-auto p-6 max-w-2xl bg-white">
       <h1 class="heading-h1-all-pages mb-4">Create New Listing</h1>
       <form id="create-listing-form" class="space-y-4">
-        <!-- Title -->
         <div>
           <label for="title" class="block text-sm font-medium text-gray-700"
             >Title *</label
@@ -146,7 +145,6 @@
           />
         </div>
 
-        <!-- Description -->
         <div>
           <label
             for="description"
@@ -161,7 +159,6 @@
           ></textarea>
         </div>
 
-        <!-- Tags -->
         <div>
           <label for="tags" class="block text-sm font-medium text-gray-700"
             >Tags (comma-separated)</label
@@ -174,7 +171,6 @@
           />
         </div>
 
-        <!-- Media -->
         <div>
           <label class="block text-sm font-medium text-gray-700"
             >Media URLs and Alt Text</label
@@ -198,11 +194,11 @@
             id="add-media"
             class="mt-2 bg-CTAGreen hover:bg-CTAGreen-hover px-3 py-2 common-buttons-style"
           >
-            <i class="fa-solid fa-plus pr-2"></i><i class="fa-solid fa-images"></i>
+            <i class="fa-solid fa-plus pr-2"></i
+            ><i class="fa-solid fa-images"></i>
           </button>
         </div>
 
-        <!-- End Date -->
         <div>
           <label for="endsAt" class="block text-sm font-medium text-gray-700"
             >End Date *</label
@@ -216,7 +212,6 @@
           />
         </div>
 
-        <!-- Submit -->
         <div>
           <button
             type="submit"
@@ -237,7 +232,6 @@
       class="fixed inset-0 bg-white z-50 flex items-center justify-center"
     >
       <div class="loader-spinner">
-        <!-- Adjusted colors and animation -->
         <div class="circle red"></div>
         <div class="circle purple"></div>
         <div class="circle orange"></div>

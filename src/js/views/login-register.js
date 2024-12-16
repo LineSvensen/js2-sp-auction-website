@@ -1,6 +1,13 @@
 import { loginUser } from '../api/api-login.js';
 import { registerUser } from '../api/api-register.js';
 
+/**
+ * Initializes the login form functionality.
+ * Attaches a submit event listener to the login form to handle user login.
+ * @param {string} email - The email address entered by the user.
+ * @param {string} password - The password entered by the user.
+ */
+
 export function initializeLoginForm() {
   const loginForm = document.getElementById('login-form');
   if (!loginForm) return;
@@ -18,10 +25,18 @@ export function initializeLoginForm() {
   });
 }
 
+/**
+ * Initializes the registration form functionality.
+ * Attaches a submit event listener to the registration form to handle user registration.
+ * @param {string} name - The username entered by the user.
+ * @param {string} email - The email address entered by the user.
+ * @param {string} password - The password entered by the user.
+ * @param {string} [avatar] - The avatar URL entered by the user (optional).
+ */
+
 export function initializeRegisterForm() {
   const registerForm = document.getElementById('register-form');
   if (!registerForm) {
-    console.warn('Register form not found. Skipping registration logic.');
     return;
   }
 
@@ -43,7 +58,6 @@ export function initializeRegisterForm() {
     try {
       const result = await registerUser(userData);
 
-      // Save the new user's accessToken and name to localStorage
       localStorage.setItem('accessToken', result.data.accessToken);
       localStorage.setItem('name', result.data.name);
 

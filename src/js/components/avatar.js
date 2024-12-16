@@ -1,13 +1,15 @@
 import { getAccessToken } from '../utilities/get-token.js';
 import { API_KEY } from '../utilities/the-key.js';
 
-// Fetch the avatar
+/**
+ * Fetches the avatar URL for the given user.
+ * @param {string} name - The username of the profile to fetch the avatar for.
+ * @returns {Promise<string|null>} The avatar URL or null if not found.
+ * @throws {Error} If the fetch fails.
+ */
+
 export async function fetchAvatar(name) {
   const accessToken = getAccessToken();
-  if (!accessToken || !name) {
-    console.error('Missing access token or name.');
-    return null;
-  }
 
   try {
     const response = await fetch(
@@ -25,19 +27,23 @@ export async function fetchAvatar(name) {
     }
 
     const data = await response.json();
-    console.log('Fetched Profile Data:', data);
-    return data.avatar?.url || null; // Return avatar URL or null
+    return data.avatar?.url || null;
   } catch (error) {
-    console.error('Error fetching avatar:', error.message);
     return null;
   }
 }
 
-// Update the avatar
+/**
+ * Updates the avatar URL for the given user.
+ * @param {string} name - The username of the profile to update the avatar for.
+ * @param {string} newAvatarUrl - The new avatar URL to set.
+ * @returns {Promise<Object>} The updated profile data.
+ * @throws {Error} If the update fails.
+ */
+
 export async function updateAvatar(name, newAvatarUrl) {
   const accessToken = getAccessToken();
   if (!accessToken || !name) {
-    console.error('Missing access token or name.');
     return;
   }
 
@@ -57,24 +63,25 @@ export async function updateAvatar(name, newAvatarUrl) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Error updating avatar:', errorData);
       throw new Error('Failed to update avatar.');
     }
 
     const data = await response.json();
-    console.log('Updated Avatar Response:', data);
     return data;
   } catch (error) {
-    console.error('Error updating avatar:', error.message);
     throw error;
   }
 }
 
 /**
- * Generate HTML for an avatar with a fallback if the avatar URL is missing.
+ * Generates HTML for an avatar with a fallback if the avatar URL is missing.
  * @param {Object} bidder - The bidder object containing avatar and name.
+ * @param {Object} bidder.avatar - The avatar object containing the URL.
+ * @param {string} bidder.avatar.url - The URL of the avatar image.
+ * @param {string} bidder.name - The name of the bidder.
  * @returns {string} HTML for the avatar element.
  */
+
 export function getAvatarHTML(bidder) {
   const avatarUrl =
     bidder?.avatar?.url ||
@@ -93,10 +100,17 @@ export function getAvatarHTML(bidder) {
     `;
 }
 
+/**
+ * Updates the bio for the given user.
+ * @param {string} name - The username of the profile to update the bio for.
+ * @param {string} bio - The new bio text to set.
+ * @returns {Promise<Object>} The updated profile data.
+ * @throws {Error} If the update fails.
+ */
+
 export async function updateBio(name, bio) {
   const accessToken = getAccessToken();
   if (!accessToken || !name) {
-    console.error('Missing access token or name.');
     return;
   }
 
@@ -110,21 +124,18 @@ export async function updateBio(name, bio) {
           Authorization: `Bearer ${accessToken}`,
           'X-Noroff-API-Key': API_KEY,
         },
-        body: JSON.stringify({ bio }), // Send bio directly as a string
+        body: JSON.stringify({ bio }),
       }
     );
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Error updating bio:', errorData);
       throw new Error('Failed to update bio.');
     }
 
     const data = await response.json();
-    console.log('Updated bio Response:', data);
     return data;
   } catch (error) {
-    console.error('Error updating bio:', error.message);
     throw error;
   }
 }

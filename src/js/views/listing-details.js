@@ -17,17 +17,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
+    /**
+     * Fetches and renders the listing details.
+     * @param {string} listingId - The ID of the listing to fetch and display.
+     * @throws Will throw an error if fetching or rendering fails.
+     */
     const response = await fetchListingById(listingId);
     const listing = response.data;
-    console.log('Fetched Listing:', listing);
 
     const highestBid = calculateHighestBid(listing.bids);
 
     const endsAt = listing.endsAt ? new Date(listing.endsAt) : null;
 
-    const isClosed = endsAt && endsAt < new Date(); // Check if the listing is closed
+    const isClosed = endsAt && endsAt < new Date();
 
-    // Find the last bidder (winner if the listing is closed)
     let winner = null;
     if (isClosed && listing.bids.length > 0) {
       winner = listing.bids.reduce((latest, bid) => {
@@ -103,7 +106,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
         </div>
       `;
-
+    /**
+     * Renders the list of bidders for the current listing.
+     * @param {Array} listing.bids - The list of bids for the current listing.
+     * @param {HTMLElement} container - The container element to display the bidders.
+     */
     renderBiddersList(listing.bids, container);
 
     new Swiper('.mySwiper', {
@@ -117,12 +124,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       },
       loop: true,
     });
-
+    /**
+     * Sets up the bid form for the listing.
+     * @param {string} listingId - The ID of the listing to place a bid on.
+     * @param {number} highestBid - The current highest bid for the listing.
+     */
     if (!isClosed) {
       setupBidForm(listingId, highestBid);
     }
   } catch (error) {
-    console.error('Error fetching listing details:', error);
+    alert("Ops! Something went wrong getting the listing details. Please try again later.")
     container.innerHTML = `<p class="text-red-500">Error loading listing details: ${error.message}</p>`;
   }
 });
