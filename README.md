@@ -1,5 +1,7 @@
 # Auction Website - BidBuddy
 
+![Demo](./assets/bbreadmevid.gif)
+
 ## Description
 
 Welcome to this repo! This is **BidBuddy**; a dynamic and user-friendly auction platform where users can **list**, **bid**, and **manage listings** seamlessly. Whether you're buying vintage treasures or selling valuable collectibles, BidBuddy ensures a smooth and engaging experience. As for now, users have to register with a @stud.noroff.no mail and will be given 1000 "credits" they can use to bid with. So no real payments... Yet ;) **View and test out the website for yourself on https://js2-sp-auction-website.vercel.app/**
