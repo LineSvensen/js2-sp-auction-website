@@ -1,0 +1,139 @@
+<header class="bg-white text-Black p-4 flex items-center justify-between">
+  <!-- Logo -->
+  <div class="logo flex items-center">
+    <a href="/index.html">
+      <img
+        src="/assets/images/bidbuddyicon.png"
+        style="width: 154px; height: auto"
+        alt="Logo"
+      />
+    </a>
+  </div>
+
+  <!-- Right-side container (nav links + avatar) -->
+  <div class="flex items-center gap-4">
+    <!-- Desktop nav -->
+    <nav id="nav-links" class="hidden lg:flex items-center gap-4">
+      <a
+        href="/pages/create-listing.html"
+        class="link-style text-sm transition duration-300"
+      >
+        Create Listing
+      </a>
+
+      <a href="/index.html" class="link-style transition duration-300">
+        Home
+      </a>
+
+      <a
+        href="/pages/profile.html"
+        class="link-style transition duration-300 block lg:hidden"
+      >
+        Profile
+      </a>
+
+      <button
+        class="link-style transition duration-300"
+        id="desktopLogoutButton"
+      >
+        Log Out
+      </button>
+
+      <a href="/pages/login-register.html">
+        <button
+          id="login-register-btn-desktop"
+          class="btn-trust common-buttons-style"
+        >
+          Login/Register
+        </button>
+      </a>
+    </nav>
+
+    <!-- Avatar for desktop (placed to the right of nav links) -->
+    <a href="/pages/profile.html">
+      <img
+        id="profile-avatar-desktop"
+        src="/assets/images/default-avatar.png"
+        alt="Profile"
+        class="w-10 h-10 rounded-full object-cover hidden lg:block"
+      />
+    </a>
+
+    <!-- Avatar for mobile. hidden for desktop -->
+    <img
+      id="profile-avatar-icon-mobile"
+      src="/assets/images/default-avatar.png"
+      alt="Profile"
+      class="w-10 h-10 rounded-full object-cover lg:hidden"
+    />
+
+    <!-- Burger button (mobile only) -->
+    <div class="flex items-center gap-2 lg:hidden">
+      <button
+        id="burger-button"
+        class="text-Black focus:outline-none"
+        aria-label="Toggle Navigation"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
+  >
+    <button
+      id="close-menu"
+      class="absolute top-4 right-4 text-white text-lg focus:outline-none"
+      aria-label="Close Navigation"
+    >
+      <i class="fa-solid fa-x text-3xl pt-8 pr-8"></i>
+    </button>
+
+    <nav class="flex flex-col text-center space-y-6 text-base text-white">
+      <a href="/index.html" class="hover:text-gray-300 common-mobile-links">
+        Home
+      </a>
+      <a
+        href="/pages/profile.html"
+        class="hover:text-gray-300 common-mobile-links"
+        id="mobile-profile-link"
+      >
+        Profile
+      </a>
+      <a
+        href="/pages/create-listing.html"
+        class="hover:text-gray-300 common-mobile-links"
+      >
+        Create Listing
+      </a>
+      <a
+        href="/pages/login-register.html"
+        id="login-register-btn-mobile"
+        class="hover:text-gray-300 common-mobile-links"
+      >
+        Login/Register
+      </a>
+      <button
+        class="hover:text-gray-300 common-mobile-links hidden"
+        id="mobileLogoutButton"
+      >
+        Log Out </i>
+      </button>
+    </nav>
+  </div>
+</header>

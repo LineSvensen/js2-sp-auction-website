@@ -8,7 +8,6 @@ import { calculateHighestBid } from './bid.js';
  */
 
 export function renderProfileListings(listings, container) {
-
   container.innerHTML = '';
 
   if (!Array.isArray(listings) || listings.length === 0) {
@@ -35,7 +34,7 @@ export function renderProfileListings(listings, container) {
           <p class="text-sm mb-4">Ends: <span class="font-semibold">${new Date(listing.endsAt).toLocaleDateString()}</span></p>
           <a
               href="/pages/listing-details.html?id=${listing.id}"
-              class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 w-full block"
+              class="btn-trust common-buttons-style w-full block"
           >
               View Listing
           </a>

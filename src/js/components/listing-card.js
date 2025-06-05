@@ -13,7 +13,6 @@ export async function renderListings(listings = null) {
   if (!listingsContainer) return;
 
   try {
-
     if (!listings) {
       const response = await fetchListings();
       listings = response.data || [];
@@ -28,7 +27,6 @@ export async function renderListings(listings = null) {
     }
 
     listings.forEach((listing) => {
-
       const highestBid = calculateHighestBid(listing.bids);
 
       const listingCard = `
@@ -51,7 +49,7 @@ export async function renderListings(listings = null) {
           </p>
           <a
             href="/pages/listing-details.html?id=${listing.id}"
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center common-buttons-style"
+            class="btn-trust text-white text-center common-buttons-style"
           >
             View Listing
           </a>

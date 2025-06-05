@@ -6,7 +6,7 @@ export function getAccessToken() {
   const token = localStorage.getItem('accessToken');
 
   if (!token) {
-    alert("Something went wrong. Please check if you are logged in or registered. (Missing token)")
+    // alert("Something went wrong. Please check if you are logged in or registered. (Missing token)")
     return null;
   }
 

@@ -15,6 +15,7 @@
     />
     <title>Bidbuddy | Home</title>
     <link href="./src/css/output.css" rel="stylesheet" />
+    <link href="./src/css/input.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,109 +31,12 @@
   </head>
 
   <body class="font-poppins">
-    <header class="bg-white text-Black p-4 flex items-center justify-between">
-      <div class="logo flex items-center">
-        <a href="/index.html">
-          <img
-            src="/assets/images/bidbuddyicon.png"
-            style="width: 154px; height: auto"
-            alt="Logo"
-          />
-        </a>
-      </div>
-      <button
-        id="burger-button"
-        class="block lg:hidden text-Black focus:outline-none"
-        aria-label="Toggle Navigation"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
-        </svg>
-      </button>
-      <div
-        id="mobile-menu"
-        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
-      >
-        <button
-          id="close-menu"
-          class="absolute top-4 right-4 text-white text-lg focus:outline-none"
-          aria-label="Close Navigation"
-        >
-          <i class="fa-solid fa-x text-3xl pt-8 pr-8"></i>
-        </button>
+    <div id="navbar-placeholder"></div>
+    <script type="module">
+      import { loadNavbar } from './src/js/components/load-navbar.js';
+      loadNavbar();
+    </script>
 
-        <nav class="flex flex-col text-center space-y-6 text-base text-white">
-          <a href="/index.html" class="hover:text-gray-300 common-mobile-links"
-            >Home</a
-          >
-          <a
-            href="/pages/profile.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Profile</a
-          >
-          <a
-            href="/pages/create-listing.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Create Listing</a
-          >
-          <a
-            href="/pages/login-register.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Login/Register</a
-          >
-          <button
-            class="hover:text-gray-300 common-mobile-links"
-            id="mobileLogoutButton"
-          >
-            Log Out <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
-          </button>
-        </nav>
-      </div>
-      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
-        <a
-          href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-sm transition duration-300"
-        >
-          Create Listing
-        </a>
-        <a href="/pages/login-register.html">
-          <button
-            class="bg-CTABlue hover:bg-CTABlue-hover common-buttons-style"
-          >
-            Login/Register
-          </button>
-        </a>
-        <a
-          href="/pages/profile.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
-          <i class="fa-regular fa-user text-lg"></i>
-        </a>
-        <a
-          href="/index.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
-          <i class="fa-solid fa-house text-lg"></i>
-        </a>
-        <button
-          class="hover:text-CTABlue common-mobile-links"
-          id="desktopLogoutButton"
-        >
-          <i class="fa-solid fa-arrow-right-from-bracket text-lg"></i>
-        </button>
-      </nav>
-    </header>
     <div
       class="search-section bg-gray-100 py-4 px-4"
       id="search-section"
@@ -154,7 +58,7 @@
         />
         <button
           type="submit"
-          class="bg-CTABlue hover:bg-CTABlue-hover text-white px-4 py-2 transition duration-300 text-sm font-bold tracking-wider"
+          class="btn-trust text-white px-4 py-2 transition duration-300 text-sm font-bold tracking-wider cursor-pointer"
           id="search-button"
         >
           Search
@@ -176,7 +80,7 @@
           class="flex flex-col items-center lg:items-start text-center lg:text-left"
         >
           <h1
-            class="text-2xl lg:text-3xl font-bold leading-tight mb-4 bg-gradient-to-r from-[#6E35CC] via-[#FF2600] to-[#FFA100] bg-clip-text text-transparent"
+            class="text-2xl lg:text-3xl font-bold leading-tight mb-4 text-Black"
           >
             Bid on your dream today
           </h1>
@@ -186,7 +90,7 @@
           </h2>
           <a href="/pages/login-register.html">
             <button
-              class="bg-CTAGreen hover:bg-CTAGreen-hover py-2 px-6 mt-4 mb-4 lg:mt-6 common-buttons-style"
+              class="btn-action py-2 px-6 mt-4 mb-4 lg:mt-6 common-buttons-style"
             >
               Sign up today
             </button>

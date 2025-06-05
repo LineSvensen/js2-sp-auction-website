@@ -7,10 +7,10 @@ module.exports = {
   ],
   theme: {
     fontWeight: {
-      regular: '400', // Custom alias for normal
+      regular: '400',
       medium: '500',
       bold: '600',
-      display: '500', // Custom font weight
+      display: '500',
     },
     fontSize: {
       xs: ['14px'],
@@ -32,39 +32,6 @@ module.exports = {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
-        },
-      },
-      colors: {
-        Black: '#333333',
-        White: '#FFFFFF',
-        bgGrey: '#F9FAFB',
-        Red: {
-          DEFAULT: '#ff2600',
-          hover: '#ff5733',
-        },
-        Purple: {
-          DEFAULT: '#6e35cc',
-          hover: '#8e5edd',
-        },
-        Yellow: {
-          DEFAULT: '#ffa100',
-          hover: '#ffc233',
-        },
-        Grey: {
-          DEFAULT: '#808080',
-          hover: '#a0a0a0',
-        },
-        CTAGreen: {
-          DEFAULT: '#82c01e',
-          hover: '#a0d45a',
-        },
-        CTABlue: {
-          DEFAULT: '#1f88fe',
-          hover: '#4fa3ff',
-        },
-        CTARed: {
-          DEFAULT: '#FF2600',
-          hover: '#f04d5a',
         },
       },
     },

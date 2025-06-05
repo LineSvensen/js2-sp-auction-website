@@ -9,6 +9,7 @@
     <meta name="keywords" content="bid, bidding, auction, sell, buy, vintage, used products, worn, value, collect">
     <title>Bidbuddy | Login or Register</title>
     <link href="../src/css/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/css/input.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,93 +22,12 @@
     ></script>
     <script type="module" src="../src/js/app.js" defer></script>
   </head>
-  <body class="font-poppins bg-gray-100 min-h-screen flex flex-col">
-    <header class="bg-white text-Black p-4 flex items-center justify-between">
-      <div class="logo flex items-center">
-        <a href="/index.html">
-          <img
-            src="../assets/images/bidbuddyicon.png"
-            style="width: 154px; height: auto"
-            alt="Logo"
-          />
-        </a>
-      </div>
-      <button
-        id="burger-button"
-        class="block lg:hidden text-Black focus:outline-none"
-        aria-label="Toggle Navigation"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
-        </svg>
-      </button>
-      <div
-        id="mobile-menu"
-        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
-      >
-        <button
-          id="close-menu"
-          class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
-          aria-label="Close Navigation"
-        >
-          <i class="fa-solid fa-x text-3xl pt-8 pr-8"></i>
-        </button>
-        <nav class="flex flex-col text-center space-y-6 text-base text-white">
-          <a href="/index.html" class="hover:text-gray-300 common-mobile-links">Home</a>
-          <a href="/pages/profile.html" class="hover:text-gray-300 common-mobile-links">Profile</a>
-          <a href="/pages/create-listing.html" class="hover:text-gray-300 common-mobile-links"
-            >Create Listing</a
-          >
-          <a href="/pages/login-register.html" class="hover:text-gray-300 common-mobile-links"
-            >Login/Register</a
-          >
-          <button class="hover:text-gray-300 common-mobile-links" id="mobileLogoutButton">
-            Log Out <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
-          </button>
-        </nav>
-      </div>
-      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
-        <a
-          href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-base transition duration-300"
-        >
-          Create Listing
-        </a>
-        <a href="/pages/login-register.html">
-          <button
-            class="bg-CTABlue hover:bg-CTABlue-hover py-2 px-4 common-buttons-style"
-          >
-            Login/Register
-          </button>
-        </a>
-        <a
-          href="/pages/profile.html"
-          class="hover:text-CTABlue transition duration-300"
-        >
-          <i class="fa-regular fa-user text-lg"></i>
-        </a>
-        <a href="/index.html" class="hover:text-CTABlue transition duration-300">
-          <i class="fa-solid fa-house text-lg"></i>
-        </a>
-        <button
-          class="hover:text-CTABlue common-mobile-links"
-          id="desktopLogoutButton"
-        >
-          <i class="fa-solid fa-arrow-right-from-bracket text-lg"></i>
-        </button>
-      </nav>
-    </header>
+  <body class="font-poppins">
+    <div id="navbar-placeholder"></div>
+    <script type="module">
+      import { loadNavbar } from '../src/js/components/load-navbar.js';
+      loadNavbar();
+    </script>
 
     <main
       class="flex-grow flex flex-col items-center justify-center p-6 bg-white"
@@ -124,7 +44,7 @@
                 type="email"
                 id="login-email"
                 name="email"
-                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTABlue focus:border-CTABlue"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-purple-700 focus:border-purple-700"
                 placeholder="Enter your email"
                 required
               />
@@ -137,14 +57,15 @@
                 type="password"
                 id="login-password"
                 name="password"
-                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTABlue focus:border-CTABlue"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-purple-700 focus:border-purple-700"
                 placeholder="Enter your password"
                 required
               />
             </div>
+            <p id="login-error-msg" class="text-sm mt-2 text-red-500"></p>
             <button
               type="submit"
-              class="w-full bg-CTABlue py-2 hover:bg-CTABlue-hover common-buttons-style"
+              class="w-full btn-trust py-2 common-buttons-style"
             >
               Login
             </button>
@@ -155,7 +76,8 @@
         <hr class="border-gray-300" />
         <div>
           <h2 class="heading-h2-all-pages mb-4 text-center">Register</h2>
-          <form id="register-form" class="space-y-6">
+          <form id="register-form" class="space-y-6 w-full max-w-md mx-auto">
+
             <div>
               <label for="register-username" class="block text-sm font-medium"
                 >Username</label
@@ -164,7 +86,7 @@
                 type="text"
                 id="register-username"
                 name="username"
-                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-purple-700 focus:border-purple-700"
                 placeholder="Choose a username"
                 required
               />
@@ -177,7 +99,7 @@
                 type="email"
                 id="register-email"
                 name="email"
-                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-purple-700 focus:border-purple-700"
                 placeholder="Enter your email"
                 required
               />
@@ -190,7 +112,7 @@
                 type="password"
                 id="register-password"
                 name="password"
-                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-purple-700 focus:border-purple-700"
                 placeholder="Create a password"
                 required
               />
@@ -203,16 +125,20 @@
                 type="url"
                 id="register-avatar"
                 name="avatar"
-                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-CTAGreen focus:border-CTAGreen"
+                class="w-full border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring focus:ring-purple-700 focus:border-purple-700"
                 placeholder="https://example.com/image.jpg"
               />
               <p class="text-sm text-gray-500 mt-1">
                 Provide a valid URL for your avatar image.
               </p>
+              <p id="register-error-msg" class="text-sm mt-2 text-red-500 break-words w-full max-w-full overflow-hidden"></p>
+
+
             </div>
+          
             <button
               type="submit"
-              class="w-full bg-CTAGreen py-2 hover:bg-CTAGreen-hover common-buttons-style"
+              class="w-full btn-action py-2 common-buttons-style"
             >
               Register
             </button>

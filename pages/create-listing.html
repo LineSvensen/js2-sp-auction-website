@@ -16,6 +16,7 @@
     <title>Create a Listing</title>
     <script type="module" src="../src/js/app.js" defer></script>
     <link rel="stylesheet" href="../src/css/output.css" />
+    <link rel="stylesheet" href="../src/css/input.css" />
     <script
       type="module"
       src="../src/js/views/create-listing.js"
@@ -30,108 +31,38 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="font-poppins bg-white min-h-screen flex flex-col">
-    <header class="bg-white text-Black p-4 flex items-center justify-between">
-      <div class="logo flex items-center">
-        <a href="/index.html">
-          <img
-            src="/assets/images/bidbuddyicon.png"
-            style="width: 154px; height: auto"
-            alt="Logo"
-          />
-        </a>
-      </div>
-      <button
-        id="burger-button"
-        class="block lg:hidden text-Black focus:outline-none"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
-        </svg>
-      </button>
+  <body class="font-poppins">
+    <div id="navbar-placeholder"></div>
+    <script type="module">
+      import { loadNavbar } from '../src/js/components/load-navbar.js';
+      loadNavbar();
+    </script>
 
+    <div
+      class="container mx-auto p-6 max-w-2xl bg-white min-h-screen flex flex-col font-poppins"
+    >
       <div
-        id="mobile-menu"
-        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
+        id="unauthenticated-message"
+        class="hidden flex flex-col gap-4 text-center bg-red-50 text-red-600 p-4 rounded-lg my-6 mx-auto"
       >
-        <button
-          id="close-menu"
-          class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
-        >
-          <i class="fa-solid fa-x text-3xl pt-8 pr-8"></i>
-        </button>
-
-        <nav class="flex flex-col text-center space-y-6 text-base text-white">
-          <a href="/index.html" class="hover:text-gray-300 common-mobile-links"
-            >Home</a
-          >
-          <a
-            href="/pages/profile.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Profile</a
-          >
-          <a
-            href="/pages/create-listing.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Create Listing</a
-          >
-          <a
-            href="/pages/login-register.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Login/Register</a
-          >
-          <button
-            class="hover:text-gray-300 common-mobile-links"
-            id="mobileLogoutButton"
-          >
-            Log Out <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
-          </button>
-        </nav>
-      </div>
-
-      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
+        <p class="mb-4 font-medium text-lg">
+          You must be logged in to create a listing 😯
+        </p>
         <a
-          href="/pages/create-listing.html"
-          class="hover:text-CTABlue font-medium-plus"
+          href="/pages/login-register.html"
+          class="common-buttons-style btn-action"
         >
-          Create Listing
+          Register today
         </a>
-        <a href="/pages/login-register.html">
-          <button
-            class="bg-CTABlue hover:bg-CTABlue-hover py-2 px-4 common-buttons-style"
-          >
-            Login/Register
-          </button>
-        </a>
-        <a href="/pages/profile.html" class="hover:text-CTABlue">
-          <i class="fa-regular fa-user text-lg"></i>
-        </a>
-        <a href="/index.html" class="hover:text-CTABlue">
-          <i class="fa-solid fa-house text-lg"></i>
-        </a>
-        <button
-          class="hover:text-CTABlue common-mobile-links"
-          id="desktopLogoutButton"
+        <a
+          href="/pages/login-register.html"
+          class="common-buttons-style btn-trust"
         >
-          <i class="fa-solid fa-arrow-right-from-bracket text-lg"></i>
-        </button>
-      </nav>
-    </header>
-
-    <div class="container mx-auto p-6 max-w-2xl bg-white">
-      <h1 class="heading-h1-all-pages mb-4">Create New Listing</h1>
-      <form id="create-listing-form" class="space-y-4">
+          Log in
+        </a>
+      </div>
+      <p id="message" class="text-sm hidden"></p>
+      <form id="create-listing-form" class="hidden space-y-4">
         <div>
           <label for="title" class="block text-sm font-medium text-gray-700"
             >Title *</label
@@ -192,7 +123,7 @@
           <button
             type="button"
             id="add-media"
-            class="mt-2 bg-CTAGreen hover:bg-CTAGreen-hover px-3 py-2 common-buttons-style"
+            class="mt-2 btn-trust px-3 py-2 common-buttons-style"
           >
             <i class="fa-solid fa-plus pr-2"></i
             ><i class="fa-solid fa-images"></i>
@@ -215,7 +146,7 @@
         <div>
           <button
             type="submit"
-            class="bg-CTABlue hover:bg-CTABlue-hover px-4 py-2 common-buttons-style"
+            class="btn-action px-4 py-2 common-buttons-style"
           >
             Create Listing
           </button>

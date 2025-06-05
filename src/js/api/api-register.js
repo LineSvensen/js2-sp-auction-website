@@ -21,19 +21,14 @@ export async function registerUser(userData) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(
-        errorData.errors ? errorData.errors[0].message : 'Registration failed'
-      );
+      const errorMessage =
+        errorData.errors?.[0]?.message ||
+        errorData.message ||
+        'Registration failed. Please check your info.';
+      throw new Error(errorMessage);
     }
 
     const data = await response.json();
-
-    if (data.data.accessToken && data.data.name) {
-      localStorage.setItem('accessToken', data.data.accessToken);
-      localStorage.setItem('name', data.data.name);
-    } else {
-      alert("Ops! Something went wrong. Try again later.")
-    }
 
     return data;
   } catch (error) {

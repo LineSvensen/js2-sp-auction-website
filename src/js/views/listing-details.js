@@ -97,10 +97,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                   />
                   <button
                     type="submit"
-                    class="bg-CTAGreen common-buttons-style mt-2 hover:bg-CTAGreen-hover"
+                    class="btn-trust common-buttons-style mt-2"
                   >
                     Place Bid
                   </button>
+                  <p id="bid-error-msg" class="text-red-500 mt-2 text-sm"></p>
                 </form>`
               : ''
           }
@@ -133,7 +134,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       setupBidForm(listingId, highestBid);
     }
   } catch (error) {
-    alert("Ops! Something went wrong getting the listing details. Please try again later.")
+    alert(
+      'Ops! Something went wrong getting the listing details. Please try again later.'
+    );
     container.innerHTML = `<p class="text-red-500">Error loading listing details: ${error.message}</p>`;
   }
 });

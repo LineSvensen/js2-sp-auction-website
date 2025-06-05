@@ -90,7 +90,7 @@ function editDeletePageListings(listings = null) {
       <div class="mt-4 flex space-x-2">
         <a
             href="/pages/listing-details.html?id=${listing.id}"
-            class="bg-CTABlue hover:bg-CTABlue-hover text-white text-center common-buttons-style"
+            class="btn-blue text-white text-center common-buttons-style"
             >
             View Listing
         </a>
@@ -130,7 +130,7 @@ function setupEditAndDeleteButtons(listings) {
           await deleteListing(listingId);
           loadUserListings();
         } catch (error) {
-          alert("Ops. Could not delete listing. Try again later.")
+          alert('Ops. Could not delete listing. Try again later.');
         }
       }
     });
@@ -208,7 +208,7 @@ function openEditModal(listing) {
       modal.classList.add('hidden');
       loadUserListings();
     } catch (error) {
-      alert("Ops! Could not update listing. Try again later.")
+      alert('Ops! Could not update listing. Try again later.');
     }
   };
 }
@@ -234,7 +234,9 @@ async function loadUserListings() {
     const listings = await fetchActiveCreatedListings();
     editDeletePageListings(listings);
   } catch (error) {
-    alert("There was an error with showing your listings. Please try again later.")
+    alert(
+      'There was an error with showing your listings. Please try again later.'
+    );
     const container = document.getElementById('user-listings-container');
     container.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
   }

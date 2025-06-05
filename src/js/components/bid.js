@@ -9,29 +9,40 @@ import { getAvatarHTML } from './avatar.js';
 
 export function setupBidForm(listingId, highestBid) {
   const bidForm = document.getElementById('place-bid-form');
+  const errorMsg = document.getElementById('bid-error-msg');
 
   bidForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    errorMsg.textContent = ''; // Clear any previous message
+
     const bidAmount = parseInt(document.getElementById('bid-amount').value, 10);
+    const token = localStorage.getItem('accessToken');
+
+    if (!token) {
+      errorMsg.textContent = 'You must be logged in to place a bid.';
+      return;
+    }
 
     if (isNaN(bidAmount)) {
-      alert('Please enter a valid bid amount.');
+      errorMsg.textContent = 'Please enter a valid bid amount.';
       return;
     }
 
     if (bidAmount <= highestBid) {
-      alert('Your bid must be higher than the current highest bid.');
+      errorMsg.textContent =
+        'Your bid must be higher than the current highest bid.';
       return;
     }
 
     try {
       const result = await placeBid(listingId, bidAmount);
       if (result) {
-        alert('Bid placed successfully!');
-        window.location.reload();
+        window.location.reload(); // or display a success message if preferred
       }
     } catch (error) {
-      alert(error.message || 'Failed to place bid. Please try again.');
+      // If logged in but something else went wrong (e.g., credits too low)
+      errorMsg.textContent =
+        error.message || 'Failed to place bid. Please try again.';
     }
   });
 }

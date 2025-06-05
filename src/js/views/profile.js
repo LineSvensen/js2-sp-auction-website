@@ -23,7 +23,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="p-4 flex flex-col items-start">
         <h1 id="profile-welcome" class="heading-h1-all-pages pb-8">Welcome, ${name}!</h1>
         <div class="flex flex-row">
-          <img id="profile-avatar" title="Avatar" class="small-avatar" src="${avatarUrl}" alt="Avatar">
+          <img
+            id="profile-avatar"
+            src="${avatarUrl}"
+            alt="Avatar"
+            class="small-avatar"
+            onerror="this.src='https://dummyimage.com/100x100/cccccc/ffffff&text=Image+Not+Found'"
+          />
           <button type="button" title="Edit avatar" id="show-update-avatar-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md ">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
@@ -41,12 +47,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           >
             Update Avatar
           </button>
+          <p id="avatar-feedback" class="text-sm mt-2 text-red-500 break-words max-w-full"></p>
         </form>
+
         <div class="flex flex-direction: row;">
-            <p id="profile-bio" class="py-4 text-lg text-center">Bio: <b>${bio}</b></p>
-            <button type="button" title="Edit bio" id="show-update-bio-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md">
-                <i class="fa-solid fa-pen-to-square"></i>
-            </button>
+          <p id="profile-bio" class="py-4 text-lg text-center">Bio: <b>${bio}</b></p>
+          <button type="button" title="Edit bio" id="show-update-bio-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md">
+              <i class="fa-solid fa-pen-to-square"></i>
+          </button>
         </div>    
         <form id="update-bio-form" style="display: none; margin-top: 10px;">
           <input 
@@ -61,21 +69,19 @@ document.addEventListener('DOMContentLoaded', async () => {
           >
             Update Bio
           </button>
+          <p id="bio-feedback" class="text-sm mt-2 text-red-500"></p>
         </form>
-            <p class="p-1">Username: <b>${name}</b></p>
-            <p class="p-1">Your total credits: <b>${credits}</b></p>
-            <p class="p-1">Your wins: <b>${wins}</b></p>
-            <p class="p-1">Your created listings: <b>${listings}</b></p>  
+
+        <p class="p-1">Username: <b>${name}</b></p>
+        <p class="p-1">Your total credits: <b>${credits}</b></p>
+        <p class="p-1">Your wins: <b>${wins}</b></p>
+        <p class="p-1">Your created listings: <b>${listings}</b></p>  
       </div>
     `;
 
     const showUpdateAvatarFormButton = document.getElementById(
       'show-update-avatar-form'
     );
-    /**
-     * Event listener for updating the avatar.
-     * @param {Event} event - The event object from the form submission.
-     */
     const updateAvatarForm = document.getElementById('update-avatar-form');
 
     showUpdateAvatarFormButton.addEventListener('click', () => {
@@ -88,19 +94,25 @@ document.addEventListener('DOMContentLoaded', async () => {
       const newAvatarUrl = document
         .getElementById('new-avatar-url')
         .value.trim();
+      const avatarFeedback = document.getElementById('avatar-feedback');
+      avatarFeedback.textContent = ''; // clear previous
 
       if (!newAvatarUrl) {
-        alert('Please enter a valid avatar URL.');
+        avatarFeedback.textContent = 'Please enter a valid avatar URL.';
         return;
       }
 
       try {
         await updateAvatar(name, newAvatarUrl);
-        alert('Avatar updated successfully!');
         document.getElementById('profile-avatar').src = newAvatarUrl;
+        avatarFeedback.classList.remove('text-red-500');
+        avatarFeedback.classList.add('text-green-600');
+        avatarFeedback.textContent = 'Avatar updated successfully!';
         updateAvatarForm.style.display = 'none';
       } catch (error) {
-        alert('Failed to update avatar. Please try again.');
+        avatarFeedback.classList.add('text-red-500');
+        avatarFeedback.textContent =
+          'Failed to update avatar. Please try again.';
       }
     });
 
@@ -114,30 +126,31 @@ document.addEventListener('DOMContentLoaded', async () => {
       updateBioForm.style.display =
         updateBioForm.style.display === 'none' ? 'block' : 'none';
     });
-    /**
-     * Event listener for updating the bio.
-     * @param {Event} event - The event object from the form submission.
-     */
+
     updateBioForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const newBioText = document.getElementById('new-bio-text').value.trim();
+      const bioFeedback = document.getElementById('bio-feedback');
+      bioFeedback.textContent = ''; // clear previous
 
       if (!newBioText) {
-        alert('Please enter bio text.');
+        bioFeedback.textContent = 'Please enter bio text.';
         return;
       }
 
       try {
         await updateBio(name, newBioText);
-        alert('Bio updated successfully!');
-        profileBio.textContent = newBioText;
+        profileBio.innerHTML = `Bio: <b>${newBioText}</b>`;
+        bioFeedback.classList.remove('text-red-500');
+        bioFeedback.classList.add('text-green-600');
+        bioFeedback.textContent = 'Bio updated successfully!';
         updateBioForm.style.display = 'none';
       } catch (error) {
-        alert('Failed to update bio. Please try again.');
+        bioFeedback.classList.add('text-red-500');
+        bioFeedback.textContent = 'Failed to update bio. Please try again.';
       }
     });
   } catch (error) {
-    alert("Ops. Something went wrong loading the profile. Try again later.")
     profileContainer.innerHTML = `<p class="text-red-500">Error loading profile: ${error.message}</p>`;
   }
 });

@@ -21,6 +21,7 @@
     />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <link rel="stylesheet" href="../src/css/output.css" />
+    <link rel="stylesheet" href="../src/css/input.css" />
     <script type="module" src="../src/js/views/profile.js" defer></script>
     <script type="module" src="../src/js/components/tabs.js" defer></script>
     <link
@@ -32,107 +33,14 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="font-poppins bg-white min-h-screen flex flex-col">
-    <header class="bg-white text-Black p-4 flex items-center justify-between">
-      <div class="logo flex items-center">
-        <a href="/index.html">
-          <img
-            src="/assets/images/bidbuddyicon.png"
-            style="width: 154px; height: auto"
-            alt="Logo"
-          />
-        </a>
-      </div>
-      <button
-        id="burger-button"
-        class="block lg:hidden text-Black focus:outline-none"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
-        </svg>
-      </button>
-
-      <div
-        id="mobile-menu"
-        class="hidden fixed top-0 left-0 w-full h-full bg-Purple bg-opacity-95 z-50 flex flex-col items-center justify-center"
-      >
-        <button
-          id="close-menu"
-          class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
-        >
-          <i class="fa-solid fa-x text-3xl pt-8 pr-8"></i>
-        </button>
-
-        <nav class="flex flex-col text-center space-y-6 text-base text-white">
-          <a href="/index.html" class="hover:text-gray-300 common-mobile-links"
-            >Home</a
-          >
-          <a
-            href="/pages/profile.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Profile</a
-          >
-          <a
-            href="/pages/create-listing.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Create Listing</a
-          >
-          <a
-            href="/pages/login-register.html"
-            class="hover:text-gray-300 common-mobile-links"
-            >Login/Register</a
-          >
-          <button
-            class="hover:text-gray-300 common-mobile-links"
-            id="mobileLogoutButton"
-          >
-            Log Out <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
-          </button>
-        </nav>
-      </div>
-
-      <nav id="nav-links" class="hidden lg:flex items-center space-x-4">
-        <a
-          href="/pages/create-listing.html"
-          class="hover:text-CTABlue text-sm font-medium-plus"
-        >
-          Create Listing
-        </a>
-        <a href="/pages/login-register.html">
-          <button
-            class="bg-CTABlue hover:bg-CTABlue-hover py-2 px-4 common-buttons-style"
-          >
-            Login/Register
-          </button>
-        </a>
-        <a href="/pages/profile.html" class="hover:text-CTABlue">
-          <i class="fa-regular fa-user text-lg"></i>
-        </a>
-        <a href="/index.html" class="hover:text-CTABlue">
-          <i class="fa-solid fa-house text-lg"></i>
-        </a>
-        <button
-          class="hover:text-CTABlue common-mobile-links"
-          id="desktopLogoutButton"
-        >
-          <i class="fa-solid fa-arrow-right-from-bracket text-lg"></i>
-        </button>
-      </nav>
-    </header>
+  <body class="font-poppins">
+    <div id="navbar-placeholder"></div>
+    <script type="module">
+      import { loadNavbar } from '../src/js/components/load-navbar.js';
+      loadNavbar();
+    </script>
 
     <main class="container mx-auto px-4 max-w-6xl">
-
       <section
         id="profile-container"
         class="max-w-2xl mx-auto bg-white shadow-md p-1 rounded-lg"
@@ -142,24 +50,18 @@
 
       <div class="flex justify-center flex-col items-center mt-6 gap-4">
         <a href="create-listing.html">
-          <button
-            class="bg-CTAGreen text-white font-medium py-2 px-4 rounded-lg hover:bg-CTAGreen-hover shadow-md flex items-center"
-            id="create-btn"
-          >
+          <button class="btn-action common-buttons-style" id="create-btn">
             <i class="fa-solid fa-plus pr-2 text-lg"></i>Create Listing
           </button>
         </a>
         <a href="./edit-delete.html">
-          <button
-            class="border-2 text-sm py-2 px-4 border-CTAGreen text-CTAGreen font-medium px-6 py-2 rounded-lg hover:border-CTAGreen-hover hover:text-CTAGreen-hover shadow-md flex items-center justify-center"
-          >
+          <button class="btn-trust common-buttons-style">
             Edit/Delete listings
           </button>
         </a>
       </div>
 
       <div class="tabs-container flex flex-col items-center mt-8">
-
         <div class="tabs flex border-b border-gray-300 justify-center">
           <button class="tab active font-bold" data-tab="created-listings">
             <i class="fa-solid fa-caret-down pr-2"></i> My Created Listings
@@ -239,7 +141,6 @@
       class="fixed inset-0 bg-white z-50 flex items-center justify-center"
     >
       <div class="loader-spinner">
-
         <div class="circle red"></div>
         <div class="circle purple"></div>
         <div class="circle orange"></div>

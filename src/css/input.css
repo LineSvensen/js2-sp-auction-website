@@ -8,9 +8,9 @@
   }
 }
 
-button {
+/* button {
   background-color: transparent;
-}
+} */
 
 .small-avatar {
   width: 72px !important;
@@ -71,7 +71,7 @@ button {
 }
 
 #p-card-w {
-  max-width:300px;
+  max-width: 300px;
 }
 
 .tabs-container {
@@ -94,10 +94,7 @@ button {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -106,10 +103,7 @@ button {
 #lost-bids-content {
   display: grid;
   place-content: center;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(100%, 1fr)
-  );
+  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   gap: 1.5rem;
 }
 
@@ -117,10 +111,7 @@ button {
   #active-bids-content,
   #won-bids-content,
   #lost-bids-content {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    );
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -157,7 +148,7 @@ button {
 }
 
 .bg-bgGrey {
-  background-color: #f9fafb; 
+  background-color: #f9fafb;
   padding: 16px 0;
 }
 
@@ -197,6 +188,58 @@ button {
   padding: 8px 16px;
 }
 
+.link-style {
+  color: #333333;
+}
+
+.link-style:hover {
+  color: #6e35cc;
+}
+
+.btn-trust {
+  background-color: #6e35cc;
+}
+
+.btn-trust:hover {
+  background-color: #542999;
+}
+
+.btn-action {
+  background-color: #e62e00;
+}
+
+.btn-action:hover {
+  background-color: #d12a00;
+}
+
+.btn-trust-secondary {
+  background-color: #ffffff;
+  border: 1px solid #6e35cc;
+  color: #6e35cc;
+}
+
+.btn-trust-secondary:hover {
+  background-color: #ffffff;
+  border: 1px solid #542999;
+  color: #542999;
+}
+
+.btn-destructive {
+  background-color: #333333;
+}
+
+.btn-destructive:hover {
+  background-color: #1e1e1e;
+}
+
+/* .btn-red {
+  background-color: #FF2600;
+}
+
+.btn-red:hover {
+  background-color: #9e353e; */
+/* } */
+
 .font-medium-plus {
   font-weight: 500 !important;
 }
@@ -214,7 +257,7 @@ i {
 .details-img-style {
   width: 100%;
   aspect-ratio: 3 / 2;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 8px;
 }
 
