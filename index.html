@@ -69,6 +69,15 @@
         class="text-red-500 text-sm text-center hidden"
       ></div>
     </div>
+    <section class="lg:hidden">
+      <div class="w-full h-auto">
+        <img
+          src="assets/images/tab-mob-banner.png"
+          alt="BidBuddy mobile banner"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+    </section>
     <section
       id="hero-banner"
       class="relative shadow-lg bg-bgGrey h-auto lg:h-96 text-center lg:text-left flex flex-col lg:flex-row items-center lg:justify-between py-8"
@@ -80,16 +89,18 @@
           class="flex flex-col items-center lg:items-start text-center lg:text-left"
         >
           <h1
+            id="hero-heading"
             class="text-2xl lg:text-3xl font-bold leading-tight mb-4 text-Black"
           >
             Bid on your dream today
           </h1>
-          <h2 class="text-lg text-gray-700">
+          <h2 id="hero-subheading" class="text-lg text-gray-700">
             Discover a world full of hidden treasures. Join today and get
             <b>1000 free credits</b> to use.
           </h2>
-          <a href="/pages/login-register.html">
+          <a id="hero-button-link" href="/pages/login-register.html">
             <button
+              id="hero-button"
               class="btn-action py-2 px-6 mt-4 mb-4 lg:mt-6 common-buttons-style"
             >
               Sign up today
@@ -97,10 +108,10 @@
           </a>
         </div>
         <div
-          class="flex justify-center align-center items-center relative mb-4 lg:pt-4"
+          class="lg:flex justify-center items-center relative mb-4 lg:pt-4 hidden"
         >
           <div
-            class="w-80 lg:w-80 h-80 lg:h-80 flex justify-center rounded-full bg-gradient-to-r from-[#6E35CC] via-[#FF2600] to-[#FFA100] shadow-md absolute"
+            class="w-80 h-80 flex justify-center rounded-full bg-gradient-to-r from-[#6E35CC] via-[#FF2600] to-[#FFA100] shadow-md absolute"
           ></div>
           <img
             src="assets/images/hero-img-products.png"
@@ -110,6 +121,19 @@
         </div>
       </div>
     </section>
+
+    <script>
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        document.getElementById('hero-heading').textContent = 'Feeling lucky?';
+        document.getElementById('hero-subheading').textContent =
+          'Check out listings that are ending soon.';
+        document.getElementById('hero-button').textContent = 'Go to listings';
+        document.getElementById('hero-button-link').href =
+          '/pages/explore.html';
+      }
+    </script>
+
     <section id="listings-section" class="bg-white pt-4 pb-8">
       <div class="container mx-auto px-6 lg:px-16">
         <h2 class="text-xl mb-6 mt-4">All listings</h2>
@@ -117,6 +141,26 @@
           id="listings-container"
           class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         ></div>
+        <div
+          class="flex justify-center mt-6 gap-4 items-center"
+          id="home-pagination"
+        >
+          <button
+            id="home-prev-page"
+            class="btn-trust common-buttons-style px-4 py-2 rounded transparent-disabled"
+          >
+            Previous
+          </button>
+          <span id="home-page-indicator" class="text-sm font-medium"
+            >Page 1</span
+          >
+          <button
+            id="home-next-page"
+            class="btn-trust px-4 py-2 common-buttons-style rounded transparent-disabled"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </section>
     <footer class="bg-gray-100">

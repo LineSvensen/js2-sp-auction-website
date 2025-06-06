@@ -1,6 +1,17 @@
 import { fetchListingsBySearch } from './api/api-listing.js';
 import { renderListings } from './components/listing-card.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+  const signupCTA = document.getElementById('signup-cta');
+  const token = localStorage.getItem('accessToken');
+
+  if (token && signupCTA) {
+    signupCTA.style.display = 'none';
+  }
+});
+
+
+
 /**
  * initializes the search function once the DOM is loaded
  */
@@ -17,10 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const searchInput = document.getElementById('search-input');
 
-
-/** handles search form submission event.
- * @param {Event} event - submit event triggered on the search form
- */
+  /** handles search form submission event.
+   * @param {Event} event - submit event triggered on the search form
+   */
   searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     /**
@@ -51,9 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       /**
        * alert shows if the search fails
        */
-      alert("There was an error with the search. Please try again later.")
+      alert('There was an error with the search. Please try again later.');
     }
   });
 });
-
-

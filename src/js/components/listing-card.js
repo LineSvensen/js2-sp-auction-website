@@ -3,13 +3,10 @@ import { calculateHighestBid } from './bid.js';
 
 /**
  * Renders listings into the provided container.
- * If no listings are provided, it fetches the listings dynamically.
- *
- * @param {Array|null} listings - Optional. An array of listing objects to render. If null, listings are fetched dynamically.
  */
-
-export async function renderListings(listings = null) {
-  const listingsContainer = document.getElementById('listings-container');
+export async function renderListings(listings = null, container = null) {
+  const listingsContainer =
+    container || document.getElementById('listings-container');
   if (!listingsContainer) return;
 
   try {
@@ -28,25 +25,25 @@ export async function renderListings(listings = null) {
 
     listings.forEach((listing) => {
       const highestBid = calculateHighestBid(listing.bids);
+      const endsToday =
+        new Date(listing.endsAt).toDateString() === new Date().toDateString();
+      const isHot = highestBid >= 500;
 
       const listingCard = `
         <div class="border p-4 rounded shadow-lg flex flex-col text-Black bg-white">
-          <img
-            src="${listing.media && listing.media[0] ? listing.media[0].url : 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
-            alt="${listing.title}"
-            onerror="this.onerror=null; this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=Error+showing+image';"
-            class="w-full h-48 object-cover mb-4 rounded-md border-2 border-bgGrey"
-          />
+          <div class="relative mb-4">
+            <img
+              src="${listing.media?.[0]?.url || 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
+              alt="${listing.title}"
+              onerror="this.onerror=null; this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=Error+showing+image';"
+              class="w-full h-48 object-cover rounded-md border-2 border-bgGrey"
+            />
+       
+          </div>
           <h3 class="heading-h3-cards pb-2 truncate-title-ellipsis">${listing.title}</h3>
-          <p class="text-sm mb-2">
-            Number of Bids: <span class="font-bold">${listing._count?.bids || 0}</span>
-          </p>
-          <p class="text-sm mb-2">
-            Highest Bid: <span class="font-bold">${highestBid} Credits</span>
-          </p>
-          <p class="text-sm mb-4">
-            Ends: <span class="font-bold">${new Date(listing.endsAt).toLocaleDateString()}</span>
-          </p>
+          <p class="text-sm mb-2">Number of Bids: <span class="font-bold">${listing._count?.bids || 0}</span></p>
+          <p class="text-sm mb-2">Highest Bid: <span class="font-bold">${highestBid} Credits</span></p>
+          <p class="text-sm mb-4">Ends: <span class="font-bold">${new Date(listing.endsAt).toLocaleDateString()}</span></p>
           <a
             href="/pages/listing-details.html?id=${listing.id}"
             class="btn-trust text-white text-center common-buttons-style"
@@ -55,6 +52,7 @@ export async function renderListings(listings = null) {
           </a>
         </div>
       `;
+
       listingsContainer.innerHTML += listingCard;
     });
   } catch (error) {
@@ -62,4 +60,59 @@ export async function renderListings(listings = null) {
   }
 }
 
-renderListings();
+/**
+ * Render listings with pagination for the homepage.
+ */
+export async function renderHomepageListings() {
+  const listingContainer = document.getElementById('listings-container');
+  const prevBtn = document.getElementById('home-prev-page');
+  const nextBtn = document.getElementById('home-next-page');
+  const pageIndicator = document.getElementById('home-page-indicator');
+
+  let currentPage = 1;
+  const limit = 6;
+
+  async function fetchAndRender() {
+    try {
+      listingContainer.innerHTML = '<p>Loading...</p>';
+      const response = await fetch(
+        `https://v2.api.noroff.dev/auction/listings?_active=true&_bids=true&limit=100&page=1`
+      );
+      const data = await response.json();
+      let listings = data.data;
+
+      // ✅ Sort from newest to oldest
+      listings.sort((a, b) => new Date(b.created) - new Date(a.created));
+
+      const paginated = listings.slice(
+        (currentPage - 1) * limit,
+        currentPage * limit
+      );
+
+      renderListings(paginated, listingContainer);
+
+      const totalPages = Math.ceil(listings.length / limit);
+      pageIndicator.textContent = `Page ${currentPage} / ${totalPages}`;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage >= totalPages;
+    } catch (err) {
+      listingContainer.innerHTML =
+        '<p class="text-red-500">Error loading listings</p>';
+    }
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      fetchAndRender();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentPage++;
+    fetchAndRender();
+  });
+
+  // ✅ Run initially
+  fetchAndRender();
+}

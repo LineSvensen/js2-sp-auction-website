@@ -12,6 +12,21 @@
   background-color: transparent;
 } */
 
+.transparent-disabled:disabled {
+  background-color: transparent !important;
+  color: #9ca3af; /* Tailwind's gray-400 */
+  cursor: default;
+  opacity: 0.6;
+}
+
+.truncate-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .small-avatar {
   width: 72px !important;
   height: 72px !important;
@@ -221,7 +236,7 @@
 .btn-trust-secondary:hover {
   background-color: #ffffff;
   border: 1px solid #542999;
-  color: #542999;
+  color: #3f1e73;
 }
 
 .btn-destructive {

@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-
       tabs.forEach((t) => t.classList.remove('active'));
       document
         .querySelectorAll('.tab-panel')
@@ -93,8 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       activeMainTab = tab;
       activeSubTab = null;
+
+      // 💡 Automatically trigger sub-tab based on selected tab
+      if (tab.dataset.tab === 'placed-bids') {
+        document.querySelector('[data-sub-tab="active-bids"]')?.click();
+      } else if (tab.dataset.tab === 'created-listings') {
+        document.querySelector('[data-sub-tab="active-created"]')?.click();
+      }
     });
   });
+
   /**
    * Adds event listeners to sub-tab elements.
    *
@@ -105,4 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
       loadTabContent(subTab);
     });
   });
+  const defaultActiveTab = document.querySelector(
+    '[data-sub-tab="active-created"]'
+  );
+  if (defaultActiveTab) {
+    defaultActiveTab.click();
+  }
 });

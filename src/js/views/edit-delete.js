@@ -90,12 +90,12 @@ function editDeletePageListings(listings = null) {
       <div class="mt-4 flex space-x-2">
         <a
             href="/pages/listing-details.html?id=${listing.id}"
-            class="btn-blue text-white text-center common-buttons-style"
+            class="btn-trust text-white text-center common-buttons-style"
             >
             View Listing
         </a>
-        <button class="bg-CTAGreen hover:bg-CTAGreen-hover common-buttons-style font-medium edit-button" data-id="${listing.id}">Edit listing</button>
-        <button class="bg-Red hover:bg-Red-hover common-buttons-style delete-button" data-id="${listing.id}"><i class="fa-solid fa-trash-can text-base"></i></button>
+        <button class="btn-trust-secondary common-buttons-style font-medium edit-button" data-id="${listing.id}">Edit listing</button>
+        <button class="btn-destructive common-buttons-style delete-button" data-id="${listing.id}"><i class="fa-solid fa-trash-can text-base"></i></button>
       
       </div>
     `;

@@ -1,10 +1,14 @@
 import { initBurgerMenu } from './components/burger-menu.js';
+import {
+  renderListings,
+  renderHomepageListings,
+} from './components/listing-card.js';
 import { logoutUser } from './components/logout.js';
 import {
   initializeLoginForm,
   initializeRegisterForm,
 } from './views/login-register.js';
-import { renderListings } from './components/listing-card.js';
+
 import { setupSearch } from './components/search.js';
 import { validateAndCleanLocalStorage } from './utilities/cleanLocalStorage.js';
 
@@ -53,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      * @async
      * @function renderListings
      */
-    await renderListings();
+    await renderHomepageListings();
 
     /**
      * sets up the search functionality.
@@ -68,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     logoutUser();
   } catch (error) {
     /**
-     * logs error if any durin initialization 
+     * logs error if any durin initialization
      * @param {Error} error - the error object
      */
   } finally {
