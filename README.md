@@ -1,6 +1,6 @@
 # Auction Website - BidBuddy
 
-![Demo](./assets/images/bbreadmevid.gif)
+![Demo](./assets/images/bbgifreadme.gif)
 
 ## Description 🖊️
 
