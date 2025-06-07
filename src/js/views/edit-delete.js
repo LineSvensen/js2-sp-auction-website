@@ -158,7 +158,7 @@ function openEditModal(listing) {
       mediaGroup.innerHTML = `
           <input type="url" value="${mediaItem.url}" placeholder="Image URL" class="block w-full border rounded p-2 media-url" />
           <input type="text" value="${mediaItem.alt || ''}" placeholder="Alt Text" class="block w-full border rounded p-2 media-alt" />
-          <button type="button" class="remove-media bg-CTARed hover:bg-CTARed-hover text-white px-3 py-2 rounded">X</button>
+          <button type="button" class="remove-media btn-destructive common-buttons-style text-white px-3 py-2 rounded">X</button>
         `;
       mediaContainer.appendChild(mediaGroup);
 
