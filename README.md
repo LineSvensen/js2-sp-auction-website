@@ -1,6 +1,8 @@
 # Auction Website - BidBuddy
 
-![Demo](./assets/images/bbgifreadme.gif)
+<p align="center">
+  <img src="./assets/images/bbgifreadme.gif" alt="Demo" width="300"/>
+</p>
 
 ## Description 🖊️
 
