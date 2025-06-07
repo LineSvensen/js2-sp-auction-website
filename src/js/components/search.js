@@ -19,7 +19,16 @@ export async function setupSearch() {
   searchButton.addEventListener('click', async () => {
     const query = searchInput.value.trim();
     if (!query) {
-      alert('Please enter a search term.');
+      Toastify({
+        text: 'Something went wrong. Please try again later.',
+        duration: 4000,
+        close: true,
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: '#e62e00',
+        stopOnFocus: true,
+      }).showToast();
+
       return;
     }
 

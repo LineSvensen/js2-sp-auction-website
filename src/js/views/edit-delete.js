@@ -28,7 +28,15 @@ async function deleteListing(listingId) {
     throw new Error(`Failed to delete listing. Status: ${response.status}`);
   }
 
-  alert('Listing deleted successfully.');
+  Toastify({
+    text: 'Listing deleted',
+    duration: 4000,
+    close: true,
+    gravity: 'top',
+    position: 'right',
+    backgroundColor: '#209e09',
+    stopOnFocus: true,
+  }).showToast();
 }
 
 /**
@@ -50,7 +58,15 @@ async function updateListing(listingId, updatedData) {
     throw new Error(`Failed to update listing. Status: ${response.status}`);
   }
 
-  alert('Listing updated successfully.');
+  Toastify({
+    text: 'Listing updated!',
+    duration: 4000,
+    close: true,
+    gravity: 'top',
+    position: 'right',
+    backgroundColor: '#209e09',
+    stopOnFocus: true,
+  }).showToast();
 }
 
 /**
@@ -130,7 +146,15 @@ function setupEditAndDeleteButtons(listings) {
           await deleteListing(listingId);
           loadUserListings();
         } catch (error) {
-          alert('Ops. Could not delete listing. Try again later.');
+          Toastify({
+            text: 'Ops! Could not delete listing. Try again later.',
+            duration: 4000,
+            close: true,
+            gravity: 'top',
+            position: 'right',
+            backgroundColor: '#e62e00',
+            stopOnFocus: true,
+          }).showToast();
         }
       }
     });
@@ -208,7 +232,15 @@ function openEditModal(listing) {
       modal.classList.add('hidden');
       loadUserListings();
     } catch (error) {
-      alert('Ops! Could not update listing. Try again later.');
+      Toastify({
+        text: 'Ops! Could not update listing. Try again later.',
+        duration: 4000,
+        close: true,
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: '#e62e00',
+        stopOnFocus: true,
+      }).showToast();
     }
   };
 }
@@ -234,9 +266,16 @@ async function loadUserListings() {
     const listings = await fetchActiveCreatedListings();
     editDeletePageListings(listings);
   } catch (error) {
-    alert(
-      'There was an error with showing your listings. Please try again later.'
-    );
+    Toastify({
+      text: 'Ops! There was an error with showing the listings. Please try again later.',
+      duration: 4000,
+      close: true,
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: '#e62e00',
+      stopOnFocus: true,
+    }).showToast();
+
     const container = document.getElementById('user-listings-container');
     container.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
   }

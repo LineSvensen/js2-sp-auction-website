@@ -25,20 +25,23 @@ export async function renderListings(listings = null, container = null) {
 
     listings.forEach((listing) => {
       const highestBid = calculateHighestBid(listing.bids);
-      const endsToday =
-        new Date(listing.endsAt).toDateString() === new Date().toDateString();
-      const isHot = highestBid >= 500;
+      const timeRemaining = new Date(listing.endsAt) - new Date();
+      const daysRemaining = timeRemaining / (1000 * 60 * 60 * 24);
+      const endsSoon = daysRemaining <= 5;
+
+      const isHot = (listing._count?.bids || 0) > 10;
 
       const listingCard = `
         <div class="border p-4 rounded shadow-lg flex flex-col text-Black bg-white">
           <div class="relative mb-4">
-            <img
-              src="${listing.media?.[0]?.url || 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
-              alt="${listing.title}"
-              onerror="this.onerror=null; this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=Error+showing+image';"
-              class="w-full h-48 object-cover rounded-md border-2 border-bgGrey"
-            />
-       
+            <a href="/pages/listing-details.html?id=${listing.id}">
+              <img
+                src="${listing.media?.[0]?.url || 'https://dummyimage.com/500x500/cccccc/ffffff&text=No+image+added'}"
+                alt="${listing.title}"
+                onerror="this.onerror=null; this.src='https://dummyimage.com/500x500/cccccc/ffffff&text=Error+showing+image';"
+                class="w-full h-48 object-cover rounded-md border-2 border-bgGrey"
+              />
+            </a>
           </div>
           <h3 class="heading-h3-cards pb-2 truncate-title-ellipsis">${listing.title}</h3>
           <p class="text-sm mb-2">Number of Bids: <span class="font-bold">${listing._count?.bids || 0}</span></p>
@@ -81,7 +84,6 @@ export async function renderHomepageListings() {
       const data = await response.json();
       let listings = data.data;
 
-      // ✅ Sort from newest to oldest
       listings.sort((a, b) => new Date(b.created) - new Date(a.created));
 
       const paginated = listings.slice(
@@ -113,6 +115,5 @@ export async function renderHomepageListings() {
     fetchAndRender();
   });
 
-  // ✅ Run initially
   fetchAndRender();
 }

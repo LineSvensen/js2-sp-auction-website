@@ -19,7 +19,7 @@ export function initializeLoginForm() {
     try {
       const userData = await loginUser(email, password);
 
-      // ✅ Show loader instead of text
+      
       document.getElementById('loader').style.display = 'flex';
 
       setTimeout(() => {
@@ -58,19 +58,19 @@ export function initializeRegisterForm() {
     try {
       await registerUser(userData);
 
-      // ✅ Confetti here!
+      
       confetti({
         particleCount: 120,
         spread: 90,
         origin: { y: 0.6 },
       });
 
-      // ✅ Success styling
+      
       registerErrorMsg.classList.add('text-green-600');
       registerErrorMsg.textContent =
         '🎉 Registration successful! You can now log in below.';
 
-      // ✅ Autofill login form
+      
       document.getElementById('login-email').value = email;
       document.getElementById('login-password').value = password;
     } catch (error) {

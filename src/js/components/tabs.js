@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(data) || data.length === 0) {
         container.innerHTML = `<p class="text-center text-gray-500 mb-8 mt-4">No results found :-/</p>`;
       } else {
-        renderProfileListings(data, container);
+        renderProfileListings(data, container, false);
       }
     } catch (error) {
       container.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
       activeMainTab = tab;
       activeSubTab = null;
 
-      // 💡 Automatically trigger sub-tab based on selected tab
       if (tab.dataset.tab === 'placed-bids') {
         document.querySelector('[data-sub-tab="active-bids"]')?.click();
       } else if (tab.dataset.tab === 'created-listings') {

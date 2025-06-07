@@ -8,10 +8,6 @@
   }
 }
 
-/* button {
-  background-color: transparent;
-} */
-
 .transparent-disabled:disabled {
   background-color: transparent !important;
   color: #9ca3af; /* Tailwind's gray-400 */
@@ -136,14 +132,28 @@
   font-weight: 500 !important;
 }
 
+.fontcolor {
+  color: #333333;
+}
+
+.bgyellow {
+  background-color: #ffa100;
+}
+
+.bgred {
+  background-color: #ff2600;
+}
+
 .heading-h1-all-pages {
   font-size: 24px;
   font-weight: bold;
+  color: #333333;
 }
 
 .heading-h2-all-pages {
   font-size: 24px;
   font-weight: bold;
+  color: #333333;
 }
 
 .heading-h2-homepage {
@@ -290,14 +300,6 @@
   background-color: #5f5f5f;
   border: 1px solid #5f5f5f;
 }
-
-/* .btn-red {
-  background-color: #FF2600;
-}
-
-.btn-red:hover {
-  background-color: #9e353e; */
-/* } */
 
 .font-medium-plus {
   font-weight: 500 !important;

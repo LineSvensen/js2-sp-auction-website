@@ -6,7 +6,16 @@ export function getAccessToken() {
   const token = localStorage.getItem('accessToken');
 
   if (!token) {
-    // alert("Something went wrong. Please check if you are logged in or registered. (Missing token)")
+    // Toastify({
+    //   text: 'Something went wrong. Please try again later.',
+    //   duration: 4000,
+    //   close: true,
+    //   gravity: 'top',
+    //   position: 'right',
+    //   backgroundColor: '#e62e00',
+    //   stopOnFocus: true,
+    // }).showToast();
+
     return null;
   }
 

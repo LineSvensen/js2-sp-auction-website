@@ -1,5 +1,5 @@
 import { fetchProfile } from '../api/api-profile.js';
-import { logoutUser } from './logout.js'; // <-- ADD THIS IMPORT
+import { logoutUser } from './logout.js';
 
 export async function loadNavbar() {
   const placeholder = document.getElementById('navbar-placeholder');
@@ -29,7 +29,7 @@ export async function loadNavbar() {
       loginBtns.forEach((btn) => btn?.classList.add('hidden'));
       logoutBtns.forEach((btn) => btn?.classList.remove('hidden'));
       mobileProfileLink?.classList.remove('hidden');
-      // Detect screen size
+      
       const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
 
       if (isDesktop) {
@@ -56,13 +56,13 @@ export async function loadNavbar() {
       logoutBtns.forEach((btn) => btn?.classList.add('hidden'));
       mobileProfileLink?.classList.add('hidden');
       avatarMobile?.classList.add('hidden');
-      avatarDesktop?.classList.add('hidden'); // <-- ✅ this was missing
+      avatarDesktop?.classList.add('hidden'); 
     }
 
     const { initBurgerMenu } = await import('./burger-menu.js');
     initBurgerMenu();
 
-    logoutUser(); // <-- ✅ ADD THIS LINE
+    logoutUser();
   } catch (err) {
     console.error('Failed to load navbar:', err);
   }

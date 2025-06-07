@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
 /**
  * initializes the search function once the DOM is loaded
  */
@@ -58,10 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       await renderListings(searchResults.data || []);
     } catch (error) {
-      /**
-       * alert shows if the search fails
-       */
-      alert('There was an error with the search. Please try again later.');
+      console.log('issues with the search.');
     }
   });
 });

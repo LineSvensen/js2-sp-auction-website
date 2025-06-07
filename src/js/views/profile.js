@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const listings = profileData.data._count?.listings || 0;
 
     profileContainer.innerHTML = `
-      <div class="p-4 flex flex-col items-start">
+      <div class="p-4 flex flex-col items-start fontcolor">
         <h1 id="profile-welcome" class="heading-h1-all-pages pb-8">Welcome, ${name}!</h1>
         <div class="flex flex-row">
           <img
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             class="small-avatar"
             onerror="this.src='https://dummyimage.com/100x100/cccccc/ffffff&text=Image+Not+Found'"
           />
-          <button type="button" title="Edit avatar" id="show-update-avatar-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md ">
+          <button type="button" title="Edit avatar" id="show-update-avatar-form" class="btn-trust text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md ">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
         </div>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           />
           <button 
             type="submit"
-            class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium py-1 px-4 rounded shadow-md"
+            class="btn-trust text-white font-medium py-1 px-4 rounded shadow-md"
           >
             Update Avatar
           </button>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         <div class="flex flex-direction: row;">
           <p id="profile-bio" class="py-4 text-lg text-center">Bio: <b>${bio}</b></p>
-          <button type="button" title="Edit bio" id="show-update-bio-form" class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md">
+          <button type="button" title="Edit bio" id="show-update-bio-form" class="btn-trust  text-white font-medium h-8 py-1 px-2 ml-2 rounded-lg shadow-md">
               <i class="fa-solid fa-pen-to-square"></i>
           </button>
         </div>    
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           />
           <button 
             type="submit"
-            class="bg-CTAGreen hover:bg-CTAGreen-hover text-white font-medium py-1 px-4 rounded shadow-md"
+            class="btn-trust text-white font-medium py-1 px-4 rounded shadow-md"
           >
             Update Bio
           </button>
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .getElementById('new-avatar-url')
         .value.trim();
       const avatarFeedback = document.getElementById('avatar-feedback');
-      avatarFeedback.textContent = ''; // clear previous
+      avatarFeedback.textContent = '';
 
       if (!newAvatarUrl) {
         avatarFeedback.textContent = 'Please enter a valid avatar URL.';
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       event.preventDefault();
       const newBioText = document.getElementById('new-bio-text').value.trim();
       const bioFeedback = document.getElementById('bio-feedback');
-      bioFeedback.textContent = ''; // clear previous
+      bioFeedback.textContent = '';
 
       if (!newBioText) {
         bioFeedback.textContent = 'Please enter bio text.';

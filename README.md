@@ -2,7 +2,7 @@
 
 ![Demo](./assets/images/bbreadmevid.gif)
 
-## Description
+## Description 🖊️
 
 Welcome to this repo! This is **BidBuddy**; a dynamic and user-friendly auction platform where users can **list**, **bid**, and **manage listings** seamlessly. Whether you're buying vintage treasures or selling valuable collectibles, BidBuddy ensures a smooth and engaging experience. As for now, users have to register with a @stud.noroff.no mail and will be given 1000 "credits" they can use to bid with. So no real payments... Yet ;) **View and test out the website for yourself on https://js2-sp-auction-website.vercel.app/**
 
@@ -10,7 +10,11 @@ This project uses **HTML**, **CSS (Tailwind)**, and **JavaScript** with modular 
 
 ---
 
-## Table of Contents
+## Improvements and updates 🆕
+
+June 2025: New hero banner based on screen size/if logged in. Explore page added with filtered "hot" listings and "Ending soon". Annoying alerts removed. Logged in button in nav fixed (now not showing in nav if not logged in). Pagination added. Small css improvements.
+
+## Table of Contents 📋
 
 1. [Features](#features)
 2. [Folder Structure](#folder-structure)
@@ -27,10 +31,12 @@ This project uses **HTML**, **CSS (Tailwind)**, and **JavaScript** with modular 
 - **User Authentication**: Register and log in securely.
 - **Create Listings**: Add products with title, description, multiple images and ending-dates.
 - **Bid on Listings**: View detailed information about listings, place bid and track/see whos bidding on active listings.
-- **Manage Profile**: Update avatar, bio, see your created listings (active and ended) and the listings you have bid on (active, won, lost).
+- **Manage Profile**: Update avatar, bio, see your created listings (active and ended) and the listings you have bid on (active, won, lost). Your listings shows up under tabs.
 - **Dynamic Search**: Search for listings.
-- **Responsive Design**: Fully functional on all devices over 360px.
+- **Responsive Design**: Fully functional on all devices over 360px. Hero banner changes based on size and if logged in.
 - **Edit/Delete Listings**: Edit your listings (title, description, images) and/or delete.
+- **Filtered listings on explore page**: View "hot" and "ending soon" listings on explore page.
+- **Pagination**: Pagination on homepage and explore page.
 
 ---
 
@@ -77,6 +83,7 @@ Below is an overview of the project directory:
 │   ├── edit-delete.html
 │   ├── listing-details.html
 │   ├── login-register.html
+├── ├── explore.html
 │   ├── profile.html
 │   └── index.html       # Homepage
 │
@@ -141,7 +148,7 @@ Below is an overview of the project directory:
 
 - API Base URL: https://v2.api.noroff.dev/auction
 
-## Credits
+## Credits 👍
 
 #### Author: Line Svensen
 
@@ -151,6 +158,6 @@ Below is an overview of the project directory:
 
 ---
 
-## License
+## License ©️
 
 This project is licensed under the MIT License.

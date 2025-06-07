@@ -8,8 +8,8 @@ const listingContainer = document.getElementById('explore-listings');
 const prevBtn = document.getElementById('prev-page');
 const nextBtn = document.getElementById('next-page');
 const pageIndicator = document.getElementById('page-indicator');
-const listingsPerPage = 6; // how many per page
-let totalPages = 1; // default fallback
+const listingsPerPage = 6;
+let totalPages = 1;
 
 async function fetchExploreListings() {
   try {
@@ -21,7 +21,6 @@ async function fetchExploreListings() {
     const data = await response.json();
     let listings = data.data;
 
-    // Sort logic...
     if (currentSort === 'popular') {
       listings.sort((a, b) => (b._count?.bids || 0) - (a._count?.bids || 0));
     } else {
@@ -32,16 +31,14 @@ async function fetchExploreListings() {
       );
     }
 
-    // Pagination math
     totalPages = Math.ceil(listings.length / listingsPerPage);
     const paginated = listings.slice(
       (currentPage - 1) * listingsPerPage,
       currentPage * listingsPerPage
     );
 
-    renderProfileListings(paginated, listingContainer);
+    renderProfileListings(paginated, listingContainer, true);
 
-    // ✅ Update page indicator like "Page 2 / 17"
     pageIndicator.textContent = `Page ${currentPage} / ${totalPages}`;
 
     prevBtn.disabled = currentPage === 1;

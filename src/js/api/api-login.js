@@ -25,16 +25,33 @@ export async function loginUser(email, password) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || 'Failed to log in');
+      Toastify({
+        text: 'Could not log in. Please check if username or/and password is correct.',
+        duration: 4000,
+        close: true,
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: '#e62e00',
+        stopOnFocus: true,
+      }).showToast();
+      throw new Error(errorData.message || 'Failed to log in.');
     }
 
     const data = await response.json();
 
     if (data.data.accessToken && data.data.name) {
-      localStorage.setItem('accessToken', data.data.accessToken); 
+      localStorage.setItem('accessToken', data.data.accessToken);
       localStorage.setItem('name', data.data.name);
     } else {
-      alert("Something went wrong. Please try again later.")
+      Toastify({
+        text: 'Something went wrong. Please try again later.',
+        duration: 4000,
+        close: true,
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: '#e62e00',
+        stopOnFocus: true,
+      }).showToast();
     }
 
     return data.data;
