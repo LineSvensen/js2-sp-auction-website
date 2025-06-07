@@ -13,6 +13,8 @@ export default defineConfig({
         loginRegister: path.resolve(__dirname, 'pages/login-register.html'),
         profile: path.resolve(__dirname, 'pages/profile.html'),
         editDelete: path.resolve(__dirname, 'pages/edit-delete.html'),
+        explore: path.resolve(__dirname, 'pages/explore.html'),
+        navbar: path.resolve(__dirname, 'pages/navbar.html'),
       },
     },
   },

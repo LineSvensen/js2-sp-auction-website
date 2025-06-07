@@ -6,7 +6,7 @@ export async function loadNavbar() {
   if (!placeholder) return;
 
   try {
-    const res = await fetch('../src/js/components/navbar.html');
+    const res = await fetch('/pages/navbar.html');
     const html = await res.text();
     placeholder.innerHTML = html;
 
@@ -29,7 +29,7 @@ export async function loadNavbar() {
       loginBtns.forEach((btn) => btn?.classList.add('hidden'));
       logoutBtns.forEach((btn) => btn?.classList.remove('hidden'));
       mobileProfileLink?.classList.remove('hidden');
-      
+
       const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
 
       if (isDesktop) {
@@ -56,7 +56,7 @@ export async function loadNavbar() {
       logoutBtns.forEach((btn) => btn?.classList.add('hidden'));
       mobileProfileLink?.classList.add('hidden');
       avatarMobile?.classList.add('hidden');
-      avatarDesktop?.classList.add('hidden'); 
+      avatarDesktop?.classList.add('hidden');
     }
 
     const { initBurgerMenu } = await import('./burger-menu.js');
